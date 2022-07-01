@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 6213d13c0ae9cf449b7dac6d79f0abd8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shineAbility: {fileID: 11400000, guid: 990c35197948a6348b582a2b07bd1314, type: 2}
+  - absorbAbility: {fileID: 11400000, guid: 8e538109d609d034f8b7b343d8010ce5, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
