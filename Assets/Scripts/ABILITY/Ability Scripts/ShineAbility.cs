@@ -14,16 +14,18 @@ public class ShineAbility : Ability
     //[SerializeField] private float _pullTime; POTENTIALLY MAKING THIS 
     [SerializeField] private float _shinePush;
     [SerializeField] private float _shineRadius;
+    [SerializeField] private float _pullTime;
 
     public float knockbackTime{ get { return _knockbackTime; }}
     //public float pullTime{ get { return _pullTime; }}
     public float shinePush{ get { return _shinePush; }}
     public float shineRadius { get { return _shineRadius; } }
+    public float pullTime { get { return _pullTime; } }
 
     //ACTIVATING ABILITIES FUNCTION
     public override void Activate(GameObject parent)
     {
-        CircleCollider2D shine = parent.AddComponent<CircleCollider2D>();
+        CircleCollider2D shine = parent.AddComponent<CircleCollider2D>(); 
 
         shine.radius = shineRadius;
         shine.isTrigger = true;
@@ -36,5 +38,15 @@ public class ShineAbility : Ability
         CircleCollider2D shine = parent.GetComponent<CircleCollider2D>();
         shine.tag = "Untagged";
         Destroy(shine);
+    }
+
+    private IEnumerator KnockTime(Rigidbody2D enemy)
+    {
+        //MAKES SURE THE ENEMY NOT NULL & THAT THEIR VELOCITY DOESN'T = 0.
+        if (enemy != null && enemy.velocity != Vector2.zero)
+        {
+            yield return new WaitForSeconds(knockbackTime);
+            enemy.velocity = Vector2.zero;
+        }
     }
 }

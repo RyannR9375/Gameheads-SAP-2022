@@ -21,11 +21,6 @@ public class PlayerMovement : MonoBehaviour
     public GameObject abilityHolder;
     //public AbilityHolderDefense abilityHolderScript;
 
-    //VARIABLES FOR FUNCTIONS
-    private Vector3 scaleChange;
-    private Vector3 minScale;
-    private float minScaleMag;
-
     //PLAYER
     [Header("Player Stats")]
     public float moveSpeed;
@@ -47,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// AWAKE, UPDATE, FIXED UPDATE, ONTRIGGERENTER2D
     /// </summary>
-    
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -59,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = maxHealth;
 
         //spaghetti
-        scaleChange = new Vector3(-1f, -1f, -0f);
+        //scaleChange = new Vector3(-1f, -1f, -0f);
     }
     void Update()
     {
@@ -93,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
         //ALSO SPAGHETTI. HIGHLY DEPENDENT. THIS ONLY CHECKS FOR ONCOLLISION AND NOT ONTRIGGER. THE CIRCLECOLLIDER OF ABSORB DOES NOT MATCH THIS, SO YOU HAVE TO BUMP INTO THE ENEMY IN ORDER FOR THIS TO WORK, AND NOT THE ABSORB ABILITY.
         if (other.gameObject.CompareTag("Enemy") && abilityHolder.CompareTag("Absorb"))
         {
-            absorbRelease(other, chargeAmount);
+            absorbAdd(chargeAmount);
         }
     }
 
@@ -115,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
     //SIMPLE DAMAGE FUNCTION MAINLY USED FOR DEBUGGING.
-    void playerGetHit(int damage)
+    public void playerGetHit(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
@@ -143,44 +138,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //SPAGHETTI FOR NOW. CHANGEEEEEEEEEEEEEEEEEEEEE THIS. MOVE THIS.
-    void absorbRelease(Collider2D enemy, float value)
-    {
-        tag = "Absorb";
-        currentCharge += value;
-        absorbBar.SetValue(currentCharge);
-        //HARDCODING. BAD.
-        scaleChange = new Vector3(-0.003f, -0.003f, 0f);
-        minScale = new Vector3(0.2f, 1.077f, 0f);
-        minScaleMag = (minScale.magnitude);
-
-        if (currentCharge >= 100)
-        {
-            Debug.Log(currentCharge);
-            playerGetHit(100);
-            StartCoroutine(FlashCo());
-            currentCharge = 0;
-            absorbBar.SetValue(currentCharge);
-        }
-
-        if (enemy.transform.localScale.magnitude > minScaleMag)
-        {
-            enemy.transform.localScale += scaleChange;
-        }
-        else
-        {
-            //Can no longer absorb from enemies if too small. taking away enemy hit ability, and knockback features.
-            //enemy.gameObject.tag = "Untagged";
-            if (enemy != null)
-            {
-                GameObject enemyBody = enemy.gameObject;
-                Destroy(enemyBody);
-                //playing enemy death anim and disabling its movement? }
-            }
-        }
-
-    }
-
     //STOPS CHARACTER MOVEMENT FOR A SECOND AFTER YOU GET HIT IN ORDER TO ACTIVATE IFRAMES AND APPLY KNOCKBACK
     private IEnumerator KnockCo(float knockTime)
     {
@@ -195,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //CHARACTER FLASHING BECAUSE OF DAMAGE
-    private IEnumerator FlashCo()
+    public IEnumerator FlashCo()
     {
         int temp = 0;
         triggerCollider.enabled = false;
@@ -209,6 +166,21 @@ public class PlayerMovement : MonoBehaviour
         }
         triggerCollider.enabled = true;
     }
-    //DASH . SPAGHETTI MOVE THIS LATER.
+    
+    //HMMMMMMMM
+    public void absorbAdd(float value)
+    {
+        currentCharge += value;
+        absorbBar.SetValue(currentCharge);
+
+        if (currentCharge >= 100)
+        {
+            Debug.Log(currentCharge);
+            playerGetHit(100);
+            StartCoroutine(FlashCo());
+            currentCharge = 0;
+            absorbBar.SetValue(currentCharge);
+        }
+    }
     
 }
