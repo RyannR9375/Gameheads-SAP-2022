@@ -27,16 +27,16 @@ public class PlayerIdleState : PlayerAbleToMoveState
 
     public override void LogicUpdate()
     {
+        
         base.LogicUpdate();
 
-        if(input.x != 0 || input.y != 0)
+        if (input.x != 0)
         {
-            stateMachine.ChangeState(player.MoveState);
+            stateMachine.ChangeState(player.MoveStateX);
         }
-
-        if(input.x > 0)
+        if (input.y != 0)
         {
-            stateMachine.ChangeState(player.MoveState);
+            stateMachine.ChangeState(player.MoveStateY);
         }
     }
 

@@ -8,6 +8,8 @@ TagManager:
   - Shine
   - Absorb
   - Release
+  - NextLevel
+  - PreviousLevel
   layers:
   - Default
   - TransparentFX

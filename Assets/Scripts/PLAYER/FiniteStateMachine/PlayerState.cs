@@ -10,6 +10,7 @@ public class PlayerState
     protected Player player;
     protected PlayerStateMachine stateMachine;
     protected PlayerData playerData;
+    protected PlayerAbleToMoveState playerAbleToMoveState;
 
     protected float startTime;
 
@@ -28,25 +29,33 @@ public class PlayerState
     public virtual void Enter()
     {
         DoChecks();
-        
-        //grabbing the player animator, setting the bool of the current animation to true so it starts.
-        player.Anim.SetBool(animBoolName, true);
+
+        //grabbing the player animator, setting the float of the current animation to 1.0f so it starts.
+        //player.Anim.SetFloat("MoveHorizontal", playerData.movementVelocity * player.InputHandler.RawMovementInput.x);
+        //player.Anim.SetFloat("MoveVertical", playerData.movementVelocity * player.InputHandler.RawMovementInput.y);
+        //player.Anim.SetBool(animBoolName, true);
+
+        player.Anim.SetFloat(animBoolName, 1f);
+
         startTime = Time.time;
 
-        Debug.Log(animBoolName);
     }
 
     //CALLED WHEN WE EXIT A STATE
     public virtual void Exit()
     {
-        //grabbing the player animator, setting the bool of the current animation to false so it stops.
-        player.Anim.SetBool(animBoolName, false);
+        //grabbing the player animator, setting the float of the movement input to 0f so it stops. "Idle"
+        //player.Anim.SetBool(animBoolName, false);
+        player.Anim.SetFloat(animBoolName, 0f);
+
     }
 
     //REGULAR UPDATE FUNCTION
     public virtual void LogicUpdate()
     {
-
+        //CONSTANTLY SETTING THE FLOAT VALUE TO THE VELOCITY SO WE RETURN THE CORRECT FLOAT VALUES FOR THE ANIMATION TO WORK AT ALL TIMES.
+        player.Anim.SetFloat("MoveHorizontal", playerData.movementVelocity * player.InputHandler.RawMovementInput.x);
+        player.Anim.SetFloat("MoveVertical", playerData.movementVelocity * player.InputHandler.RawMovementInput.y);
     }
 
     //FIXED UPDATE FUNCTION

@@ -29,15 +29,15 @@ public class PlayerMoveState : PlayerAbleToMoveState
         base.LogicUpdate();
 
         //CHECKING IF THE PLAYER CAN FLIP DIRECTIONS. BASED ON PLAYER SCRIPTS FACING DIRECTIONS
-        player.CheckIfShouldFlip(input.x);
+        //player.CheckIfShouldFlip(input.x);
 
         player.SetVelocity(playerData.movementVelocity * input.x, playerData.movementVelocity * input.y);
+        //Debug.Log(player.CurrentVelocity);
 
-        if(input.x == 0 && input.y == 0)
+        if (input.x == 0 && input.y == 0)
         {
             stateMachine.ChangeState(player.IdleState);
         }
-
     }
 
     public override void PhysicsUpdate()

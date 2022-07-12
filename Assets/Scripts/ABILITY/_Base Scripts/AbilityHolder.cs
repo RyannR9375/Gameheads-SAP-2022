@@ -9,17 +9,18 @@ using TMPro;
 [System.Serializable]
 public class AbilityHolder: MonoBehaviour
 {
-
     /// <summary>
-    /// REFACTORING INTO CALLING 'ABILITY PHYSICS' PRIVATELY, AND 'ABILITY PHYSICS' SCRIPT CALLS THE SCRIPTABLE OBJECTS IN THE ARRAY 'AbilityList[]', THAT WAY YOU DONT HAVE TO ADD ABILITYPHYSICS INTO THE INSPECTOR.
+    /// REFACTORING INTO CALLING 'ABILITY PHYSICS' PRIVATELY, AND 'ABILITY PHYSICS' SCRIPT CALLS THE SCRIPTABLE OBJECTS IN THE ARRAY 'AbilityList[]', 
+    /// THAT WAY YOU DONT HAVE TO ADD ABILITYPHYSICS INTO THE INSPECTOR.
     /// </summary>
 
-    //CALLING SCRIPTS
+    #region Calling Scripts
     public Ability ability;
     private PlayerMovement player;
     [HideInInspector] public ShineAbility shineAbility;
+    #endregion
 
-    //DECLARING VARIABLES
+    #region Declaring Variables
     float activeTime;
     float cooldownTime;
     private string objectName;
@@ -27,16 +28,23 @@ public class AbilityHolder: MonoBehaviour
     private Vector3 scaleChange;
     private Vector3 minScale;
     private float minScaleMag;
+    //AUTOMATICALLY SETTING ABILITY STATE TO TRUE
+    [HideInInspector] public AbilityState state = AbilityState.ready;
+
+    public enum AbilityState
+    {
+        ready,
+        active,
+        cooldown
+    }
 
     // WORK ON MAKING THIS AN INSPECTOR FRIENDLY THING WHERE YOU CAN CHOOSE THE AMOUNT OF ABILITIES THAT YOU WANT TO CALL.
-    private AbilityState debugState; //CHANGE TO PUBLIC WHEN TRYING TO DEBUG. ALLOWS YOU TO CYCLE BETWEEN 'READY', 'ACTIVE', AND 'COOLDOWN' THROUGH THE GUI.
+    //private AbilityState debugState; //CHANGE TO PUBLIC WHEN TRYING TO DEBUG. ALLOWS YOU TO CYCLE BETWEEN 'READY', 'ACTIVE', AND 'COOLDOWN' THROUGH THE GUI.
     //ADDING INSPECTOR FRIENDLY KEY-BIND CHANGING, POTENTIALLY MAKING THIS PART OF THE ABILITYLIST SO YOU CAN DEFINE THE ABILITY TYPE AND THE KEY YOU WANT TO USE WITH IT IN ONE ELEMENT.
     public KeyCode key;
+    #endregion
 
-    /// <summary>
-    /// ONGUI, AWAKE, UPDATE, ONTRIGGERENETER AND ENUM
-    /// </summary>
-
+    #region Unity Callback Functions & GUI Stuff
     private void Awake()
     {
         scaleChange = new Vector3(-1f, -1f, -0f);
@@ -44,33 +52,25 @@ public class AbilityHolder: MonoBehaviour
         objectName = gameObject.name;
     }
 
-    //GUI
+    //GUI, UNCOMMENT WHEN DEBUGGING.
     void OnGUI()
     {
-        debugState = (AbilityState)EditorGUILayout.EnumPopup("Pick an Ability State: ", debugState);
+        //debugState = (AbilityState)EditorGUILayout.EnumPopup("Pick an Ability State: ", debugState);
     }
-
-    //CREATING TYPES OF ABILITY STATES
-    public enum AbilityState 
-    {
-        ready,
-        active,
-        cooldown
-    }
-
-    //AUTOMATICALLY SETTING ABILITY STATE TO TRUE
-    [HideInInspector] public AbilityState state = AbilityState.ready;
 
     void Update()
     {
         //ClickForActivate();
         HoldForActivate();
     }
+    #endregion
 
+    #region Collision Functions
     private void OnTriggerEnter2D(Collider2D other)
     {
         Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
 
+        #region Shine Ability
         //SHINE ABILITY TRIGGER COLLISION. CHECKS FOR BOTH 'ENEMY' TAG AND 'SHINE' TAG.
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Shine"))
         {
@@ -84,10 +84,12 @@ public class AbilityHolder: MonoBehaviour
                 enemy.AddForce(difference, ForceMode2D.Force);
 
                 StartCoroutine(KnockTime(enemy));
-                Debug.Log("Calling Shine AbilityPhysics");
+                //Debug.Log("Calling Shine AbilityPhysics");
             }
         }
+        #endregion
 
+        #region Release Ability
         //RELEASE ABILITY TRIGGER COLLISION. CHECKS FOR BOTH 'ENEMY' TAG AND 'RELEASE' TAG.
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Release"))
         {
@@ -103,20 +105,22 @@ public class AbilityHolder: MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
+        #endregion
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        #region Absorb Ability
         if (other.gameObject.CompareTag("Enemy") && CompareTag("Absorb"))
         {
             absorbRelease(other);
         }
+        #endregion
     }
 
-    /// <summary>
-    /// ABILITY ENUMS
-    /// </summary>
+    #endregion
 
+    #region ENUMS
     //ABSORB SWITCH STATE
     public void HoldForActivate()
     {
@@ -207,4 +211,5 @@ public class AbilityHolder: MonoBehaviour
         }
 
     }
+    #endregion
 }

@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 8e538109d609d034f8b7b343d8010ce5, type: 2}
   shineAbility: {fileID: 0}
-  key: 101
   state: 0
+  key: 101
 --- !u!114 &6135309200903696484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,8 +64,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 12ab4829b9546844f9933569b95464e6, type: 2}
   shineAbility: {fileID: 0}
-  key: 113
   state: 0
+  key: 113
 --- !u!114 &6135309200903696511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,8 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 990c35197948a6348b582a2b07bd1314, type: 2}
   shineAbility: {fileID: 11400000, guid: 990c35197948a6348b582a2b07bd1314, type: 2}
-  key: 32
   state: 0
+  key: 32
 --- !u!1 &6135309201040479987
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,12 +98,12 @@ GameObject:
   - component: {fileID: 6135309201040479985}
   - component: {fileID: 6135309201040479986}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Whitebox_Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6135309201040479948
 Transform:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6135309201040479987}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: -0.08, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

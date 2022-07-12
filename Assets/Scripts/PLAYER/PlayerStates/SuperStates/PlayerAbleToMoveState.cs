@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAbleToMoveState : PlayerState
 {
     protected Vector2 input;
+
     public PlayerAbleToMoveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
 
@@ -32,6 +33,7 @@ public class PlayerAbleToMoveState : PlayerState
         //GIVES ACCESS TO MOVE AND IDLE STATES
         input.x = player.InputHandler.RawMovementInput.x;
         input.y = player.InputHandler.RawMovementInput.y;
+
     }
 
     public override void PhysicsUpdate()
