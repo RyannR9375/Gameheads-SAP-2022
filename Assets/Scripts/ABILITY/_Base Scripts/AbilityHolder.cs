@@ -75,7 +75,7 @@ public class AbilityHolder: MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Shine"))
         {
             //CHECKING IF ENEMY HAS Rigidbody2D 
-            if (enemy != null)
+            if (enemy != null && shineAbility != null)
             {
                 //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'
                 //GETTING THE DISTANCE FROM THE ENEMY TO THE PLAYER, AND ADDING FORCE IN THE OPPOSITE VECTOR DIRECTION. 

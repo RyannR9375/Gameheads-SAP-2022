@@ -1703,6 +1703,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1664693736722667716, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
   m_PrefabInstance: {fileID: 1608142316}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1608142318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1664693736722667717, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+  m_PrefabInstance: {fileID: 1608142316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fffa32545077f94aad174c75dd2ddcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1698465062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,8 +1869,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 2cead415f9cadf9468c2942a5fcfb8e2, type: 2}
-  healthBar: {fileID: 0}
-  absorbBar: {fileID: 0}
+  healthBar: {fileID: 1901199323}
+  absorbBar: {fileID: 1608142318}
   abilityHolder: {fileID: 576526799}
   maxHealth: 100
   currentHealth: 100
@@ -2319,6 +2330,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1246230188609278273, guid: ccb4598fff5153741832af15a411bda8, type: 3}
   m_PrefabInstance: {fileID: 1901199320}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1901199323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1246230188609278275, guid: ccb4598fff5153741832af15a411bda8, type: 3}
+  m_PrefabInstance: {fileID: 1901199320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e27312fe3f15f4d9933ba403ee1efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2071441450
 GameObject:
   m_ObjectHideFlags: 0
