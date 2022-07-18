@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b7451d5a810ce41a3871170184bd49, type: 3}
+  m_Name: Enemy_WhiteBox
+  m_EditorClassIdentifier: 
+  _enemyName: WhiteBox Enemy
+  _damage: 20
+  _health: 100
+  _moveSpeed: 5
+  bullet: {fileID: 11400000, guid: 13fd688c278ea2d42b9fe9aca7ccd0c4, type: 2}
