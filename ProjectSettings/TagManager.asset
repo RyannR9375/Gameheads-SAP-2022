@@ -10,6 +10,7 @@ TagManager:
   - Release
   - NextLevel
   - PreviousLevel
+  - Boss
   layers:
   - Default
   - TransparentFX

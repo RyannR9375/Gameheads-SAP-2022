@@ -642,7 +642,7 @@ Transform:
   - {fileID: 641444166}
   - {fileID: 1943490711}
   m_Father: {fileID: 1203436083}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &351022593
 GameObject:
@@ -1847,7 +1847,6 @@ Transform:
   m_Children:
   - {fileID: 791019638}
   - {fileID: 598917970}
-  - {fileID: 1902554436}
   - {fileID: 340107541}
   - {fileID: 1709520913}
   m_Father: {fileID: 0}
@@ -1900,7 +1899,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.778761, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3151,7 +3150,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1203436083}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1709520914
 Rigidbody2D:
@@ -3215,9 +3214,10 @@ GameObject:
   - component: {fileID: 1902554439}
   - component: {fileID: 1902554438}
   - component: {fileID: 1902554437}
+  - component: {fileID: 1902554443}
   m_Layer: 0
-  m_Name: Enemy1_Test (2)
-  m_TagString: Enemy
+  m_Name: Boss_Test
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3230,13 +3230,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902554435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.25, y: 5.45, z: 0.029355824}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -7.7532015, y: 5.088517, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2112669226}
-  m_Father: {fileID: 1203436083}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1902554437
 CircleCollider2D:
@@ -3332,8 +3332,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f1c0582be1a0e734f88806dbadd12ba9, type: 3}
-  m_Color: {r: 0.8301887, g: 0.33285868, b: 0.33285868, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0b20a89f821a87641b973caf2f9d9837, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.84313726}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3370,6 +3370,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: d6384f061ab8d9942b5f732e4dd00cbc, type: 2}
+--- !u!95 &1902554443
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902554435}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2542106a2ee3c8b429ff5bfe24e9a6cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1925089589 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5689715813888288537, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
@@ -3555,6 +3575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy1_Patrol
       objectReference: {fileID: 0}
+    - target: {fileID: 3312757263681649683, guid: cd4c92e78a2864a448fb261130b30eef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3312757263681649687, guid: cd4c92e78a2864a448fb261130b30eef, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3692,6 +3716,10 @@ PrefabInstance:
     - target: {fileID: 7976323286906160640, guid: d4ef15c78b73f16438489521a6397cbe, type: 3}
       propertyPath: m_Name
       value: Enemy1_Follow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976323286906160640, guid: d4ef15c78b73f16438489521a6397cbe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7976323286906160643, guid: d4ef15c78b73f16438489521a6397cbe, type: 3}
       propertyPath: m_RootOrder
