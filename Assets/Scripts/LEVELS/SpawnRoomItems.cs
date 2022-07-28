@@ -29,6 +29,8 @@ public class SpawnRoomItems : MonoBehaviour
     {
 
     }
+
+    
     public void DestroyUselessDoor(RoomSpawner.direction direction)
     {
         searchArea = Physics2D.CircleCastAll(this.transform.position, 49f, transform.forward, float.PositiveInfinity, 6);
