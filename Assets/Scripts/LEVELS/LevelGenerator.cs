@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public GameObject[] FloorTemplates = new GameObject[2];
+    [SerializeField]
+    public GameObject[] FloorTemplates = new GameObject[4];
     [SerializeField]
     public LevelSettings LevelSettings;
     [HideInInspector]
-    // Start is called before the first frame update
     void Start()
     {
-        Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length)]);
+        Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length)], GameObject.Find("MAP").transform);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
-    public static GameObject SpawnRoom(GameObject room,RoomSpawner.direction direction, Vector3 PrevRoomPos)
+    public static GameObject SpawnRoom(RoomSpawner.direction direction, Vector3 PrevRoomPos)
     {
+        var LM = new LevelGenerator();
+        LM = GameObject.Find("GameManager").GetComponent<LevelGenerator>();
         Vector3 spawnLocation = PrevRoomPos;
         if (direction == RoomSpawner.direction.Up)
         {
@@ -38,7 +39,7 @@ public class LevelGenerator : MonoBehaviour
         {
             spawnLocation = new Vector3(PrevRoomPos.x + 18f, PrevRoomPos.y);
         }
-        GameObject spawnedRoom = Instantiate(room, spawnLocation, new Quaternion(0,0,0,0), GameObject.Find("MAP").transform);
+        GameObject spawnedRoom = Instantiate(LM.FloorTemplates[Random.Range(0, LM.FloorTemplates.Length)], spawnLocation, new Quaternion(0,0,0,0), GameObject.Find("MAP").transform);
         var attributes = spawnedRoom.GetComponent<SpawnRoomItems>();
         attributes.DestroyUselessDoor(direction);
         return spawnedRoom;
