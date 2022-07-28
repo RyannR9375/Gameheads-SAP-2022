@@ -881,8 +881,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5053771075226831420}
-  - {fileID: 6051146117294597843}
+  - {fileID: 1347109316183765124}
+  - {fileID: 534384195437239403}
   m_Father: {fileID: 1880356469727328496}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -934,6 +934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1880356469727328496}
   - component: {fileID: 4214506142438737832}
+  - component: {fileID: 6207566528708158060}
   m_Layer: 6
   m_Name: ROOM
   m_TagString: Room
@@ -980,6 +981,32 @@ MonoBehaviour:
   - {fileID: 1727045199927224506, guid: a470d2ba4bb70b94781f47857c594406, type: 3}
   - {fileID: 413760390621661724, guid: 426ffaaa0c4a9e343b9ea59cfb92ecc5, type: 3}
   spawnFolder: {fileID: 7010349148185687075}
+--- !u!61 &6207566528708158060
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7202073521509148629}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.6488876, y: 10.002508}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 17.684021, y: 23.377155}
+  m_EdgeRadius: 0
 --- !u!1 &7227129578157626677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,11 +1673,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
---- !u!4 &6051146117294597843 stripped
+--- !u!4 &1347109316183765124 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3824766001588158422, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
   m_PrefabInstance: {fileID: 7416779035506841861}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8302058729607345642
@@ -1716,10 +1751,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
---- !u!4 &5053771075226831420 stripped
+--- !u!4 &534384195437239403 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3824766001588158422, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
   m_PrefabInstance: {fileID: 8302058729607345642}
   m_PrefabAsset: {fileID: 0}
