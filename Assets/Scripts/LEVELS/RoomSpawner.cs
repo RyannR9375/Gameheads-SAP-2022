@@ -18,7 +18,32 @@ public class RoomSpawner : MonoBehaviour
     void Start()
     {
         Room = this.transform.parent.transform.parent;
-        print(Room.name);
+        print(this.transform.GetChild(1).name);
+        CheckIfRoom();
+
+        /*
+        if(doISeeADoor[0].transform.tag == "Room")
+        {
+            Debug.Log(doISeeADoor[0].transform.name + "RoomSEEN");
+            Destroy(this.gameObject);
+        }
+        */
+
+        //if(doISeeADoor.transform.tag == )
+
+    }
+    bool CheckIfRoom()
+    {
+        RaycastHit2D doISeeADoor = Physics2D.Raycast(this.transform.GetChild(1).position, transform.right);
+        Debug.DrawRay(this.transform.GetChild(1).position, transform.right * 10, Color.red, 2f);
+        if (doISeeADoor)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     // Update is called once per frame
@@ -33,32 +58,11 @@ public class RoomSpawner : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Vector3 spawnLocation = Room.transform.position;
-            LevelGenerator.SpawnRoom(WhatDirection, spawnLocation);
-            /*RaycastHit2D doISeeADoor = Physics2D.Linecast(this.gameObject.transform.position, this.gameObject.transform.position);
-
-            if (WhatDirection == direction.Up)
+            if (CheckIfRoom())
             {
-                doISeeADoor = Physics2D.Linecast(new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1.5f), new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 50.5f));
+                GameObject room = LevelGenerator.SpawnRoom(WhatDirection, spawnLocation);
+                Destroy(this.gameObject);
             }
-            if (WhatDirection == direction.Down)
-            {
-                doISeeADoor = Physics2D.Linecast(new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + -1.5f), new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + -2.5f));
-            }
-            if (WhatDirection == direction.Left)
-            {
-                doISeeADoor = Physics2D.Linecast(new Vector2(this.gameObject.transform.position.x + -1.5f, this.gameObject.transform.position.y), new Vector2(this.gameObject.transform.position.x+-2.5f, this.gameObject.transform.position.y));
-            }
-            if (WhatDirection == direction.Right)
-            {
-                doISeeADoor = Physics2D.Linecast(new Vector2(this.gameObject.transform.position.x + 1.5f, this.gameObject.transform.position.y), new Vector2(this.gameObject.transform.position.x +2.5f, this.gameObject.transform.position.y));
-            }
-            if (doISeeADoor.transform.gameObject.tag == "Door")
-            {
-                Destroy(doISeeADoor.transform.gameObject);
-            }
-            */
-            Destroy(this.gameObject);
-        }
-        
+        } 
     }
 }

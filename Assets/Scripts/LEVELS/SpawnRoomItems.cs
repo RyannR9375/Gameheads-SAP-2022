@@ -13,7 +13,7 @@ public class SpawnRoomItems : MonoBehaviour
     void Start()
     {
         SpawnLocations = spawnFolder.gameObject.GetComponentsInChildren<Transform>();
-        print(SpawnLocations[0]);
+        //print(SpawnLocations[0]);
         LM = GameObject.Find("GameManager").GetComponent<LevelGenerator>();
         for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
         {
@@ -41,7 +41,7 @@ public class SpawnRoomItems : MonoBehaviour
                 if (child.GetComponent<RoomSpawner>().WhatDirection == RoomSpawner.direction.Down)
                 {
                     Destroy(child.gameObject);
-                    print("Up");
+                    //print("Up");
                     break;
                 }
                 continue;
@@ -52,7 +52,7 @@ public class SpawnRoomItems : MonoBehaviour
                 if (child.GetComponent<RoomSpawner>().WhatDirection == RoomSpawner.direction.Up)
                 {
                     Destroy(child.gameObject);
-                    print("Down");
+                    //print("Down");
                     break;
                 }
                 continue;
@@ -63,7 +63,7 @@ public class SpawnRoomItems : MonoBehaviour
                 if (child.GetComponent<RoomSpawner>().WhatDirection == RoomSpawner.direction.Right)
                 {
                     Destroy(child.gameObject);
-                    print("Left");
+                    //print("Left");
                     break;
                 }
                 continue;
@@ -74,7 +74,7 @@ public class SpawnRoomItems : MonoBehaviour
                 if (child.GetComponent<RoomSpawner>().WhatDirection == RoomSpawner.direction.Left)
                 {
                     Destroy(child.gameObject);
-                    print("Right");
+                    //print("Right");
                     break;
                 }
                 continue;
