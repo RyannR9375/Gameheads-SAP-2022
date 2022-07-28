@@ -34,10 +34,15 @@ public class RoomSpawner : MonoBehaviour
     }
     bool CheckIfRoom()
     {
-        RaycastHit2D doISeeADoor = Physics2D.Raycast(this.transform.GetChild(1).position, transform.right);
+        RaycastHit2D doISeeADoor = Physics2D.Raycast(this.transform.GetChild(1).position, transform.right,5f);
         Debug.DrawRay(this.transform.GetChild(1).position, transform.right * 10, Color.red, 2f);
         if (doISeeADoor)
         {
+            if (doISeeADoor.transform.tag == "Door")
+            {
+                Destroy(doISeeADoor.transform.gameObject);
+                Destroy(this.gameObject);
+            }
             return false;
         }
         else
@@ -62,6 +67,10 @@ public class RoomSpawner : MonoBehaviour
             {
                 GameObject room = LevelGenerator.SpawnRoom(WhatDirection, spawnLocation);
                 Destroy(this.gameObject);
+            }
+            else
+            {
+                print("No Room!");
             }
         } 
     }
