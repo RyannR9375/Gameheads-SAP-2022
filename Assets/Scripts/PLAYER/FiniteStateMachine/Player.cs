@@ -5,34 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    //FOG OF WAR ?
     #region State Variables
     public PlayerStateMachine StateMachine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveStateX { get; private set; }
     public PlayerMoveState MoveStateY { get; private set; }
+    public Animator Anim { get; private set; }
+    public PlayerInputHandler InputHandler { get; private set; }
+
     [SerializeField] private PlayerData playerData;
     #endregion
 
     #region Components
-    public Animator Anim { get; private set; }
-    public PlayerInputHandler InputHandler { get; private set; }
-
-    Vector2 movement;
-    Collider2D triggerCollider;
-    SpriteRenderer playerSprite;
+    public Rigidbody2D rb { get; private set; }
     public HealthBar healthBar;
     public AbsorbBar absorbBar;
-    //might make this private and just call this to be the child of player named abilityHolder
-    public GameObject abilityHolder;
+    private Collider2D triggerCollider;
+    private SpriteRenderer playerSprite;
+    private Transform abilityHolderTransform;
+    private GameObject abilityHolder;
+
+    public Vector2 CurrentVelocity { get; private set; }
+    private Vector2 workspace;
     #endregion
 
     #region Other Variables
-    public Rigidbody2D rb { get; private set; }
-
-    public Vector2 CurrentVelocity { get; private set; }
     public float FacingDirection { get; private set; }
+    public float Lives { get; private set;}
 
-    private Vector2 workspace;
     #endregion
 
     #region Player Stats
@@ -74,6 +75,9 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         triggerCollider = GetComponent<Collider2D>();
         playerSprite = GetComponent<SpriteRenderer>();
+        abilityHolderTransform = gameObject.transform.GetChild(0);
+        abilityHolder = abilityHolderTransform.gameObject;
+
 
         //refactor to scriptable objects
         healthBar.SetMaxHealth(maxHealth);
@@ -109,6 +113,7 @@ public class Player : MonoBehaviour
             //StartCoroutine(KnockCo(3f)); // REPLACE '3F' WITH SOMETHING. WILL ONLY BE USED WHEN THE PLAYER HAS A BASIC ATTACK FUNCTION THAT CAN KNOCK ENEMIES BACK.
             TakeDamage(3f, 10); //REPLACE WITH ENEMY DAMAGE NUMBERS
 
+            //SOMETHING THAT CHECKS COROUTINE/BOOL DAMAFGE STUFF
             //playerAnim.SetTrigger("Take_Damage) ADD TAKE_DAMAGE ANIMATIONS
             if (currentHealth <= 0)
             {
@@ -208,6 +213,7 @@ public class Player : MonoBehaviour
     {
         int temp = 0;
         triggerCollider.enabled = false;
+
         while (temp < numberOfFlashes)
         {
             playerSprite.color = flashColor;
