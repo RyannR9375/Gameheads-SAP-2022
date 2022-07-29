@@ -1152,6 +1152,22 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 295180151419762346, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 295180151419762346, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 295180151419762346, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2950518
+      objectReference: {fileID: 0}
+    - target: {fileID: 295180151419762346, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1664693736722667716, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1318,7 +1334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3647458978022335661, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_Value
-      value: 71
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3715721224698475555, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1357,6 +1373,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7771409594679079834, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -22.971
+      objectReference: {fileID: 0}
+    - target: {fileID: 7771409594679079834, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.073
+      objectReference: {fileID: 0}
+    - target: {fileID: 7771409594679079834, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.175
       objectReference: {fileID: 0}
@@ -1364,17 +1388,25 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.7875
       objectReference: {fileID: 0}
+    - target: {fileID: 7771409594679079834, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.147003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7771409594679079834, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00399971
+      objectReference: {fileID: 0}
     - target: {fileID: 7918762199892910781, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7918762199892910781, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.7999954
+      value: -0.7999878
       objectReference: {fileID: 0}
     - target: {fileID: 8663646168474954976, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8663646168474954976, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1784,7 +1816,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7769606, y: 1}
+    m_SensorSize: {x: 1.7803031, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
