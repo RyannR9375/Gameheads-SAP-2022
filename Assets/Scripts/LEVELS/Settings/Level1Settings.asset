@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 755ec53b44a605645859e72a3c8e5e39, type: 3}
-  m_Name: playerData
+  m_Script: {fileID: 11500000, guid: 11627875c786cf14db9fb199aeb6a32d, type: 3}
+  m_Name: Level1Settings
   m_EditorClassIdentifier: 
-  movementVelocity: 7
+  minEnemies: 1
+  maxEnemies: 10

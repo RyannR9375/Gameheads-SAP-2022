@@ -16,6 +16,11 @@ public class EnemyFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerTransform = GameObject.Find("Player").gameObject;
+        if (moveSpots[0] == null)
+        {
+            moveSpots[0] = playerTransform.transform;
+        }
         playerTransform = GameObject.FindGameObjectWithTag("Player");
         randomSpot = Random.Range(0, moveSpots.Length);
     }
