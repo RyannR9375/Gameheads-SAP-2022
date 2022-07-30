@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyTypes:
-  - {fileID: 7976323286906160640, guid: d4ef15c78b73f16438489521a6397cbe, type: 3}
   - {fileID: 881071077289709747, guid: e0e2ee68eb5ad3648a9855a9ebd3772d, type: 3}
+  - {fileID: 7976323286906160640, guid: d4ef15c78b73f16438489521a6397cbe, type: 3}
   - {fileID: 8112585735685485659, guid: a738217614cf2e949a6954293ec1ac90, type: 3}
   ItemsToSpawn:
   - {fileID: 1727045199927224506, guid: a470d2ba4bb70b94781f47857c594406, type: 3}
