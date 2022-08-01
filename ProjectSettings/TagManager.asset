@@ -10,7 +10,8 @@ TagManager:
   - Release
   - NextLevel
   - PreviousLevel
-  - Boss
+  - Room
+  - Door
   layers:
   - Default
   - TransparentFX
