@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-	#region Calling Scripts
-
-	//Player playerScript;
-
-	#endregion
 	#region Declaring Variables
+	Player playerScript;
+
 	private bool isFlipped = false;
 	private bool attackDone = true;
 	private int index;
 	#endregion
 
 	#region Components
+	private Rigidbody2D playerRB;
+
 	public Transform player;
 	public GameObject prefabSimpleAttack;
-	GameObject attack;
 
 	public List<IEnumerator> Attacks = new List<IEnumerator>();
-	public List<IEnumerator> chosenAttack = new List<IEnumerator>();
+	//public List<IEnumerator> chosenAttack = new List<IEnumerator>();
+	public IEnumerator chosenAttack;
 	#endregion
 
 	#region Boss Stats
 	[Header("Boss Stats")]
-	public float stoppingDistance;
+	public int bossDamage;
 	public float attackRange;
 	public float speed;
 	public float health;
+	public float stoppingDistance;
 
 	[Header("Projectile Ability Stats")]
 	public float timeBtwShots;
@@ -67,13 +67,14 @@ public class Boss : MonoBehaviour
 
     private void Awake()
     {
-		//Add all coroutines here
-		Attacks.Add(SimpleAttack());
-		Attacks.Add(PullAttack());
+		FillAttacksList();
 	}
 
 	void Start()
 	{
+		playerRB = player.GetComponent<Rigidbody2D>();
+		playerScript = player.GetComponent<Player>();
+
 		timeBtwShots = startTimeBtwShots;
 		pullCooldown = startPullCooldown;
 	}
@@ -88,27 +89,18 @@ public class Boss : MonoBehaviour
 		//RESET THE LIST AND RANDOMIZE IT AGAIN
 		//UNTIL BOSS DEAD.
 
-		if (chosenAttack.Count != 0 && attackDone == true)
+		if (Attacks.Count != 0 && attackDone == true)
 		{
-			//random when it shudnt be
-			index = Random.Range(0, Attacks.Count);
-			chosenAttack.Add(Attacks[index]);
-
-			StartCoroutine(chosenAttack[index]);
-
-			//chosenAttack.RemoveAt(index);
-			chosenAttack.RemoveRange(index, 1);
-			Debug.Log(chosenAttack.Count);
-			Debug.Log(Attacks.Count);
-			//StartCoroutine(SimpleAttack());
+			index = Random.Range(0, Attacks.Count-1);
+			chosenAttack = Attacks[index];
+			StartCoroutine(chosenAttack);
+			Attacks.RemoveAt(index);
+			//Attacks.RemoveAt(index);
+			//chosenAttack.RemoveRange(index, 1);
 		}
-        else if (chosenAttack.Count == 0)
-        {	
-			for ( int i = 0; i < Attacks.Count; i++)
-            {
-				chosenAttack.Add(Attacks[i]);
-				Debug.Log(chosenAttack.Count + "being added");
-			}
+		else if (Attacks.Count == 0)
+        {
+			FillAttacksList();
 			//Attacks.Add(chosenAttack);
 		}
 		#endregion
@@ -121,12 +113,25 @@ public class Boss : MonoBehaviour
     }
     #endregion
 
+    #region Collision Functions
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+		{
+			DoDamage();
+        }
+    }
+
+    #endregion
+
     #region Coroutines
     public IEnumerator SimpleAttack()
 	{
+		Debug.Log("Simple Attack Called");
 		attackDone = false;
-		Debug.Log("Called");
-		if (timeBtwShots <= 0)
+
+		if (timeBtwShots < 0)
 		{
 			Instantiate(prefabSimpleAttack, transform.position, Quaternion.identity);
 			prefabSimpleAttack.SetActive(true);
@@ -143,22 +148,38 @@ public class Boss : MonoBehaviour
 
 	public IEnumerator PullAttack()
     {
+		Debug.Log("Pull Attack Called");
 		attackDone = false;
-		Rigidbody2D playerRB = player.GetComponent<Rigidbody2D>();
 
-		yield return new WaitForSeconds(0f);
-		if (player != null && pullCooldown >= 0 && Vector2.Distance(transform.position, transform.position) < pullAttackDistance)
+		if (player != null && pullCooldown > 0 && Vector2.Distance(transform.position, transform.position) < pullAttackDistance)
 		{
 			Vector2 difference = (transform.position - player.transform.position);
 			difference = (difference.normalized * pullForce);
-			playerRB.AddForce(difference, ForceMode2D.Impulse);
+			playerRB.AddForce(difference, ForceMode2D.Force);
 			pullCooldown -= Time.deltaTime;
-
 		}
 
 		attackDone = true;
-		yield return new WaitForSeconds(pullCooldown + startPullCooldown);
-		pullCooldown = startPullCooldown;
+		yield return new WaitForSeconds(1f);
+	}
+    #endregion
+
+    #region Other Functions
+
+	void FillAttacksList()
+    {
+		Attacks.Add(SimpleAttack());
+		Attacks.Add(PullAttack());
+	}
+
+	void TakeDamage()
+    {
+
+    }
+
+	void DoDamage()
+    {
+		playerScript.TakeDamage(playerScript.knockTime, bossDamage);
 	}
     #endregion
 }
