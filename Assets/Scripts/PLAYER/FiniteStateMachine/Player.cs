@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public PlayerMoveState MoveStateX { get; private set; }
     public PlayerMoveState MoveStateY { get; private set; }
     public Animator Anim { get; private set; }
+    public PlayerAbleToMoveState playerAbleToMove { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
 
     [SerializeField] private PlayerData playerData;
@@ -41,8 +42,8 @@ public class Player : MonoBehaviour
 
     [Header("Player Stats")]
     public int lives;
-    public int maxHealth;
-    public int currentHealth;
+    public float maxHealth;
+    public float currentHealth;
 
     [Header("Ability Meter")]
     //ABILITY BAR
@@ -72,8 +73,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         //Grabs the Animator and the InputHandler from the gameobject this script is attached to
-        Anim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
+        Anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         triggerCollider = GetComponent<Collider2D>();
         playerSprite = GetComponent<SpriteRenderer>();
@@ -95,6 +96,7 @@ public class Player : MonoBehaviour
     {
         rb.velocity = CurrentVelocity;
         StateMachine.CurrentState.LogicUpdate();
+        CheckStatus();
     }
 
     private void FixedUpdate()
@@ -163,24 +165,32 @@ public class Player : MonoBehaviour
     public void playerGetHit(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        if (lives > 0 && currentHealth > 0)
+        {
+            StartCoroutine(KnockCo(knockTime));
+        }
     }
 
     //TAKE DAMAGE AND GET KNOCKED BACK
-    public void TakeDamage(float knockTime, int damage)
+    public void TakeDamage(float knockTime, float damage)
     {
         currentHealth -= damage;
+
+        if (lives > 0 && currentHealth > 0)
+        {
+            StartCoroutine(KnockCo(knockTime));
+        }
+    }
+
+    public void CheckStatus()
+    {
         healthBar.SetHealth(currentHealth);
-        
+
         if (lives > 0 && currentHealth <= 0)
         {
             transform.position = respawnPoint.position;
             currentHealth = maxHealth;
             lives -= 1;
-        }
-        else if (lives > 0 && currentHealth > 0)
-        {
-            StartCoroutine(KnockCo(knockTime));
         }
         else if (lives < 0)
         {

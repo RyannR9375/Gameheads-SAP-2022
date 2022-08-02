@@ -19,7 +19,6 @@ public class Boss : MonoBehaviour
 	public GameObject prefabSimpleAttack;
 
 	public List<IEnumerator> Attacks = new List<IEnumerator>();
-	//public List<IEnumerator> chosenAttack = new List<IEnumerator>();
 	public IEnumerator chosenAttack;
 	#endregion
 
@@ -38,8 +37,10 @@ public class Boss : MonoBehaviour
 	[Header("Pull Ability Stats")]
 	public float pullAttackDistance;
 	public float pullForce;
+	public float pullActiveTime;
 	public float pullCooldown;
-	public float startPullCooldown;
+
+	private float pullActive;
 	#endregion
 
 	#region Rotate Functions
@@ -76,7 +77,9 @@ public class Boss : MonoBehaviour
 		playerScript = player.GetComponent<Player>();
 
 		timeBtwShots = startTimeBtwShots;
-		pullCooldown = startPullCooldown;
+		pullActive = pullActiveTime;
+
+		index = Random.Range(0, Attacks.Count);
 	}
 
 	private void Update()
@@ -89,28 +92,25 @@ public class Boss : MonoBehaviour
 		//RESET THE LIST AND RANDOMIZE IT AGAIN
 		//UNTIL BOSS DEAD.
 
-		if (Attacks.Count != 0 && attackDone == true)
+		if (Attacks.Count != 0)
 		{
-			index = Random.Range(0, Attacks.Count-1);
 			chosenAttack = Attacks[index];
-			StartCoroutine(chosenAttack);
-			Attacks.RemoveAt(index);
+            StartCoroutine(chosenAttack);
+            //DoAttacks();
+            Debug.Log(index + "index");
+			Debug.Log(Attacks.Count + "count");
 			//Attacks.RemoveAt(index);
-			//chosenAttack.RemoveRange(index, 1);
+			Attacks.RemoveRange(0, Attacks.Count);
 		}
 		else if (Attacks.Count == 0)
         {
 			FillAttacksList();
-			//Attacks.Add(chosenAttack);
 		}
-		#endregion
-		//StartCoroutine(PullAttack());
-		#region Simple Attack 
 		//StartCoroutine(SimpleAttack());
-
-        #endregion
-
-    }
+		//StartCoroutine(PullAttack());
+		#endregion
+	}
+	
     #endregion
 
     #region Collision Functions
@@ -128,11 +128,12 @@ public class Boss : MonoBehaviour
     #region Coroutines
     public IEnumerator SimpleAttack()
 	{
-		Debug.Log("Simple Attack Called");
-		attackDone = false;
-
+		attackDone = true;
 		if (timeBtwShots < 0)
 		{
+			Debug.Log("Simple Attack Called");
+			index = Random.Range(0, Attacks.Count);
+
 			Instantiate(prefabSimpleAttack, transform.position, Quaternion.identity);
 			prefabSimpleAttack.SetActive(true);
 			timeBtwShots = startTimeBtwShots;
@@ -141,36 +142,65 @@ public class Boss : MonoBehaviour
 		{
 			timeBtwShots -= Time.deltaTime;
 		}
-
-		attackDone = true;
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(timeBtwShots);
+		attackDone = false;
 	}
 
 	public IEnumerator PullAttack()
     {
-		Debug.Log("Pull Attack Called");
-		attackDone = false;
-
-		if (player != null && pullCooldown > 0 && Vector2.Distance(transform.position, transform.position) < pullAttackDistance)
+		attackDone = true;
+		if (player != null && pullActiveTime > 0 && Vector2.Distance(transform.position, player.transform.position) < pullAttackDistance)
 		{
+			Debug.Log("Pull Attack Called");
+			index = Random.Range(0, Attacks.Count);
+
 			Vector2 difference = (transform.position - player.transform.position);
 			difference = (difference.normalized * pullForce);
 			playerRB.AddForce(difference, ForceMode2D.Force);
-			pullCooldown -= Time.deltaTime;
+			yield return new WaitForSeconds(pullCooldown / 2);
 		}
 
-		attackDone = true;
-		yield return new WaitForSeconds(1f);
+		if(pullActiveTime > 0)
+        {
+			pullActiveTime -= Time.deltaTime;
+		}
+		else if (pullActiveTime <= 0)
+		{
+			yield return new WaitForSeconds(pullCooldown/2);
+			pullActiveTime = pullActive;
+		}
+
+		if(pullActiveTime == pullActive)
+        {
+			attackDone = false;
+        }
 	}
+
+	public IEnumerator AbsorbAttack()
+    {
+		Debug.Log("Absorb Ability Called");
+		attackDone = false;
+
+		yield return new WaitForSeconds(1f);
+    }
     #endregion
 
     #region Other Functions
 
 	void FillAttacksList()
     {
-		Attacks.Add(SimpleAttack());
-		Attacks.Add(PullAttack());
+		Debug.Log("filling atk list");
+		IEnumerator atk1 = SimpleAttack();
+		IEnumerator atk2 = PullAttack();
+		Attacks.Add(atk1);
+		Attacks.Add(atk2);
 	}
+
+	void DoAttacks()
+    {
+		StartCoroutine(chosenAttack);
+		Debug.Log(chosenAttack + "cA");
+    }
 
 	void TakeDamage()
     {
@@ -179,7 +209,16 @@ public class Boss : MonoBehaviour
 
 	void DoDamage()
     {
-		playerScript.TakeDamage(playerScript.knockTime, bossDamage);
+		if(playerScript != null)
+        {
+			playerScript.TakeDamage(playerScript.knockTime, bossDamage);
+		}
 	}
-    #endregion
+	#endregion
+
+	#region Testing Enum
+
+
+
+	#endregion
 }

@@ -9,11 +9,6 @@ using TMPro;
 [System.Serializable]
 public class AbilityHolder: MonoBehaviour
 {
-    /// <summary>
-    /// REFACTORING INTO CALLING 'ABILITY PHYSICS' PRIVATELY, AND 'ABILITY PHYSICS' SCRIPT CALLS THE SCRIPTABLE OBJECTS IN THE ARRAY 'AbilityList[]', 
-    /// THAT WAY YOU DONT HAVE TO ADD ABILITYPHYSICS INTO THE INSPECTOR.
-    /// </summary>
-
     #region Calling Scripts
     public Ability ability;
     private PlayerMovement player;
@@ -186,7 +181,9 @@ public class AbilityHolder: MonoBehaviour
             enemy.velocity = Vector2.zero;
         }
     }
+    #endregion
 
+    #region Functions
     void absorbRelease(Collider2D enemy)
     {
         tag = "Absorb";
@@ -194,6 +191,7 @@ public class AbilityHolder: MonoBehaviour
         minScale = new Vector3(0.2f, 1.077f, 0f);
         minScaleMag = (minScale.magnitude);
 
+        //Checks if the enemy has hit the minimum scale, if not, keep decreasing their size
         if (enemy.transform.localScale.magnitude > minScaleMag)
         {
             enemy.transform.localScale += scaleChange;
