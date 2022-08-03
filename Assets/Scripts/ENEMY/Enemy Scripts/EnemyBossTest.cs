@@ -7,8 +7,7 @@ public class EnemyBossTest : MonoBehaviour
 	#region Components
 	Player playerScript;
 	private Rigidbody2D playerRB;
-
-	public Transform player;
+	private Transform player;
 
 	public enum Stage
 	{
@@ -66,6 +65,7 @@ public class EnemyBossTest : MonoBehaviour
 
 	void Start()
 	{
+		player = GameObject.FindGameObjectWithTag("Player").transform;
 		playerRB = player.GetComponent<Rigidbody2D>();
 		playerScript = player.GetComponent<Player>();
 
@@ -144,7 +144,7 @@ public class EnemyBossTest : MonoBehaviour
 		if (player != null && Vector2.Distance(transform.position, player.transform.position) < absorbDistance)
 		{
 			Debug.Log("Absorb Ability Called");
-			scaleChange = new Vector3(resizeAmt, resizeAmt, 0f);
+			scaleChange = new Vector3(resizeAmt * 0.0001f, resizeAmt * 0.0001f, 0f);
 			maxScale = transform.localScale * maxResize;
 			maxScaleMag = maxScale.magnitude;
 

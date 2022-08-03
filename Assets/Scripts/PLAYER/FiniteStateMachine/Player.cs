@@ -185,6 +185,7 @@ public class Player : MonoBehaviour
     public void CheckStatus()
     {
         healthBar.SetHealth(currentHealth);
+        //healthBar.ShowHealthGone(currentHealth);
 
         if (lives > 0 && currentHealth <= 0)
         {
