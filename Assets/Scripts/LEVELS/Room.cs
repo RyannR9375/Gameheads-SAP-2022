@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnRoomItems : MonoBehaviour
+public class Room : MonoBehaviour
 {
     public GameObject[] EnemyTypes = new GameObject[1];
     public GameObject[] ItemsToSpawn = new GameObject[1];
@@ -23,11 +23,26 @@ public class SpawnRoomItems : MonoBehaviour
         {
             Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocations[Random.Range(1, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
         }
-
+        CameraManager.UpdateCamera(this);
     }
     void Update()
     {
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("left room");
+            EnterRoom();
+        }
+        
+    }
+
+    void EnterRoom()
+    {
+        CameraManager.UpdateCamera(this);
     }
 
     
