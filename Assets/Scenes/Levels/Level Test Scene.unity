@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &60665091
 Transform:
   m_ObjectHideFlags: 0
@@ -1541,7 +1541,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1123172495}
   - component: {fileID: 1123172494}
-  - component: {fileID: 1123172496}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1577,24 +1576,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1123172496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1123172493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1be1f563d4def4840a1e78a15ddebad8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FloorTemplates:
-  - {fileID: 9092065445703605042, guid: 89436f98cd3574b4ba6beaa6e18f2e41, type: 3}
-  - {fileID: 7202073521509148629, guid: d307dcf5e0dec644daa0c643e3d8f089, type: 3}
-  - {fileID: 376718554209131511, guid: b0eaec044e623434f830d8d52f22f278, type: 3}
-  - {fileID: 6879061458138678459, guid: 3dbe74959e3c80d4fba69739dbc66251, type: 3}
-  LevelSettings: {fileID: 11400000, guid: 5a13b7d2f15799448bcad6b9c443f3ef, type: 2}
 --- !u!1 &1136873998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,6 +1652,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136873998}
   m_CullTransparentMesh: 1
+--- !u!114 &1173614294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1246230188609278275, guid: ccb4598fff5153741832af15a411bda8, type: 3}
+  m_PrefabInstance: {fileID: 727138059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e27312fe3f15f4d9933ba403ee1efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1191064720
 GameObject:
   m_ObjectHideFlags: 3
@@ -1842,7 +1834,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7770138, y: 1}
+    m_SensorSize: {x: 1.7768924, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2033,7 +2025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1512801590
 Transform:
   m_ObjectHideFlags: 0
@@ -2097,7 +2089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1523692696
 Transform:
   m_ObjectHideFlags: 0
@@ -2529,7 +2521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1675140650
 Transform:
   m_ObjectHideFlags: 0
@@ -2917,7 +2909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1902554436
 Transform:
   m_ObjectHideFlags: 0
@@ -3284,7 +3276,7 @@ PrefabInstance:
     - target: {fileID: 5689715813888288534, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 1783906856}
+      objectReference: {fileID: 1173614294}
     - target: {fileID: 5689715813888288534, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: maxHealth
       value: 300
@@ -3309,10 +3301,6 @@ PrefabInstance:
     - target: {fileID: 7976323286906160640, guid: d4ef15c78b73f16438489521a6397cbe, type: 3}
       propertyPath: m_Name
       value: Enemy1_Follow
-      objectReference: {fileID: 0}
-    - target: {fileID: 7976323286906160640, guid: d4ef15c78b73f16438489521a6397cbe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7976323286906160643, guid: d4ef15c78b73f16438489521a6397cbe, type: 3}
       propertyPath: m_RootOrder

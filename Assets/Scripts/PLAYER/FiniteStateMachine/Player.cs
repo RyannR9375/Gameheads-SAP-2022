@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public PlayerMoveState MoveStateX { get; private set; }
     public PlayerMoveState MoveStateY { get; private set; }
     public Animator Anim { get; private set; }
+    public PlayerAbleToMoveState playerAbleToMove { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
 
     [SerializeField] private PlayerData playerData;
@@ -21,26 +22,28 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public HealthBar healthBar;
     public AbsorbBar absorbBar;
+    public Transform respawnPoint;
     private Collider2D triggerCollider;
     private SpriteRenderer playerSprite;
     private Transform abilityHolderTransform;
     private GameObject abilityHolder;
 
-    public Vector2 CurrentVelocity { get; private set; }
+    public Vector2 CurrentVelocity;
     private Vector2 workspace;
     #endregion
 
     #region Other Variables
     public float FacingDirection { get; private set; }
-    public float Lives { get; private set;}
+    public float knockTime;
 
     #endregion
 
     #region Player Stats
 
     [Header("Player Stats")]
-    public int maxHealth;
-    public int currentHealth;
+    public int lives;
+    public float maxHealth;
+    public float currentHealth;
 
     [Header("Ability Meter")]
     //ABILITY BAR
@@ -70,8 +73,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         //Grabs the Animator and the InputHandler from the gameobject this script is attached to
-        Anim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
+        Anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         triggerCollider = GetComponent<Collider2D>();
         playerSprite = GetComponent<SpriteRenderer>();
@@ -91,9 +94,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        //CurrentVelocity = rb.velocity;
         rb.velocity = CurrentVelocity;
         StateMachine.CurrentState.LogicUpdate();
+        CheckStatus();
     }
 
     private void FixedUpdate()
@@ -111,16 +114,20 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player"))
         {
             //StartCoroutine(KnockCo(3f)); // REPLACE '3F' WITH SOMETHING. WILL ONLY BE USED WHEN THE PLAYER HAS A BASIC ATTACK FUNCTION THAT CAN KNOCK ENEMIES BACK.
-            TakeDamage(3f, 10); //REPLACE WITH ENEMY DAMAGE NUMBERS
-
-            //SOMETHING THAT CHECKS COROUTINE/BOOL DAMAFGE STUFF
-            //playerAnim.SetTrigger("Take_Damage) ADD TAKE_DAMAGE ANIMATIONS
-            if (currentHealth <= 0)
-            {
-                //GameOver();
-            }
+            TakeDamage(knockTime, 10); //REPLACE WITH ENEMY DAMAGE NUMBERS
+            
         }
         #endregion
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player"))
+        {
+            //StartCoroutine(KnockCo(3f)); // REPLACE '3F' WITH SOMETHING. WILL ONLY BE USED WHEN THE PLAYER HAS A BASIC ATTACK FUNCTION THAT CAN KNOCK ENEMIES BACK.
+            //TakeDamage(knockTime, 10); //REPLACE WITH ENEMY DAMAGE NUMBERS
+
+        }
     }
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -158,21 +165,37 @@ public class Player : MonoBehaviour
     public void playerGetHit(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
-    }
-
-    //TAKE DAMAGE AND GET KNOCKED BACK
-    public void TakeDamage(float knockTime, int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
-        if (currentHealth > 0)
+        if (lives > 0 && currentHealth > 0)
         {
             StartCoroutine(KnockCo(knockTime));
         }
-        else
+    }
+
+    //TAKE DAMAGE AND GET KNOCKED BACK
+    public void TakeDamage(float knockTime, float damage)
+    {
+        currentHealth -= damage;
+
+        if (lives > 0 && currentHealth > 0)
         {
-            //DISABLES PLAYER GAMEOBJECT ONCE HEALTH IS < 0
+            StartCoroutine(KnockCo(knockTime));
+        }
+    }
+
+    public void CheckStatus()
+    {
+        healthBar.SetHealth(currentHealth);
+        //healthBar.ShowHealthGone(currentHealth);
+
+        if (lives > 0 && currentHealth <= 0)
+        {
+            transform.position = respawnPoint.position;
+            currentHealth = maxHealth;
+            lives -= 1;
+        }
+        else if (lives < 0)
+        {
+            //change with defeat/ try agian
             gameObject.SetActive(false);
         }
     }

@@ -6,18 +6,18 @@ public class Boss_Run : StateMachineBehaviour
 {
 	Transform player;
 	Rigidbody2D rb;
-	Boss boss;
+	EnemyBossTest boss;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		rb = animator.GetComponent<Rigidbody2D>();
-		boss = animator.GetComponent<Boss>();
+		boss = animator.GetComponent<EnemyBossTest>();
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		boss.LookAtPlayer();
+		//boss.LookAtPlayer();
 
 		//GETS THE PLAYERS POSITION,
 		//STORES A VECTOR 2 WITH A 'MoveTowards' TO OUR PLAYER,

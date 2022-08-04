@@ -7,7 +7,4 @@ public class EnemyWhiteBox : Enemy
 {
     public Projectile bullet;
 
-
-
-
 }
