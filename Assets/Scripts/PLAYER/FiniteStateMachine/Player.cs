@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     public int lives;
     public float maxHealth;
     public float currentHealth;
+    private bool canTakeDamage = true;
 
     [Header("Ability Meter")]
     //ABILITY BAR
@@ -111,8 +112,9 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) // POTENTIALLY MOVING THIS TO IF THE ENEMY COLLIDES WITH THE PLAYER INSTEAD OF PLAYER COLLIDING WITH ENEMY, JUST TO KEEP PLAYER SCRIPTS CLEAN.
     {
         #region Player & Enemy 
-        if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player") && canTakeDamage)
         {
+            //Debug.Log("I is hit");
             //StartCoroutine(KnockCo(3f)); // REPLACE '3F' WITH SOMETHING. WILL ONLY BE USED WHEN THE PLAYER HAS A BASIC ATTACK FUNCTION THAT CAN KNOCK ENEMIES BACK.
             TakeDamage(knockTime, 10); //REPLACE WITH ENEMY DAMAGE NUMBERS
             
@@ -129,7 +131,7 @@ public class Player : MonoBehaviour
 
         }
     }
-    private void OnTriggerStay2D(Collider2D other)
+    /*private void OnTriggerStay2D(Collider2D other)
     {
         #region Player & Enemy
         //ALSO SPAGHETTI. HIGHLY DEPENDENT. THIS ONLY CHECKS FOR ONCOLLISION AND NOT ONTRIGGER. THE CIRCLECOLLIDER OF ABSORB DOES NOT MATCH THIS, SO YOU HAVE TO BUMP INTO THE ENEMY IN ORDER FOR THIS TO WORK, AND NOT THE ABSORB ABILITY.
@@ -140,7 +142,7 @@ public class Player : MonoBehaviour
         #endregion
 
     }
-
+    */
     #endregion
 
     #region Set Functions
@@ -164,20 +166,21 @@ public class Player : MonoBehaviour
     //SIMPLE DAMAGE SCRIPT
     public void playerGetHit(int damage)
     {
-        currentHealth -= damage;
-        if (lives > 0 && currentHealth > 0)
-        {
-            StartCoroutine(KnockCo(knockTime));
-        }
+            currentHealth -= damage;
+            if (lives > 0 && currentHealth > 0)
+            {
+                StartCoroutine(KnockCo(knockTime));
+            }
     }
 
     //TAKE DAMAGE AND GET KNOCKED BACK
     public void TakeDamage(float knockTime, float damage)
     {
         currentHealth -= damage;
-
+        Debug.Log($"you have {lives} Lives and {currentHealth} Health");
         if (lives > 0 && currentHealth > 0)
         {
+            
             StartCoroutine(KnockCo(knockTime));
         }
     }
@@ -235,8 +238,8 @@ public class Player : MonoBehaviour
     public IEnumerator FlashCo()
     {
         int temp = 0;
-        triggerCollider.enabled = false;
-
+        canTakeDamage = false;
+        
         while (temp < numberOfFlashes)
         {
             playerSprite.color = flashColor;
@@ -245,7 +248,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(flashDuration);
             temp++;
         }
-        triggerCollider.enabled = true;
+        canTakeDamage = true;
     }
 
     #endregion
