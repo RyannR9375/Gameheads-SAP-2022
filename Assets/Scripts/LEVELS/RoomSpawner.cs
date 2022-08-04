@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RoomSpawner : MonoBehaviour
 {
-    public GameObject[] AllowedRooms = new GameObject[2];
     public direction WhatDirection = new direction();
     private Transform Room;
     public enum direction
@@ -19,7 +18,37 @@ public class RoomSpawner : MonoBehaviour
     void Start()
     {
         Room = this.transform.parent.transform.parent;
-        print(Room.name);
+        print(this.transform.GetChild(1).name);
+        CheckIfRoom();
+
+        /*
+        if(doISeeADoor[0].transform.tag == "Room")
+        {
+            Debug.Log(doISeeADoor[0].transform.name + "RoomSEEN");
+            Destroy(this.gameObject);
+        }
+        */
+
+        //if(doISeeADoor.transform.tag == )
+
+    }
+    bool CheckIfRoom()
+    {
+        RaycastHit2D doISeeADoor = Physics2D.Raycast(this.transform.GetChild(1).position, transform.right,5f);
+        Debug.DrawRay(this.transform.GetChild(1).position, transform.right * 10, Color.red, 2f);
+        if (doISeeADoor)
+        {
+            if (doISeeADoor.transform.tag == "Door")
+            {
+                Destroy(doISeeADoor.transform.gameObject);
+                Destroy(this.gameObject);
+            }
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     // Update is called once per frame
@@ -30,13 +59,19 @@ public class RoomSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == "Player")
         {
             Vector3 spawnLocation = Room.transform.position;
-
-            GameObject newRoom = LevelGenerator.SpawnRoom(AllowedRooms[Random.Range(0, AllowedRooms.Length)], WhatDirection, spawnLocation);
-            Destroy(this.gameObject);
-        }
-        
+            if (CheckIfRoom())
+            {
+                GameObject room = LevelGenerator.SpawnRoom(WhatDirection, spawnLocation);
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                print("No Room!");
+            }
+        } 
     }
 }
