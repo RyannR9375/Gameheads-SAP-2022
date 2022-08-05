@@ -22,7 +22,7 @@ public class EnemyBossTest : MonoBehaviour
 
 	#region Boss Stats
 	[Header("Boss Stats")]
-	public int bossDamage;
+	public float bossDamage;
 	public float attackRange;
 	public float speed;
 	public float health;
@@ -48,8 +48,8 @@ public class EnemyBossTest : MonoBehaviour
 	public float absorbStrength;
 	public float absorbActiveTime;
 	public float absorbCooldown;
-	private float maxScaleMag;
 
+	private float maxScaleMag;
 	private float absorbActive;
 
 	private Vector3 scaleChange;

@@ -6,6 +6,7 @@ public class RoomSpawner : MonoBehaviour
 {
     public direction WhatDirection = new direction();
     private Transform Room;
+    private bool tutorialRoomPassed = false;
     public enum direction
     {
         Up,
@@ -72,6 +73,11 @@ public class RoomSpawner : MonoBehaviour
             {
                 print("No Room!");
             }
-        } 
+        }
+
+        if(this.CompareTag("TutorialRoomDoor") && collision.CompareTag("Player"))
+        {
+            tutorialRoomPassed = true;
+        }
     }
 }
