@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2058403013059555199}
-  - component: {fileID: 2058403013059555185}
+  - component: {fileID: 7556984956700807837}
   - component: {fileID: 2058403013059555186}
   - component: {fileID: 2058403013059555187}
   - component: {fileID: 2058403013059555196}
   - component: {fileID: 2058403013059555197}
   - component: {fileID: 2058403013059555198}
   m_Layer: 0
-  m_Name: Enemy1_Test (2)
+  m_Name: Enemy_ProjectileShooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058403013059555192}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.25, y: 5.45, z: 0.029355824}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38,7 +38,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2058403013059555185
+--- !u!114 &7556984956700807837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,10 +47,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2058403013059555192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1b53bcd56b3db4a91db40c6f9679c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 50b7451d5a810ce41a3871170184bd49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: d6384f061ab8d9942b5f732e4dd00cbc, type: 2}
+  prefabProjectile: {fileID: 9159700730561367021, guid: 494f82cb3ff2bfd46998465b03f2421a, type: 3}
+  timeBtwShots: 1
+  startTimeBtwShots: 2
+  shootDistance: 3
 --- !u!114 &2058403013059555186
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,22 @@ public class Player : MonoBehaviour
 
     [SerializeField] private PlayerData playerData;
     #endregion
+    //moving all this later
+    private GameObject attackArea = default;
+
+    private bool attacking = false;
+
+    private bool blocking = false;
+
+    private float timeToAttack = 0.25f;
+
+    private float timerAtk = 0f;
+
+    private float timeToBlock = 1f;
+
+    private float timerBlock = 0f;
+
+    private float rotationOffset;
 
     #region Components
     public Rigidbody2D rb { get; private set; }
@@ -25,7 +41,6 @@ public class Player : MonoBehaviour
     public Transform respawnPoint;
     private Collider2D triggerCollider;
     private SpriteRenderer playerSprite;
-    private Transform abilityHolderTransform;
     private GameObject abilityHolder;
 
     public Vector2 CurrentVelocity;
@@ -79,8 +94,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         triggerCollider = GetComponent<Collider2D>();
         playerSprite = GetComponent<SpriteRenderer>();
-        abilityHolderTransform = gameObject.transform.GetChild(0);
-        abilityHolder = abilityHolderTransform.gameObject;
+        abilityHolder = transform.GetChild(0).gameObject;
+        attackArea = transform.GetChild(1).gameObject;
 
 
         //refactor to scriptable objects
@@ -98,6 +113,45 @@ public class Player : MonoBehaviour
         rb.velocity = CurrentVelocity;
         StateMachine.CurrentState.LogicUpdate();
         CheckStatus();
+
+        //will move into statemachine, change functionality to work with designated buttons for controller support
+        #region will move into statemachines
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Attack();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            FastBlock();
+        }
+
+        if (attacking)
+        {
+            timerAtk += Time.deltaTime;
+
+            if(timerAtk >= timeToAttack)
+            {
+                timerAtk = 0f;
+                attacking = false;
+                Anim.SetBool("Attacking", false);
+                attackArea.SetActive(attacking);
+            }
+        }
+
+        if (blocking)
+        {
+            timerBlock += Time.deltaTime;
+
+            if(timerBlock >= timeToBlock)
+            {
+                timerBlock = 0f;
+                blocking = false;
+                canTakeDamage = true;
+                Anim.SetBool("Blocking", false);
+            }
+        }
+        #endregion
     }
 
     private void FixedUpdate()
@@ -162,21 +216,51 @@ public class Player : MonoBehaviour
         FacingDirection *= -1f;
         transform.Rotate(0.0f, 180.0f, 0.0f);
     }
+   
+    //move into stateMachine
+    void Attack()
+    {
+        Anim.SetBool("Attacking", true);
+        attacking = true;
+        attackArea.SetActive(attacking);
+
+        Transform attackAreaTransform = attackArea.transform;
+        Vector3 objectPos = Camera.main.WorldToScreenPoint(attackAreaTransform.position);
+        Vector3 mousePos = Input.mousePosition;
+
+        mousePos.z = 0;
+        mousePos.x = mousePos.x - objectPos.x;
+        mousePos.y = mousePos.y - objectPos.y;
+
+        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        attackAreaTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + rotationOffset));
+
+    }
+
+    void FastBlock()
+    {
+        Debug.Log("Fast Blocking");
+        blocking = true;
+        canTakeDamage = false;
+    }
 
     //SIMPLE DAMAGE SCRIPT
     public void playerGetHit(int damage)
     {
+        if(lives > 0 && currentHealth > 0 && canTakeDamage == true)
+        {
             currentHealth -= damage;
-            if (lives > 0 && currentHealth > 0)
-            {
-                StartCoroutine(KnockCo(knockTime));
-            }
+        }
     }
 
     //TAKE DAMAGE AND GET KNOCKED BACK
     public void TakeDamage(float knockTime, float damage)
     {
-        currentHealth -= damage;
+        if(canTakeDamage == true)
+        {
+            currentHealth -= damage;
+        }
+
         Debug.Log($"you have {lives} Lives and {currentHealth} Health");
         if (lives > 0 && currentHealth > 0)
         {
