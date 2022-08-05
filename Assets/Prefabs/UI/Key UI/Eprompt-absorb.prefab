@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 2858562478694580808}
   - component: {fileID: 8586802273782927103}
   m_Layer: 0
-  m_Name: Eprompt
+  m_Name: Eprompt-absorb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

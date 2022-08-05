@@ -845,7 +845,7 @@ GameObject:
   - component: {fileID: 613935919}
   - component: {fileID: 613935918}
   m_Layer: 5
-  m_Name: B-shinexbx
+  m_Name: B-releasexbx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1474,7 +1474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000011921, y: 0.0000014305}
+  m_AnchoredPosition: {x: -0, y: 0}
   m_SizeDelta: {x: 16.5414, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041140607
@@ -3270,7 +3270,7 @@ GameObject:
   - component: {fileID: 1798115170}
   - component: {fileID: 1798115169}
   m_Layer: 5
-  m_Name: Space-Shine
+  m_Name: Space-Release
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4047,7 +4047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5775983011657769990, guid: d5bba01d030fb62429604b53c37be45b, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5775983011657769990, guid: d5bba01d030fb62429604b53c37be45b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4140,7 +4140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249684558763701845, guid: 02e5c4ac768df3d4780562be9f321a3c, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7249684558763701845, guid: 02e5c4ac768df3d4780562be9f321a3c, type: 3}
       propertyPath: m_AnchorMax.x
