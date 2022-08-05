@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee1c9bbb1ba9524499014751c45e101, type: 3}
   m_Name: Shine
   m_EditorClassIdentifier: 
-  activeTime: 0.1
-  cooldownTime: 1.9281448
+  activeTime: 1
+  cooldownTime: 2
   _knockbackTime: 3
   _shinePush: 800
   _shineRadius: 3

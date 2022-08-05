@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     private int CollectedItems, victoryCondition = 3;
 
-    public bool GameOverYesOrNo;
-    public bool isPaused = false;
+    private bool GameOverYesOrNo;
+    private bool isPaused = false;
     #endregion
 
     #region Unity Callback Functions

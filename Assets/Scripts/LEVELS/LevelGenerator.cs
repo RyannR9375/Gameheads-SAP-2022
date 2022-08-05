@@ -8,10 +8,18 @@ public class LevelGenerator : MonoBehaviour
     public GameObject[] FloorTemplates = new GameObject[4];
     [SerializeField]
     public LevelSettings LevelSettings;
-    [HideInInspector]
+
+    public GameObject TutorialRoom;
+    private bool tutorialRoomPassed = false;
     void Start()
     {
-        Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length)], GameObject.Find("MAP").transform);
+        SpawnTutorialRoom();
+
+        if(tutorialRoomPassed == false)
+        {
+            Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length)], GameObject.Find("MAP").transform);
+        }
+        
     }
 
     void Update()
@@ -68,10 +76,18 @@ public class LevelGenerator : MonoBehaviour
         {
             spawnLocation = new Vector3(PrevRoomPos.x + 17.6f, PrevRoomPos.y);
         }
+
         GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count)], spawnLocation, new Quaternion(0,0,0,0), GameObject.Find("MAP").transform);
-        var attributes = spawnedRoom.GetComponent<SpawnRoomItems>();
+        var attributes = spawnedRoom.GetComponent<Room>();
         attributes.DestroyUselessDoor(direction);
         return spawnedRoom;
 
+    }
+
+    public void SpawnTutorialRoom()
+    {
+        RoomSpawner tutRoomSpawnerScript = TutorialRoom.GetComponent<RoomSpawner>();
+
+        Instantiate(TutorialRoom, GameObject.Find("MAP").transform);
     }
 }
