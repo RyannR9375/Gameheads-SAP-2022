@@ -13,10 +13,10 @@ public class AttackArea : MonoBehaviour
 
     private void Awake()
     {
-        boss = GameObject.FindGameObjectWithTag("Boss").transform;
+        boss = GameObject.FindGameObjectWithTag("Boss");
         bossScript = boss.GetComponent<EnemyBossTest>();
         player = this.transform.parent.gameObject;
-        PlayerScript = player.GetComponent<Player>();
+        playerScript = player.GetComponent<Player>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     public int lives;
     public float maxHealth;
     public float currentHealth;
+    public float playerDamage;
 
     [Header("Ability Meter")]
     //ABILITY BAR
