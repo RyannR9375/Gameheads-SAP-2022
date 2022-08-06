@@ -4262,6 +4262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eprompt-absorb
       objectReference: {fileID: 0}
+    - target: {fileID: 7785742624811672416, guid: f8bf2d0eebca60b4d8a84d441f1de52c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9111781444187316602, guid: f8bf2d0eebca60b4d8a84d441f1de52c, type: 3}
       propertyPath: m_SizeDelta.x
       value: 100.1512
