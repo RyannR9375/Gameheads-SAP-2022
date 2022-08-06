@@ -144,12 +144,12 @@ GameObject:
   - component: {fileID: 4895928553916882786}
   - component: {fileID: 773622426592046573}
   - component: {fileID: 5359091579945686019}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Xkeyprmpt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &4895928553916882786
 RectTransform:
@@ -160,17 +160,17 @@ RectTransform:
   m_GameObject: {fileID: 7066911040023511862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.5344035, y: 0.42001325, z: 1}
+  m_LocalScale: {x: 4.8096313, y: 3.7801194, z: 9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2411190762427798643}
   m_Father: {fileID: 8461152372135766364}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 145.5, y: 1}
+  m_SizeDelta: {x: -194.6, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &773622426592046573
 CanvasRenderer:
@@ -221,12 +221,12 @@ GameObject:
   - component: {fileID: 2411190762427798643}
   - component: {fileID: 912700023350088804}
   - component: {fileID: 8433300469607980294}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &2411190762427798643
 RectTransform:
