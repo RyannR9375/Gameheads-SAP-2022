@@ -27,7 +27,7 @@ public class EnemyType : MonoBehaviour
         float bounciness = 0f;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Map")) // replace check with whatever
         {
-            bounciness = 0.1f;
+            bounciness = 0.01f;
         }
 
         rb.velocity += collision.relativeVelocity * bounciness;
