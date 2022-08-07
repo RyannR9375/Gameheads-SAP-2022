@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8363e636960ae488f13a1dc93a4d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossDamage: 20
+  bossDamage: 3
   attackRange: 2
   speed: 3
   health: 100

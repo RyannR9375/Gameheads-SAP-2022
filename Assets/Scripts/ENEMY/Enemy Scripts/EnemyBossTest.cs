@@ -79,8 +79,7 @@ public class EnemyBossTest : MonoBehaviour
 
 	private void Update()
 	{
-		TakeDMG();
-		doWhatInThisPhase();
+		DoWhatInThisPhase();
 	}
 
 	#endregion
@@ -172,7 +171,7 @@ public class EnemyBossTest : MonoBehaviour
 		}
 	}
 
-	void TakeDMG()
+	void TakeDMGDebug()
 	{
 		//Used for debugging for now.
 		if (Input.GetKeyDown(KeyCode.E))
@@ -181,7 +180,12 @@ public class EnemyBossTest : MonoBehaviour
 		}
 	}
 
-	void doWhatInThisPhase()
+	public void TakeDamage(float damage)
+	{
+		health -= damage;
+	}
+
+	void DoWhatInThisPhase()
 	{
 		BossDamaged();
 

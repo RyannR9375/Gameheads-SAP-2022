@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class SpawnRoomItems : MonoBehaviour
 {
     public GameObject[] EnemyTypes = new GameObject[1];
     public GameObject[] ItemsToSpawn = new GameObject[1];
@@ -10,46 +10,29 @@ public class Room : MonoBehaviour
     private Transform[] SpawnLocations = new Transform[0];
     private LevelGenerator LM;
     private RaycastHit2D[] searchArea;
+
+    private GameObject cameraPoint;
+    private bool isHere = false;
     void Start()
     {
         SpawnLocations = spawnFolder.gameObject.GetComponentsInChildren<Transform>();
         //print(SpawnLocations[0]);
         LM = GameObject.Find("GameManager").GetComponent<LevelGenerator>();
-        if (!this.gameObject.name.Equals("Learning to Swing ROOM(Clone)"))
+        for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
         {
-            print("NOT TUTORIAL");
-            for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
-            {
-                Instantiate(EnemyTypes[Random.Range(0, EnemyTypes.Length)], SpawnLocations[Random.Range(0, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("ENEMIES").transform);
-            }
-            for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
-            {
-                Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocations[Random.Range(0, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
-            }
+            Instantiate(EnemyTypes[Random.Range(0, EnemyTypes.Length)], SpawnLocations[Random.Range(1, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("ENEMIES").transform);
         }
-        CameraManager.UpdateCamera(this);
+        for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
+        {
+            Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocations[Random.Range(1, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
+        }
+
     }
     void Update()
     {
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("left room");
-            EnterRoom();
-        }
-        
-    }
-
-    void EnterRoom()
-    {
-        CameraManager.UpdateCamera(this);
-    }
-
-    
     public void DestroyUselessDoor(RoomSpawner.direction direction)
     {
         searchArea = Physics2D.CircleCastAll(this.transform.position, 49f, transform.forward, float.PositiveInfinity, 6);
