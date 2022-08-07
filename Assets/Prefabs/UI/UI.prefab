@@ -1313,21 +1313,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5605452614199064942, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d454ecab3b44d3545aa3d775e0e32ae0, type: 3}
     - target: {fileID: 5605452614199064945, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.775
+      value: 0.38786817
       objectReference: {fileID: 0}
     - target: {fileID: 5605452614199064945, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8125
+      value: 0.40663594
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605452614199064945, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.50047505
       objectReference: {fileID: 0}
     - target: {fileID: 5605452614199064945, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.19999695
+      value: 0.9000015
       objectReference: {fileID: 0}
     - target: {fileID: 5605452614199064945, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 5605452614619080698, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
       propertyPath: m_LocalScale.y
@@ -1335,7 +1343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5605452614638602825, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 5605452614638602826, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
       propertyPath: m_Name
@@ -1574,6 +1582,26 @@ PrefabInstance:
     - target: {fileID: 3864488122145427210, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_Name
       value: AbsorbBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918762199892910781, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.7636815
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918762199892910781, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5384781
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918762199892910781, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9323903
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918762199892910781, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918762199892910781, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 9012634068745213620, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_Color.b
