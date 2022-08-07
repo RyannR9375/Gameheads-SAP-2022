@@ -220,6 +220,7 @@ public class Player : MonoBehaviour
     //move into stateMachine
     void Attack()
     {
+
         Anim.SetBool("Attacking", true);
         attacking = true;
         attackArea.SetActive(attacking);

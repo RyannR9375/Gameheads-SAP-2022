@@ -78,8 +78,8 @@ public class LevelGenerator : MonoBehaviour
         }
 
         GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count)], spawnLocation, new Quaternion(0,0,0,0), GameObject.Find("MAP").transform);
-        var attributes = spawnedRoom.GetComponent<Room>();
-        attributes.DestroyUselessDoor(direction);
+        SpawnRoomItems roomScript = spawnedRoom.GetComponent<SpawnRoomItems>();
+        roomScript.DestroyUselessDoor(direction);
         return spawnedRoom;
 
     }
