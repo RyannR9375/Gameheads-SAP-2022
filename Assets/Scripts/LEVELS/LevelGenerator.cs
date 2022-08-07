@@ -10,12 +10,12 @@ public class LevelGenerator : MonoBehaviour
     public LevelSettings LevelSettings;
 
     public GameObject TutorialRoom;
-    private bool tutorialRoomPassed = false;
+    private bool tutorialRoomSpawned = false;
     void Start()
     {
         SpawnTutorialRoom();
 
-        if(tutorialRoomPassed == false)
+        if(tutorialRoomSpawned == false)
         {
             Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length)], GameObject.Find("MAP").transform);
         }
@@ -89,5 +89,6 @@ public class LevelGenerator : MonoBehaviour
         RoomSpawner tutRoomSpawnerScript = TutorialRoom.GetComponent<RoomSpawner>();
 
         Instantiate(TutorialRoom, GameObject.Find("MAP").transform);
+        tutorialRoomSpawned = true;
     }
 }
