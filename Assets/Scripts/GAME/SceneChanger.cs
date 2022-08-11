@@ -21,12 +21,12 @@ public class SceneChanger : MonoBehaviour
         #endregion
 
         #region Previous Level on Build
-        if (CompareTag("PreviousLevel") && other.CompareTag("Player"))
+        else if (CompareTag("PreviousLevel") && other.CompareTag("Player"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
 
-        if(CompareTag("BossLevel") && other.CompareTag("Player") && GameManager.MyInstance.CollectedItems >= GameManager.MyInstance.victoryCondition)
+        else if(CompareTag("BossLevel") && other.CompareTag("Player") && GameManager.MyInstance.CollectedItems >= GameManager.MyInstance.victoryCondition)
         {
             SceneManager.LoadScene("BossLevel");
         }

@@ -12,6 +12,7 @@ public class LevelGenerator : MonoBehaviour
 
     public GameObject gameManager;
     private GameManager gameManagerScript;
+    public bool TutorialLevel;
     public GameObject TutorialRoom;
     private bool tutorialRoomSpawned = false;
 
@@ -22,13 +23,15 @@ public class LevelGenerator : MonoBehaviour
     }
     void Start()
     {
-        SpawnTutorialRoom();
-
-        if(tutorialRoomSpawned == false)
+        if (!TutorialLevel)
         {
-            Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length-1)], GameObject.Find("MAP").transform);
-        }
-        
+            SpawnTutorialRoom();
+
+            if (tutorialRoomSpawned == false)
+            {
+                Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length - 1)], GameObject.Find("MAP").transform);
+            }
+        }     
     }
 
     void Update()
