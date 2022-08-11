@@ -8,11 +8,17 @@ public class EnemyProjectileShooter : MonoBehaviour
 	public float timeBtwShots;
 	public float startTimeBtwShots;
 	public float shootDistance;
+	public Transform player;
+
+    private void Awake()
+    {
+		player = GameObject.FindGameObjectWithTag("Player").transform;
+	}
 
 
     public void Update()
     {
-		if (Vector2.Distance(transform.position, transform.position) < shootDistance)
+		if (Vector2.Distance(transform.position, player.transform.position) < shootDistance)
 		{
 			ProjectileAttack();
 		}

@@ -5,8 +5,6 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
 
-    [SerializeField] int itemValue = 1;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")

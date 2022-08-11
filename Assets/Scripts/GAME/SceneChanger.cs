@@ -25,6 +25,11 @@ public class SceneChanger : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
+
+        if(CompareTag("BossLevel") && other.CompareTag("Player") && GameManager.MyInstance.CollectedItems >= GameManager.MyInstance.victoryCondition)
+        {
+            SceneManager.LoadScene("BossLevel");
+        }
         #endregion
     }
     #endregion

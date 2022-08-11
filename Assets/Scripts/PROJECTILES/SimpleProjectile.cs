@@ -59,7 +59,25 @@ public class SimpleProjectile : MonoBehaviour
         {
             DestroyProjectile();
         }
+
+
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            DestroyProjectile();
+            playerScript.TakeDamage(playerScript.knockTime, damage);
+        }
+
+        if (thisVector2 == Vector2.zero)
+        {
+            DestroyProjectile();
+        }
+    }
+
+    
     #endregion
 
     #region Other Functions
