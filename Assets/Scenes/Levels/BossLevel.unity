@@ -532,22 +532,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1324814483}
     m_Modifications:
-    - target: {fileID: 366526635109006462, guid: ce16960927a89be46b8b27d2e9cc38d7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754126503782381435, guid: ce16960927a89be46b8b27d2e9cc38d7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3849938687529358228, guid: ce16960927a89be46b8b27d2e9cc38d7, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3849938687529358228, guid: ce16960927a89be46b8b27d2e9cc38d7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6053448000686296531, guid: ce16960927a89be46b8b27d2e9cc38d7, type: 3}
       propertyPath: m_Name
       value: Boss_Test
@@ -596,16 +580,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7223952621392895305, guid: ce16960927a89be46b8b27d2e9cc38d7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce16960927a89be46b8b27d2e9cc38d7, type: 3}
 --- !u!1 &544276956 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 462425298611570052, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
   m_PrefabInstance: {fileID: 120860513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &635322655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6053448000686296531, guid: ce16960927a89be46b8b27d2e9cc38d7, type: 3}
+  m_PrefabInstance: {fileID: 332746317}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &812756137
 GameObject:
@@ -1708,6 +1693,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6053448000686296532, guid: ce16960927a89be46b8b27d2e9cc38d7, type: 3}
   m_PrefabInstance: {fileID: 332746317}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1745445360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635322655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee094d47d3102b44b16e1f0f6323fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1764988449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,7 +1927,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7769784, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

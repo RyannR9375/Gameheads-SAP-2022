@@ -54,4 +54,5 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
     #endregion
+
 }

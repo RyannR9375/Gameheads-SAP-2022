@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Template scene.unity
     guid: bf86bcc4d8b93f444b200e906bbfa016
+  - enabled: 1
+    path: Assets/Scenes/Levels/BossLevel.unity
+    guid: c67a4bd22add0eb428c29698d8802c9c
+  - enabled: 1
+    path: Assets/Scenes/Levels/WinningEndScene.unity
+    guid: 3244e76fb6b7fbf4aa2531204a8ce8b1
   m_configObjects: {}

@@ -146,7 +146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5845320507960452400
 Transform:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8375698693563433331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -459,7 +459,6 @@ GameObject:
   - component: {fileID: 6053448000686296535}
   - component: {fileID: 6053448000686296539}
   - component: {fileID: 6053448000686296541}
-  - component: {fileID: 2082691672629591718}
   m_Layer: 0
   m_Name: Boss_Test
   m_TagString: Boss
@@ -474,7 +473,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6053448000686296531}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.25, y: -0.34, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -663,31 +662,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.856, y: 1.886}
   m_EdgeRadius: 0
---- !u!114 &2082691672629591718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6053448000686296531}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecc8b290bddb31042b728accd98777ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  prefabSimpleAttack: {fileID: 0}
-  bossDamage: 0
-  attackRange: 0
-  speed: 0
-  health: 0
-  stoppingDistance: 0
-  timeBtwShots: 0
-  startTimeBtwShots: 0
-  pullAttackDistance: 0
-  pullForce: 0
-  pullActiveTime: 0
-  pullCooldown: 0
 --- !u!1 &7223952621392895305
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7173242213741547755
 Transform:
   m_ObjectHideFlags: 0
@@ -806,7 +780,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 17.67601, y: -0.1000061}
   m_SizeDelta: {x: 35.688, y: -3.618}
   m_Pivot: {x: 0.5, y: 0.5}
