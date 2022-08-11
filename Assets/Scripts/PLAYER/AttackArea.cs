@@ -14,7 +14,10 @@ public class AttackArea : MonoBehaviour
     private void Awake()
     {
         boss = GameObject.FindGameObjectWithTag("Boss");
-        bossScript = boss.GetComponent<EnemyBossTest>();
+        if (boss)
+        {
+            bossScript = boss.GetComponent<EnemyBossTest>();
+        }
         player = this.transform.parent.gameObject;
         playerScript = player.GetComponent<Player>();
     }
