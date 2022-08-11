@@ -6,20 +6,32 @@ public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
     public GameObject[] FloorTemplates = new GameObject[4];
+
     [SerializeField]
     public LevelSettings LevelSettings;
 
+    public GameObject gameManager;
+    private GameManager gameManagerScript;
+    public bool TutorialLevel;
     public GameObject TutorialRoom;
     private bool tutorialRoomSpawned = false;
+
+    private void Awake()
+    {
+        gameManager = GameObject.Find("GameManager").gameObject;
+        gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
     void Start()
     {
-        SpawnTutorialRoom();
-
-        if(tutorialRoomSpawned == false)
+        if (!TutorialLevel)
         {
-            Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length)], GameObject.Find("MAP").transform);
-        }
-        
+            SpawnTutorialRoom();
+
+            if (tutorialRoomSpawned == false)
+            {
+                Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length - 1)], GameObject.Find("MAP").transform);
+            }
+        }     
     }
 
     void Update()
@@ -77,10 +89,20 @@ public class LevelGenerator : MonoBehaviour
             spawnLocation = new Vector3(PrevRoomPos.x + 17.6f, PrevRoomPos.y);
         }
 
-        GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count)], spawnLocation, new Quaternion(0,0,0,0), GameObject.Find("MAP").transform);
-        SpawnRoomItems roomScript = spawnedRoom.GetComponent<SpawnRoomItems>();
-        roomScript.DestroyUselessDoor(direction);
-        return spawnedRoom;
+        if (GameManager.MyInstance.CollectedItems < GameManager.MyInstance.victoryCondition)
+        {
+            GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count - 1)], spawnLocation, new Quaternion(0, 0, 0, 0), GameObject.Find("MAP").transform);
+            SpawnRoomItems roomScript = spawnedRoom.GetComponent<SpawnRoomItems>();
+            roomScript.DestroyUselessDoor(direction);
+            return spawnedRoom;
+        }
+        else
+        {
+            GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count)], spawnLocation, new Quaternion(0, 0, 0, 0), GameObject.Find("MAP").transform);
+            SpawnRoomItems roomScript = spawnedRoom.GetComponent<SpawnRoomItems>();
+            roomScript.DestroyUselessDoor(direction);
+            return spawnedRoom;
+        }
 
     }
 
@@ -90,5 +112,10 @@ public class LevelGenerator : MonoBehaviour
 
         Instantiate(TutorialRoom, GameObject.Find("MAP").transform);
         tutorialRoomSpawned = true;
+    }
+
+    public void SpawnBossDoorRoom()
+    {
+        
     }
 }

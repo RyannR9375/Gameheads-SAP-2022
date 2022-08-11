@@ -23,4 +23,8 @@ public class CameraManager : MonoBehaviour
         //CineCamera.LookAt = room.transform;
         CineCamera.Follow = room.transform.GetChild(3).GetComponent<Transform>();
     }
+    public static void TutorailUpdateCamera(SpawnRoomItems room)
+    {
+        CineCamera.Follow = room.transform.GetChild(3).GetComponent<Transform>();
+    }
 }

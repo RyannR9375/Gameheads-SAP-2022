@@ -66,7 +66,7 @@ public class RoomSpawner : MonoBehaviour
             Vector3 spawnLocation = Room.transform.position;
             if (CheckIfRoom())
             {
-                GameObject room = LevelGenerator.SpawnRoom(WhatDirection, spawnLocation);
+                LevelGenerator.SpawnRoom(WhatDirection, spawnLocation);
                 Destroy(this.gameObject);
             }
             else

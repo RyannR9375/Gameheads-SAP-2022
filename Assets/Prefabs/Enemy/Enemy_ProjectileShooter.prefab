@@ -53,7 +53,8 @@ MonoBehaviour:
   prefabProjectile: {fileID: 9159700730561367021, guid: 494f82cb3ff2bfd46998465b03f2421a, type: 3}
   timeBtwShots: 1
   startTimeBtwShots: 2
-  shootDistance: 3
+  shootDistance: 9
+  player: {fileID: 0}
 --- !u!114 &2058403013059555186
 MonoBehaviour:
   m_ObjectHideFlags: 0

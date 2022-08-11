@@ -520,7 +520,7 @@ MonoBehaviour:
   m_LocalScale: {x: 1.174743, y: 1.174743, z: 1.174743}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5605452613690213374}
+  - {fileID: 7782839508060380464}
   - {fileID: 1664693735999843061}
   m_Father: {fileID: 1431729455171520721}
   m_RootOrder: 1
@@ -2234,6 +2234,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8042996239154130450}
     m_Modifications:
+    - target: {fileID: 1042151609897048410, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042151609897048410, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5605452613707320385, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2454,11 +2462,19 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.775
       objectReference: {fileID: 0}
+    - target: {fileID: 7782839508185863301, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782839508185863301, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
---- !u!224 &5605452613690213374 stripped
+--- !u!224 &7782839508060380464 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5605452614638602827, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7782839508185863301, guid: e037a0dcec668ff4faa65bb0a073698e, type: 3}
   m_PrefabInstance: {fileID: 949733813}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1060811313
@@ -2546,7 +2562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1664693736722667716, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -51.585754
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 1664693736722667716, guid: abe07c7f2ea48d34a93be7ca37535102, type: 3}
       propertyPath: m_AnchoredPosition.y

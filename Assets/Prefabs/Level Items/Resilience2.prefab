@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 413760390621661697}
   - component: {fileID: 413760390621661726}
   - component: {fileID: 413760390621661727}
+  - component: {fileID: 1651294436472179623}
   m_Layer: 0
   m_Name: Resilience2
   m_TagString: Untagged
@@ -124,4 +125,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2604d5f3d6de2d94198abe407754b2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemValue: 1
+--- !u!114 &1651294436472179623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413760390621661724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2446d199f439452428a187a9be68089d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResilienceValue: 1
