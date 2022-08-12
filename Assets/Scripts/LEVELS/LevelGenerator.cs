@@ -10,7 +10,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     public LevelSettings LevelSettings;
 
-    public GameObject gameManager;
+    private GameObject gameManager;
     private GameManager gameManagerScript;
     public bool TutorialLevel;
     public GameObject TutorialRoom;
