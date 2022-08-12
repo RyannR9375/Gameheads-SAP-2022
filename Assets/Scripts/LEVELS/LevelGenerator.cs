@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
-    public GameObject[] FloorTemplates = new GameObject[4];
+    public GameObject[] FloorTemplates = new GameObject[5];
 
     [SerializeField]
     public LevelSettings LevelSettings;
