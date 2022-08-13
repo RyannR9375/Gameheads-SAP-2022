@@ -1481,6 +1481,11 @@ MonoBehaviour:
   LevelSettings: {fileID: 11400000, guid: 5a13b7d2f15799448bcad6b9c443f3ef, type: 2}
   TutorialLevel: 1
   TutorialRoom: {fileID: 7965685703771712897, guid: b4ef3da96f1fe3f45b3602bb8c15f653, type: 3}
+  roomCount: 0
+  ResilienceChance: 
+  resilience1Count: 1
+  resilience2Count: 2
+  emptyCount: 0
 --- !u!1 &1129745016
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,6 +2046,10 @@ PrefabInstance:
     - target: {fileID: 291201649658311011, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 462425298410154768, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0012207031
       objectReference: {fileID: 0}
     - target: {fileID: 1042151610040979695, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3894,11 +3903,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288529, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 100.63
+      value: 118.7
       objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288529, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 151.91
+      value: 28.1
       objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288529, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_LocalPosition.z

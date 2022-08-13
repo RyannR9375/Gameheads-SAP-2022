@@ -459,6 +459,7 @@ GameObject:
   - component: {fileID: 6053448000686296535}
   - component: {fileID: 6053448000686296539}
   - component: {fileID: 6053448000686296541}
+  - component: {fileID: 1745445360}
   m_Layer: 0
   m_Name: Boss_Test
   m_TagString: Boss
@@ -511,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8363e636960ae488f13a1dc93a4d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossDamage: 3
+  bossDamage: 1
   attackRange: 2
   speed: 3
   health: 100
@@ -526,7 +527,7 @@ MonoBehaviour:
   resizeAmt: 6
   maxResize: 5
   absorbDistance: 4
-  absorbStrength: 1
+  absorbStrength: 0.01
   absorbActiveTime: 2
   absorbCooldown: 10
 --- !u!114 &6053448000686296537
@@ -662,6 +663,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.856, y: 1.886}
   m_EdgeRadius: 0
+--- !u!114 &1745445360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053448000686296531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee094d47d3102b44b16e1f0f6323fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7223952621392895305
 GameObject:
   m_ObjectHideFlags: 0

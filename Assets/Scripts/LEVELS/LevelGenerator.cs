@@ -15,11 +15,33 @@ public class LevelGenerator : MonoBehaviour
     public bool TutorialLevel;
     public GameObject TutorialRoom;
     private bool tutorialRoomSpawned = false;
+    public float roomCount = 0f;
+    private int spawnedItem;
+    public List<int> ResilienceChance = new List<int>();
+    public int resilience1Count = 1;
+    public int resilience2Count = 2;
+    public int emptyCount = 0;
+    
+
 
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").gameObject;
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        for(int i = 0; i < resilience1Count; i++)
+        {
+            ResilienceChance.Add(1);
+        }
+        for (int i = 0; i < resilience2Count; i++)
+        {
+            ResilienceChance.Add(2);
+        }
+        for (int i = 0; i < emptyCount; i++)
+        {
+            ResilienceChance.Add(0);
+        }
+
     }
     void Start()
     {
@@ -31,13 +53,16 @@ public class LevelGenerator : MonoBehaviour
             {
                 Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length - 1)], GameObject.Find("MAP").transform);
             }
-        }     
+        }
+        
+        
     }
 
     void Update()
     {
-        
+        Debug.Log(roomCount);
     }
+
     public List<GameObject> SpawnCorrectRoomDamnIt(RoomSpawner.direction direction)
     {
         List<GameObject> newList = new List<GameObject>();
@@ -64,6 +89,12 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
+
+        spawnedItem = Chance();
+        roomCount += 1;
+
+        Debug.Log(newList.Count + "NEWLISTCOUNT");
+
         return newList;
     }
     public static GameObject SpawnRoom(RoomSpawner.direction direction, Vector3 PrevRoomPos)
@@ -98,6 +129,7 @@ public class LevelGenerator : MonoBehaviour
         }
         else
         {
+
             GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count)], spawnLocation, new Quaternion(0, 0, 0, 0), GameObject.Find("MAP").transform);
             SpawnRoomItems roomScript = spawnedRoom.GetComponent<SpawnRoomItems>();
             roomScript.DestroyUselessDoor(direction);
@@ -117,5 +149,23 @@ public class LevelGenerator : MonoBehaviour
     public void SpawnBossDoorRoom()
     {
         
+    }
+
+    public int Chance()
+    {
+
+        if (ResilienceChance.Count == 0)
+        {
+            return 0;
+        }
+
+        int chanceIndex = Random.Range(0, ResilienceChance.Count);
+
+        int chanceValue = ResilienceChance[chanceIndex];
+
+        ResilienceChance.RemoveAt(chanceIndex);
+
+  
+        return chanceValue;
     }
 }

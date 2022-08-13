@@ -13,6 +13,11 @@ public class SpawnRoomItems : MonoBehaviour
 
     private GameObject cameraPoint;
     private bool isHere = false;
+
+    public GameObject Resilience1;
+    public GameObject Resilience2;
+
+    public int itemToSpawn = 0;
     void Start()
     {
         SpawnLocations = spawnFolder.gameObject.GetComponentsInChildren<Transform>();
@@ -23,14 +28,27 @@ public class SpawnRoomItems : MonoBehaviour
             for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
             {
                 Instantiate(EnemyTypes[Random.Range(0, EnemyTypes.Length)], SpawnLocations[Random.Range(1, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("ENEMIES").transform);
-            }
-            for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
-            {
-                Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocations[Random.Range(1, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
-            }
+            }//using min and max enemies 
+
+            // if ()
+            
+
+            
+            //for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
+            //{
+                //Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocations[Random.Range(1, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
+            //}
             CameraManager.UpdateCamera(this);
+
+            //CHANCE 
+            switch (itemToSpawn)
+            {
+                case 0: break;
+                //case 1: Instantiate(Resilience1, LM.); break;
+                //case 2: Instantiate(Resilience2, ); break;
+            }
         }
-        
+
     }
     void Update()
     {
