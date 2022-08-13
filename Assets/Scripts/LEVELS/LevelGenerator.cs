@@ -28,6 +28,7 @@ public class LevelGenerator : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").gameObject;
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.SetActive(true);
 
         for(int i = 0; i < resilience1Count; i++)
         {

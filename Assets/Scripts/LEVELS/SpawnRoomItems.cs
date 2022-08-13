@@ -34,19 +34,19 @@ public class SpawnRoomItems : MonoBehaviour
             
 
             
-            //for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
-            //{
-                //Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocations[Random.Range(1, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
-            //}
+            for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
+            {
+                Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocations[Random.Range(1, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
+            }
             CameraManager.UpdateCamera(this);
 
             //CHANCE 
-            switch (itemToSpawn)
-            {
-                case 0: break;
+            //switch (itemToSpawn)
+            //{
+                //case 0: break;
                 //case 1: Instantiate(Resilience1, LM.); break;
                 //case 2: Instantiate(Resilience2, ); break;
-            }
+            //}
         }
 
     }
