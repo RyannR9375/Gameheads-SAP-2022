@@ -26,6 +26,9 @@ public class UIManager : MonoBehaviour
         {
             DestroyImmediate(this);
         }
+        txtItems.text = "Resilience Collected: " + victoryCondition.GetComponent<GameManager>().CollectedItems + "/" + victoryCondition.GetComponent<GameManager>().victoryCondition;
+        victoryCondition.SetActive(false);
+        txtVictoryCondition.text = "YOU CAN NOW FIND AND ENTER THE BOSS ROOM.";
 
         //KEEPS THE UI THROUGHOUT SCENE TRANSFERS.
         //DontDestroyOnLoad(this);
@@ -51,6 +54,7 @@ public class UIManager : MonoBehaviour
     {
         //collectable.itemValue += _items;
         txtItems.text = "Resilience Collected: " + _items + "/" + _victoryCondition;
+        ShowVictoryCondition(_items, _victoryCondition);
     }
 
     public void ShowVictoryCondition(int _items, int _victoryCondition)

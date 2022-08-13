@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     #region Declaring Variables
     [SerializeField] private GameObject pauseUI;
     private static GameManager instance;
-    [HideInInspector] public int CollectedItems, victoryCondition = 2;
+    [SerializeField] public int CollectedItems, victoryCondition = 2;
 
     private bool GameOverYesOrNo;
     private bool isPaused = false;
