@@ -10,7 +10,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     public LevelSettings LevelSettings;
 
-    private GameObject gameManager;
+    public GameObject gameManager;
     private GameManager gameManagerScript;
     public bool TutorialLevel;
     public GameObject TutorialRoom;
@@ -61,7 +61,12 @@ public class LevelGenerator : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(roomCount);
+        if (!gameManager.activeSelf)
+        {
+            gameManager.SetActive(true);
+        }
+        
+        //Debug.Log(roomCount);
     }
 
     public List<GameObject> SpawnCorrectRoomDamnIt(RoomSpawner.direction direction)
@@ -94,7 +99,7 @@ public class LevelGenerator : MonoBehaviour
         spawnedItem = Chance();
         roomCount += 1;
 
-        Debug.Log(newList.Count + "NEWLISTCOUNT");
+        Debug.Log(newList.Count + " NEWLISTCOUNT");
 
         return newList;
     }

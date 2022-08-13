@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43404993, g: 0.85057926, b: 0.84556323, a: 1}
+  m_IndirectSpecularColor: {r: 0.43405044, g: 0.8505784, b: 0.8455626, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1479,6 +1479,7 @@ MonoBehaviour:
   - {fileID: 6879061458138678459, guid: 3dbe74959e3c80d4fba69739dbc66251, type: 3}
   - {fileID: 9092065445703605042, guid: 30790dfc02b42234298f7825cec01d3d, type: 3}
   LevelSettings: {fileID: 11400000, guid: 5a13b7d2f15799448bcad6b9c443f3ef, type: 2}
+  gameManager: {fileID: 1123172493}
   TutorialLevel: 1
   TutorialRoom: {fileID: 7965685703771712897, guid: b4ef3da96f1fe3f45b3602bb8c15f653, type: 3}
   roomCount: 0
