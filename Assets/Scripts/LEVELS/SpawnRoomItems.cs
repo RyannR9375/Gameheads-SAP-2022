@@ -10,18 +10,46 @@ public class SpawnRoomItems : MonoBehaviour
     private Transform[] SpawnLocations = new Transform[0];
     private LevelGenerator LM;
     private RaycastHit2D[] searchArea;
+
+    private GameObject cameraPoint;
+    private bool isHere = false;
+
+    public GameObject Resilience1;
+    public GameObject Resilience2;
+
+    public int itemToSpawn = 0;
     void Start()
     {
         SpawnLocations = spawnFolder.gameObject.GetComponentsInChildren<Transform>();
         //print(SpawnLocations[0]);
         LM = GameObject.Find("GameManager").GetComponent<LevelGenerator>();
-        for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
+        if(!this.gameObject.name.Split(' ')[0].Equals("Learning"))
         {
-            Instantiate(EnemyTypes[Random.Range(0, EnemyTypes.Length)], SpawnLocations[Random.Range(1, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("ENEMIES").transform);
-        }
-        for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
-        {
-            Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocations[Random.Range(1, SpawnLocations.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
+            if (EnemyTypes.Length != 0) 
+            {
+                for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
+                {
+                    Instantiate(EnemyTypes[Random.Range(0, EnemyTypes.Length-1)], SpawnLocations[Random.Range(0, SpawnLocations.Length-1)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("ENEMIES").transform);
+                }//using min and max enemies 
+            }
+
+
+            if (ItemsToSpawn.Length != 0)
+            {
+                for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
+                {
+                    Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocations[Random.Range(0, SpawnLocations.Length - 1)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
+                }
+            }
+            CameraManager.UpdateCamera(this);
+
+            //CHANCE 
+            //switch (itemToSpawn)
+            //{
+                //case 0: break;
+                //case 1: Instantiate(Resilience1, LM.); break;
+                //case 2: Instantiate(Resilience2, ); break;
+            //}
         }
 
     }
@@ -29,8 +57,15 @@ public class SpawnRoomItems : MonoBehaviour
     {
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            CameraManager.UpdateCamera(this);
+        }
+        
+    }
 
-    
     public void DestroyUselessDoor(RoomSpawner.direction direction)
     {
         searchArea = Physics2D.CircleCastAll(this.transform.position, 49f, transform.forward, float.PositiveInfinity, 6);

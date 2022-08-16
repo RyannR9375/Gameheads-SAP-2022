@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
     #region Declaring Variables
     [SerializeField] private GameObject pauseUI;
     private static GameManager instance;
-    private int CollectedItems, victoryCondition = 3;
+    [SerializeField] public int CollectedItems, victoryCondition = 2;
 
-    public bool GameOverYesOrNo;
-    public bool isPaused = false;
+    private bool GameOverYesOrNo;
+    private bool isPaused = false;
     #endregion
 
     #region Unity Callback Functions
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
         if (CollectedItems >= victoryCondition)
         {
-            SceneManager.LoadScene("BEAT GAME");
+            //SceneManager.LoadScene("BEAT GAME");
         }
     }
     

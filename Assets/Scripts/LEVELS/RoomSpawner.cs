@@ -6,6 +6,7 @@ public class RoomSpawner : MonoBehaviour
 {
     public direction WhatDirection = new direction();
     private Transform Room;
+    private bool tutorialRoomPassed = false;
     public enum direction
     {
         Up,
@@ -65,13 +66,18 @@ public class RoomSpawner : MonoBehaviour
             Vector3 spawnLocation = Room.transform.position;
             if (CheckIfRoom())
             {
-                GameObject room = LevelGenerator.SpawnRoom(WhatDirection, spawnLocation);
+                LevelGenerator.SpawnRoom(WhatDirection, spawnLocation);
                 Destroy(this.gameObject);
             }
             else
             {
                 print("No Room!");
             }
-        } 
+        }
+
+        if(this.CompareTag("TutorialRoomDoor") && collision.CompareTag("Player"))
+        {
+            tutorialRoomPassed = true;
+        }
     }
 }

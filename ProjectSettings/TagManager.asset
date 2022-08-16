@@ -4,14 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Shine
-  - Absorb
-  - Release
   - NextLevel
-  - PreviousLevel
+  - Enemy
   - Room
   - Door
+  - Absorb
+  - Shine
+  - Release
+  - Boss
+  - TutorialRoomDoor
+  - BossRoomDoor
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Map
+  - 
   - 
   - 
   - 
@@ -50,5 +52,5 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Player
-    uniqueID: 249802189
+    uniqueID: 3426800459
     locked: 0

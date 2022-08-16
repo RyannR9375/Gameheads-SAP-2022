@@ -5,19 +5,70 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
-    public GameObject[] FloorTemplates = new GameObject[4];
+    public GameObject[] FloorTemplates = new GameObject[5];
+
     [SerializeField]
     public LevelSettings LevelSettings;
-    [HideInInspector]
+
+    public GameObject gameManager;
+    private GameManager gameManagerScript;
+    public bool TutorialLevel;
+    public GameObject TutorialRoom;
+    private bool tutorialRoomSpawned = false;
+    public float roomCount = 0f;
+    private int spawnedItem;
+    public List<int> ResilienceChance = new List<int>();
+    public int resilience1Count = 1;
+    public int resilience2Count = 2;
+    public int emptyCount = 0;
+    
+
+
+    private void Awake()
+    {
+        gameManager = GameObject.Find("GameManager").gameObject;
+        gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.SetActive(true);
+
+        for(int i = 0; i < resilience1Count; i++)
+        {
+            ResilienceChance.Add(1);
+        }
+        for (int i = 0; i < resilience2Count; i++)
+        {
+            ResilienceChance.Add(2);
+        }
+        for (int i = 0; i < emptyCount; i++)
+        {
+            ResilienceChance.Add(0);
+        }
+
+    }
     void Start()
     {
-        Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length)], GameObject.Find("MAP").transform);
+        if (!TutorialLevel)
+        {
+            SpawnTutorialRoom();
+
+            if (tutorialRoomSpawned == false)
+            {
+                Instantiate(FloorTemplates[Random.Range(0, FloorTemplates.Length - 1)], GameObject.Find("MAP").transform);
+            }
+        }
+        
+        
     }
 
     void Update()
     {
+        if (!gameManager.activeSelf)
+        {
+            gameManager.SetActive(true);
+        }
         
+        //Debug.Log(roomCount);
     }
+
     public List<GameObject> SpawnCorrectRoomDamnIt(RoomSpawner.direction direction)
     {
         List<GameObject> newList = new List<GameObject>();
@@ -44,6 +95,12 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
+
+        spawnedItem = Chance();
+        roomCount += 1;
+
+        Debug.Log(newList.Count + " NEWLISTCOUNT");
+
         return newList;
     }
     public static GameObject SpawnRoom(RoomSpawner.direction direction, Vector3 PrevRoomPos)
@@ -68,10 +125,53 @@ public class LevelGenerator : MonoBehaviour
         {
             spawnLocation = new Vector3(PrevRoomPos.x + 17.6f, PrevRoomPos.y);
         }
-        GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count)], spawnLocation, new Quaternion(0,0,0,0), GameObject.Find("MAP").transform);
-        var attributes = spawnedRoom.GetComponent<SpawnRoomItems>();
-        attributes.DestroyUselessDoor(direction);
-        return spawnedRoom;
 
+        if (GameManager.MyInstance.CollectedItems < GameManager.MyInstance.victoryCondition)
+        {
+            GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count - 1)], spawnLocation, new Quaternion(0, 0, 0, 0), GameObject.Find("MAP").transform);
+            SpawnRoomItems roomScript = spawnedRoom.GetComponent<SpawnRoomItems>();
+            roomScript.DestroyUselessDoor(direction);
+            return spawnedRoom;
+        }
+        else
+        {
+
+            GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count)], spawnLocation, new Quaternion(0, 0, 0, 0), GameObject.Find("MAP").transform);
+            SpawnRoomItems roomScript = spawnedRoom.GetComponent<SpawnRoomItems>();
+            roomScript.DestroyUselessDoor(direction);
+            return spawnedRoom;
+        }
+
+    }
+
+    public void SpawnTutorialRoom()
+    {
+        RoomSpawner tutRoomSpawnerScript = TutorialRoom.GetComponent<RoomSpawner>();
+
+        Instantiate(TutorialRoom, GameObject.Find("MAP").transform);
+        tutorialRoomSpawned = true;
+    }
+
+    public void SpawnBossDoorRoom()
+    {
+        
+    }
+
+    public int Chance()
+    {
+
+        if (ResilienceChance.Count == 0)
+        {
+            return 0;
+        }
+
+        int chanceIndex = Random.Range(0, ResilienceChance.Count);
+
+        int chanceValue = ResilienceChance[chanceIndex];
+
+        ResilienceChance.RemoveAt(chanceIndex);
+
+  
+        return chanceValue;
     }
 }
