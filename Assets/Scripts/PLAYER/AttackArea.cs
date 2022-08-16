@@ -31,7 +31,7 @@ public class AttackArea : MonoBehaviour
 
         if (other.CompareTag("Boss"))
         {
-            bossScript.TakeDamage(playerScript.playerDamage);
+            bossScript.TakeDamage(this.damage);
         }
     }
 }
