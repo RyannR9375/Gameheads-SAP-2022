@@ -1390,7 +1390,6 @@ MonoBehaviour:
   - {fileID: 2058403013059555192, guid: 456e0ce66347a9d4d8da92b4fe3c449f, type: 3}
   ItemsToSpawn:
   - {fileID: 1727045199927224506, guid: a470d2ba4bb70b94781f47857c594406, type: 3}
-  - {fileID: 413760390621661724, guid: 426ffaaa0c4a9e343b9ea59cfb92ecc5, type: 3}
   spawnFolder: {fileID: 6758901586492299085}
 --- !u!61 &-4183667108563027460
 BoxCollider2D:

@@ -215,6 +215,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494f82cb3ff2bfd46998465b03f2421a, type: 3}
+--- !u!1 &252537070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 252537071}
+  m_Layer: 6
+  m_Name: RespawnAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &252537071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252537070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.69, y: 1.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1026167145}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &340107540
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +494,7 @@ Transform:
   - {fileID: 1675140650}
   - {fileID: 637412237}
   - {fileID: 60665091}
+  - {fileID: 252537071}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -578,7 +610,6 @@ MonoBehaviour:
   - {fileID: 7202073521509148629, guid: d307dcf5e0dec644daa0c643e3d8f089, type: 3}
   - {fileID: 376718554209131511, guid: b0eaec044e623434f830d8d52f22f278, type: 3}
   - {fileID: 6879061458138678459, guid: 3dbe74959e3c80d4fba69739dbc66251, type: 3}
-  - {fileID: 6879061458138678459, guid: 32c4a1cfe8143604d82cf1b2e04016ca, type: 3}
   LevelSettings: {fileID: 11400000, guid: 5a13b7d2f15799448bcad6b9c443f3ef, type: 2}
   gameManager: {fileID: 1123172493}
   TutorialLevel: 0
@@ -753,7 +784,11 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
+<<<<<<< HEAD
     m_SensorSize: {x: 1.779902, y: 1}
+=======
+    m_SensorSize: {x: 1.7769784, y: 1}
+>>>>>>> origin/main
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1833,6 +1868,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 252031222993967489, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240668041768998765, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288529, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1886,13 +1929,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288534, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
-      propertyPath: maxHealth
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 5689715813888288534, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
-      propertyPath: currentHealth
-      value: 300
-      objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288537, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_Name
       value: Player

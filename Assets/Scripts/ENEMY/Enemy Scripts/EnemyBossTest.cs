@@ -163,7 +163,6 @@ public class EnemyBossTest : MonoBehaviour
 			playerScript.TakeDamage(0, absorbStrength);
 			
 		}
-
 		
 	}
 	#endregion

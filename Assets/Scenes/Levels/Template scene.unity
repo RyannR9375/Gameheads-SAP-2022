@@ -1345,6 +1345,7 @@ Transform:
   - {fileID: 1677103188}
   - {fileID: 206511667}
   - {fileID: 1817248024}
+  - {fileID: 1919302458}
   - {fileID: 1412667840}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -1380,7 +1381,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtItems: {fileID: 919128755}
   txtVictoryCondition: {fileID: 1833244574}
-  victoryCondition: {fileID: 0}
 --- !u!4 &1041294496
 Transform:
   m_ObjectHideFlags: 0
@@ -1476,11 +1476,15 @@ MonoBehaviour:
   - {fileID: 7202073521509148629, guid: d307dcf5e0dec644daa0c643e3d8f089, type: 3}
   - {fileID: 376718554209131511, guid: b0eaec044e623434f830d8d52f22f278, type: 3}
   - {fileID: 6879061458138678459, guid: 3dbe74959e3c80d4fba69739dbc66251, type: 3}
-  - {fileID: 6879061458138678459, guid: 32c4a1cfe8143604d82cf1b2e04016ca, type: 3}
   LevelSettings: {fileID: 11400000, guid: 5a13b7d2f15799448bcad6b9c443f3ef, type: 2}
   gameManager: {fileID: 1123172493}
   TutorialLevel: 1
   TutorialRoom: {fileID: 7965685703771712897, guid: b4ef3da96f1fe3f45b3602bb8c15f653, type: 3}
+  roomCount: 0
+  ResilienceChance: 
+  resilience1Count: 1
+  resilience2Count: 2
+  emptyCount: 0
 --- !u!1 &1129745016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,7 +1900,6 @@ Transform:
   - {fileID: 331158095}
   - {fileID: 975941640}
   m_Father: {fileID: 1026167145}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1420256538
 GameObject:
@@ -2038,13 +2041,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 291201649658311011, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 462425298410154768, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0012207031
+      objectReference: {fileID: 0}
     - target: {fileID: 1042151610040979695, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.66
       objectReference: {fileID: 0}
     - target: {fileID: 1042151610040979695, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1431729455171520721, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
       propertyPath: m_Pivot.x
@@ -2136,14 +2145,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431729455171520725, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
       propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2545424837148451165, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2545424837148451165, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794576379103277248, guid: c60f2659d40c8ae4d8a9e211c52c3e7e, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2569,7 +2580,6 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &1675140650
 Transform:
   m_ObjectHideFlags: 0
@@ -2984,6 +2994,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 2.7948
       objectReference: {fileID: 0}
+    - target: {fileID: 4555376492627242447, guid: f1c9304fe8d1b4ee5b67a3e4a42cdf51, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4981824918391234866, guid: f1c9304fe8d1b4ee5b67a3e4a42cdf51, type: 3}
       propertyPath: m_LocalScale.y
       value: 23.288517
@@ -2995,6 +3009,10 @@ PrefabInstance:
     - target: {fileID: 7402222875882147250, guid: f1c9304fe8d1b4ee5b67a3e4a42cdf51, type: 3}
       propertyPath: m_Name
       value: Learning to Swing ROOM
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402222875882147250, guid: f1c9304fe8d1b4ee5b67a3e4a42cdf51, type: 3}
+      propertyPath: m_TagString
+      value: Room
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5426040442976515631, guid: f1c9304fe8d1b4ee5b67a3e4a42cdf51, type: 3}
@@ -3169,6 +3187,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+--- !u!1 &1919302457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1919302458}
+  m_Layer: 6
+  m_Name: RespawnAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1919302458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919302457}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 98.6, y: 152.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1026167145}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1925089589 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5689715813888288537, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
@@ -3625,6 +3674,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Learning to Swing ROOM (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3852741044152947292, guid: b7ca2e64659ebaf46b865af45c635853, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852741044152947292, guid: b7ca2e64659ebaf46b865af45c635853, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -76.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7ca2e64659ebaf46b865af45c635853, type: 3}
 --- !u!1001 &1727045200122513083
@@ -3743,6 +3800,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3048522669225494353, guid: 66affafce5abd0241b7d388345802f3b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6059701
+      objectReference: {fileID: 0}
+    - target: {fileID: 3048522669225494353, guid: 66affafce5abd0241b7d388345802f3b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.2752
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66affafce5abd0241b7d388345802f3b, type: 3}
 --- !u!1001 &3907315731370584272
@@ -3752,6 +3817,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1412667840}
     m_Modifications:
+    - target: {fileID: 3907315730782736952, guid: d128f9f3e260d6d419ca91984935cea7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5988123
+      objectReference: {fileID: 0}
+    - target: {fileID: 3907315730782736952, guid: d128f9f3e260d6d419ca91984935cea7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.9752
+      objectReference: {fileID: 0}
     - target: {fileID: 3907315732444260109, guid: d128f9f3e260d6d419ca91984935cea7, type: 3}
       propertyPath: m_Name
       value: Learning to Swing ROOM (3)
@@ -3800,6 +3873,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4258586901979638131, guid: d128f9f3e260d6d419ca91984935cea7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258586901979638131, guid: d128f9f3e260d6d419ca91984935cea7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -54.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d128f9f3e260d6d419ca91984935cea7, type: 3}
 --- !u!1001 &5689715814648081964
@@ -3815,11 +3896,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288529, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 118.6
       objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288529, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.7
       objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288529, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3922,6 +4001,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7965685704841482960, guid: b4ef3da96f1fe3f45b3602bb8c15f653, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6192189
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965685704841482960, guid: b4ef3da96f1fe3f45b3602bb8c15f653, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.2509
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4ef3da96f1fe3f45b3602bb8c15f653, type: 3}
 --- !u!1001 &7976323286374352209
@@ -4008,6 +4095,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1412667840}
     m_Modifications:
+    - target: {fileID: 5248312344433014878, guid: c2c41fdd70abaa44999ad0794a1145bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248312344433014878, guid: c2c41fdd70abaa44999ad0794a1145bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -28.89
+      objectReference: {fileID: 0}
     - target: {fileID: 8989662513704052280, guid: c2c41fdd70abaa44999ad0794a1145bb, type: 3}
       propertyPath: m_Name
       value: Learning to Swing ROOM (2)
@@ -4065,6 +4160,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1412667840}
     m_Modifications:
+    - target: {fileID: 8880236826381189056, guid: d097b835e0415894e853d5719f6728e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880236826381189056, guid: d097b835e0415894e853d5719f6728e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -95.24
+      objectReference: {fileID: 0}
     - target: {fileID: 8993066858645001920, guid: d097b835e0415894e853d5719f6728e9, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4112,6 +4215,30 @@ PrefabInstance:
     - target: {fileID: 8993066858645001934, guid: d097b835e0415894e853d5719f6728e9, type: 3}
       propertyPath: m_Name
       value: Learning to Swing ROOM (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993066859321374703, guid: d097b835e0415894e853d5719f6728e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.917452
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993066859321374703, guid: d097b835e0415894e853d5719f6728e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.8044
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993066859689452420, guid: d097b835e0415894e853d5719f6728e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.60116744
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993066859689452420, guid: d097b835e0415894e853d5719f6728e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.2728
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993066859895046476, guid: d097b835e0415894e853d5719f6728e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6161732
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993066859895046476, guid: d097b835e0415894e853d5719f6728e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.955
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d097b835e0415894e853d5719f6728e9, type: 3}
