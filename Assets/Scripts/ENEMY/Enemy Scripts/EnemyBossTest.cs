@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyBossTest : MonoBehaviour
 {
@@ -80,6 +81,11 @@ public class EnemyBossTest : MonoBehaviour
 	private void Update()
 	{
 		DoWhatInThisPhase();
+
+		if (health <= 0)
+        {
+			SceneManager.LoadScene("WinningEndScene");
+        }
 	}
 
 	#endregion
@@ -157,7 +163,6 @@ public class EnemyBossTest : MonoBehaviour
 			playerScript.TakeDamage(0, absorbStrength);
 			
 		}
-
 		
 	}
 	#endregion
