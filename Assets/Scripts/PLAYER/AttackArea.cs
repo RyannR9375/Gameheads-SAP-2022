@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackArea : MonoBehaviour
 {
-    private int damage = 3;
+    private float damage;
 
     GameObject boss;
     EnemyBossTest bossScript;
@@ -18,8 +18,10 @@ public class AttackArea : MonoBehaviour
         {
             bossScript = boss.GetComponent<EnemyBossTest>();
         }
+
         player = this.transform.parent.gameObject;
         playerScript = player.GetComponent<Player>();
+        damage = playerScript.attackDamage;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,9 +29,11 @@ public class AttackArea : MonoBehaviour
         //collider.GetComponent<Health>() ! =null
         if (other.CompareTag("Enemy"))
         {
-            //Health health = collider.GetComponent<Health>();
-            //health.Damage(damage);
-            Destroy(other.gameObject);
+            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.Damage(damage);
+            }
         }
 
         if (other.CompareTag("Boss"))

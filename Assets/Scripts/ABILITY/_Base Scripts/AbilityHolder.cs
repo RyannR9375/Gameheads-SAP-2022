@@ -232,7 +232,7 @@ public class AbilityHolder: MonoBehaviour
         tag = "Shine";
         Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
         //CHECKING IF ENEMY HAS Rigidbody2D 
-        if (enemyRB != null && shineAbility != null && playerScript.chargeAmount >= 100)
+        if (enemyRB != null && shineAbility != null && playerScript.chargeAmount >= playerScript.maxCharge)
         {
             //releaseVFX.Play();
             //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'

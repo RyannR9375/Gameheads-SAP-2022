@@ -17,22 +17,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private PlayerData playerData;
     #endregion
-    //moving all this later
-    private GameObject attackArea = default;
-
-    private bool attacking = false;
-
-    private bool blocking = false;
-
-    private float timeToAttack = 0.25f;
-
-    private float timerAtk = 0f;
-
-    private float timeToBlock = 1f;
-
-    private float timerBlock = 0f;
-
-    private float rotationOffset;
 
     #region Components
     public Rigidbody2D rb { get; private set; }
@@ -42,14 +26,24 @@ public class Player : MonoBehaviour
     private Collider2D triggerCollider;
     private SpriteRenderer playerSprite;
     private GameObject abilityHolder;
+    private GameObject attackArea = default;
 
     public Vector2 CurrentVelocity;
     private Vector2 workspace;
     #endregion
 
     #region Other Variables
+    //PLAYER ROTATION AND COLLISION STUFF
     public float FacingDirection { get; private set; }
     public float knockTime;
+
+    //ALL ATTACK AND BLOCK STUFF
+    private bool attacking = false;
+    private bool blocking = false;
+
+    private float timerAtk = 0f;
+    private float timerBlock = 0f;
+    private float rotationOffset;
 
     #endregion
 
@@ -66,6 +60,11 @@ public class Player : MonoBehaviour
     public float maxCharge;
     public float currentCharge;
     public float chargeAmount;
+
+    [Header("Attack and Block")]
+    public float attackDamage = 10f;
+    public float timeToAttack = 0.25f;
+    public float timeToBlock = 1f;
 
     [Header("IFrame")]
     public Color flashColor;
