@@ -14,6 +14,7 @@ TagManager:
   - Boss
   - TutorialRoomDoor
   - BossRoomDoor
+  - LockedDoor
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Map
   - 
   - 
   - 

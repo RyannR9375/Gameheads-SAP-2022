@@ -17,22 +17,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private PlayerData playerData;
     #endregion
-    //moving all this later
-    private GameObject attackArea = default;
-
-    private bool attacking = false;
-
-    private bool blocking = false;
-
-    private float timeToAttack = 0.25f;
-
-    private float timerAtk = 0f;
-
-    private float timeToBlock = 1f;
-
-    private float timerBlock = 0f;
-
-    private float rotationOffset;
 
     #region Components
     public Rigidbody2D rb { get; private set; }
@@ -42,14 +26,24 @@ public class Player : MonoBehaviour
     private Collider2D triggerCollider;
     private SpriteRenderer playerSprite;
     private GameObject abilityHolder;
+    private GameObject attackArea = default;
 
     public Vector2 CurrentVelocity;
     private Vector2 workspace;
     #endregion
 
     #region Other Variables
+    //PLAYER ROTATION AND COLLISION STUFF
     public float FacingDirection { get; private set; }
     public float knockTime;
+
+    //ALL ATTACK AND BLOCK STUFF
+    private bool attacking = false;
+    private bool blocking = false;
+
+    private float timerAtk = 0f;
+    private float timerBlock = 0f;
+    private float rotationOffset;
 
     #endregion
 
@@ -66,6 +60,11 @@ public class Player : MonoBehaviour
     public float maxCharge;
     public float currentCharge;
     public float chargeAmount;
+
+    [Header("Attack and Block")]
+    public float attackDamage = 10f;
+    public float timeToAttack = 0.25f;
+    public float timeToBlock = 1f;
 
     [Header("IFrame")]
     public Color flashColor;
@@ -99,8 +98,17 @@ public class Player : MonoBehaviour
 
 
         //refactor to scriptable objects
-        healthBar.SetMaxHealth(maxHealth);
-        currentHealth = maxHealth;
+        if(healthBar != null)
+        {
+            healthBar.SetMaxHealth(maxHealth);
+            currentHealth = maxHealth;
+        }
+
+        if(absorbBar != null)
+        {
+            absorbBar.SetMaxValue(maxCharge);
+            currentCharge = 0f;
+        }
 
         //FacingDirection = 1;
 
@@ -180,23 +188,11 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player"))
         {
-            //StartCoroutine(KnockCo(3f)); // REPLACE '3F' WITH SOMETHING. WILL ONLY BE USED WHEN THE PLAYER HAS A BASIC ATTACK FUNCTION THAT CAN KNOCK ENEMIES BACK.
-            //TakeDamage(knockTime, 10); //REPLACE WITH ENEMY DAMAGE NUMBERS
-
+            //Damage?
         }
-    }
-    /*private void OnTriggerStay2D(Collider2D other)
-    {
-        #region Player & Enemy
-        //ALSO SPAGHETTI. HIGHLY DEPENDENT. THIS ONLY CHECKS FOR ONCOLLISION AND NOT ONTRIGGER. THE CIRCLECOLLIDER OF ABSORB DOES NOT MATCH THIS, SO YOU HAVE TO BUMP INTO THE ENEMY IN ORDER FOR THIS TO WORK, AND NOT THE ABSORB ABILITY.
-        if (other.gameObject.CompareTag("Enemy") && abilityHolder.CompareTag("Absorb"))
-        {
-            absorbAdd(chargeAmount);
-        }
-        #endregion
 
     }
-    */
+
     #endregion
 
     #region Set Functions
@@ -236,6 +232,7 @@ public class Player : MonoBehaviour
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         attackAreaTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + rotationOffset));
 
+
     }
 
     void FastBlock()
@@ -262,7 +259,7 @@ public class Player : MonoBehaviour
             currentHealth -= damage;
         }
 
-        Debug.Log($"you have {lives} Lives and {currentHealth} Health");
+        //Debug.Log($"you have {lives} Lives and {currentHealth} Health");
         if (lives > 0 && currentHealth > 0)
         {
             
@@ -272,8 +269,15 @@ public class Player : MonoBehaviour
 
     public void CheckStatus()
     {
-        healthBar.SetHealth(currentHealth);
-        //healthBar.ShowHealthGone(currentHealth);
+        if(healthBar != null)
+        {
+            healthBar.SetHealth(currentHealth);
+        }
+
+        if (absorbBar != null)
+        {
+            absorbBar.SetValue(currentCharge);
+        }
 
         if (lives > 0 && currentHealth <= 0)
         {
@@ -285,6 +289,7 @@ public class Player : MonoBehaviour
         {
             //change with defeat/ try agian
             gameObject.SetActive(false);
+
         }
     }
 
@@ -292,14 +297,9 @@ public class Player : MonoBehaviour
     public void absorbAdd(float value)
     {
         currentCharge += value;
-        absorbBar.SetValue(currentCharge);
 
-        if (currentCharge >= 100)
+        if(absorbBar != null)
         {
-            Debug.Log(currentCharge);
-            playerGetHit(100);
-            StartCoroutine(FlashCo());
-            currentCharge = 0;
             absorbBar.SetValue(currentCharge);
         }
     }

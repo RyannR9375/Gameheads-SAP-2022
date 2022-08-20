@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7358730125046201500}
   - component: {fileID: 6069871493927725511}
   - component: {fileID: 7323315342014799705}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8547502602314046297}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 4482023076884259767}
   - component: {fileID: 6975560303084067435}
   - component: {fileID: 2519868763349031446}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 3552307937041412819}
   - component: {fileID: 7014483236755114680}
   - component: {fileID: 1547172001588181853}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 48992508091792373}
   - component: {fileID: 4819923524391730765}
   - component: {fileID: 320487936897375353}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 5374892260302745174}
   - component: {fileID: 7054380186650174712}
   - component: {fileID: 4752077224861180428}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +601,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1217881342854847987}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hallway
   m_TagString: Room
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 7696975773818642883}
   - component: {fileID: 2160151559346994987}
   - component: {fileID: 8731557093897404786}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

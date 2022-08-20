@@ -5,9 +5,11 @@ using UnityEngine;
 public class EnemyProjectileShooter : MonoBehaviour
 {
 	public GameObject prefabProjectile;
+	public float speed;
 	public float timeBtwShots;
 	public float startTimeBtwShots;
 	public float shootDistance;
+	public float stoppingDistance;
 	public Transform player;
 
     private void Awake()
@@ -22,14 +24,17 @@ public class EnemyProjectileShooter : MonoBehaviour
 		{
 			ProjectileAttack();
 		}
+
+		if(Vector2.Distance(transform.position, player.transform.position) > stoppingDistance)
+        {
+			transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        }
     }
 
     public void ProjectileAttack()
 	{
 		if (timeBtwShots < 0)
 		{
-			Debug.Log("Projectile Attack Called");
-
 			//Creates Prefab every timeBtwShots
 			Instantiate(prefabProjectile, transform.position, Quaternion.identity);
 			prefabProjectile.SetActive(true);

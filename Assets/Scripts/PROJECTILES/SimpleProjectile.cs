@@ -55,12 +55,10 @@ public class SimpleProjectile : MonoBehaviour
             playerScript.TakeDamage(playerScript.knockTime, damage);
         }
 
-        if(thisVector2 == Vector2.zero)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
             DestroyProjectile();
         }
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -72,6 +70,11 @@ public class SimpleProjectile : MonoBehaviour
         }
 
         if (thisVector2 == Vector2.zero)
+        {
+            DestroyProjectile();
+        }
+
+        if (other.collider.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
             DestroyProjectile();
         }

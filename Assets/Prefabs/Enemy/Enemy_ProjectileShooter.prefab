@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2058403013059555199}
   - component: {fileID: 7556984956700807837}
+  - component: {fileID: 1526394208541096320}
   - component: {fileID: 2058403013059555186}
   - component: {fileID: 2058403013059555187}
   - component: {fileID: 2058403013059555196}
@@ -51,10 +52,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabProjectile: {fileID: 9159700730561367021, guid: 494f82cb3ff2bfd46998465b03f2421a, type: 3}
+  speed: 3
   timeBtwShots: 1
   startTimeBtwShots: 2
   shootDistance: 9
+  stoppingDistance: 8
   player: {fileID: 0}
+--- !u!114 &1526394208541096320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058403013059555192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9853293208aa4194aa007534bbdb1ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!114 &2058403013059555186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +127,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f1c0582be1a0e734f88806dbadd12ba9, type: 3}
-  m_Color: {r: 0.8301887, g: 0.33285868, b: 0.33285868, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
