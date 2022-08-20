@@ -99,8 +99,11 @@ public class Player : MonoBehaviour
 
 
         //refactor to scriptable objects
-        healthBar.SetMaxHealth(maxHealth);
-        currentHealth = maxHealth;
+        if(healthBar != null)
+        {
+            healthBar.SetMaxHealth(maxHealth);
+            currentHealth = maxHealth;
+        }
 
         //FacingDirection = 1;
 
@@ -180,23 +183,11 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player"))
         {
-            //StartCoroutine(KnockCo(3f)); // REPLACE '3F' WITH SOMETHING. WILL ONLY BE USED WHEN THE PLAYER HAS A BASIC ATTACK FUNCTION THAT CAN KNOCK ENEMIES BACK.
-            //TakeDamage(knockTime, 10); //REPLACE WITH ENEMY DAMAGE NUMBERS
-
+            //Damage?
         }
-    }
-    /*private void OnTriggerStay2D(Collider2D other)
-    {
-        #region Player & Enemy
-        //ALSO SPAGHETTI. HIGHLY DEPENDENT. THIS ONLY CHECKS FOR ONCOLLISION AND NOT ONTRIGGER. THE CIRCLECOLLIDER OF ABSORB DOES NOT MATCH THIS, SO YOU HAVE TO BUMP INTO THE ENEMY IN ORDER FOR THIS TO WORK, AND NOT THE ABSORB ABILITY.
-        if (other.gameObject.CompareTag("Enemy") && abilityHolder.CompareTag("Absorb"))
-        {
-            absorbAdd(chargeAmount);
-        }
-        #endregion
 
     }
-    */
+
     #endregion
 
     #region Set Functions
@@ -236,6 +227,7 @@ public class Player : MonoBehaviour
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         attackAreaTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + rotationOffset));
 
+
     }
 
     void FastBlock()
@@ -262,7 +254,7 @@ public class Player : MonoBehaviour
             currentHealth -= damage;
         }
 
-        Debug.Log($"you have {lives} Lives and {currentHealth} Health");
+        //Debug.Log($"you have {lives} Lives and {currentHealth} Health");
         if (lives > 0 && currentHealth > 0)
         {
             
@@ -272,7 +264,10 @@ public class Player : MonoBehaviour
 
     public void CheckStatus()
     {
-        healthBar.SetHealth(currentHealth);
+        if(healthBar != null)
+        {
+            healthBar.SetHealth(currentHealth);
+        }
         //healthBar.ShowHealthGone(currentHealth);
 
         if (lives > 0 && currentHealth <= 0)
@@ -285,6 +280,7 @@ public class Player : MonoBehaviour
         {
             //change with defeat/ try agian
             gameObject.SetActive(false);
+
         }
     }
 
@@ -292,14 +288,9 @@ public class Player : MonoBehaviour
     public void absorbAdd(float value)
     {
         currentCharge += value;
-        absorbBar.SetValue(currentCharge);
 
-        if (currentCharge >= 100)
+        if(absorbBar != null)
         {
-            Debug.Log(currentCharge);
-            playerGetHit(100);
-            StartCoroutine(FlashCo());
-            currentCharge = 0;
             absorbBar.SetValue(currentCharge);
         }
     }

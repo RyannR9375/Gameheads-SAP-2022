@@ -21,14 +21,13 @@ public class LevelGenerator : MonoBehaviour
     public int resilience1Count = 1;
     public int resilience2Count = 2;
     public int emptyCount = 0;
-    
 
 
+    #region Unity Callback Functions
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").gameObject;
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gameManager.SetActive(true);
 
         for(int i = 0; i < resilience1Count; i++)
         {
@@ -68,6 +67,7 @@ public class LevelGenerator : MonoBehaviour
         
         //Debug.Log(roomCount);
     }
+    #endregion
 
     public List<GameObject> SpawnCorrectRoomDamnIt(RoomSpawner.direction direction)
     {
@@ -99,8 +99,6 @@ public class LevelGenerator : MonoBehaviour
         spawnedItem = Chance();
         roomCount += 1;
 
-        Debug.Log(newList.Count + " NEWLISTCOUNT");
-
         return newList;
     }
     public static GameObject SpawnRoom(RoomSpawner.direction direction, Vector3 PrevRoomPos)
@@ -125,17 +123,23 @@ public class LevelGenerator : MonoBehaviour
         {
             spawnLocation = new Vector3(PrevRoomPos.x + 17.6f, PrevRoomPos.y);
         }
-
+        
         if (GameManager.MyInstance.CollectedItems < GameManager.MyInstance.victoryCondition)
         {
             GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count - 1)], spawnLocation, new Quaternion(0, 0, 0, 0), GameObject.Find("MAP").transform);
             SpawnRoomItems roomScript = spawnedRoom.GetComponent<SpawnRoomItems>();
             roomScript.DestroyUselessDoor(direction);
+
+            //RoomLock roomLock = spawnedRoom.GetComponent<RoomLock>();
+            //Debug.Log(roomLock.enemiesAlive);
+            //BoxCollider2D doorCollider = spawnedRoom.GetComponent<RoomSpawner>().gameObject.GetComponent<BoxCollider2D>();
+            //doorCollider.isTrigger = false;
+            
+
             return spawnedRoom;
         }
         else
         {
-
             GameObject spawnedRoom = Instantiate(newFloorTemplates[Random.Range(0, newFloorTemplates.Count)], spawnLocation, new Quaternion(0, 0, 0, 0), GameObject.Find("MAP").transform);
             SpawnRoomItems roomScript = spawnedRoom.GetComponent<SpawnRoomItems>();
             roomScript.DestroyUselessDoor(direction);
