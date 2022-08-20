@@ -4,21 +4,42 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    #region Components
     private SpriteRenderer Sprite;
+    #endregion
 
+    #region Enemy Health Stats
     [Header("Color Flash on Damage")]
+    public float health;
     public float flashDuration = 2f;
+
     public int numberOfFlashes = 3;
+
     public Color flashColor;
     private Color regularColor;
+    #endregion
 
-    public float health;
-
+    #region Unity Callback Functions
     public void Awake()
     {
         flashColor = Color.red;
         regularColor = Color.white;
         Sprite = GetComponent<SpriteRenderer>();
+    }
+
+    public void Update()
+    {
+        CheckStatus();
+    }
+    #endregion
+
+    #region Functions
+    public void CheckStatus()
+    {
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
     public void Damage(float damage)
     {
@@ -28,20 +49,9 @@ public class EnemyHealth : MonoBehaviour
         //Enemies flash red
 
     }
+    #endregion
 
-    public void Update()
-    {
-        CheckStatus();
-    }
-
-    public void CheckStatus()
-    {
-        if(health <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
+    #region ENUMS
     public IEnumerator FlashCo()
     {
         int temp = 0;
@@ -54,4 +64,5 @@ public class EnemyHealth : MonoBehaviour
             temp++;
         }
     }
+    #endregion
 }

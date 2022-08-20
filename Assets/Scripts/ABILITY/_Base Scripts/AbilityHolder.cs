@@ -71,14 +71,23 @@ public class AbilityHolder: MonoBehaviour
         {
             if (enemyRB != null && shineAbility != null)
             {
+                EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+                if(enemyHealth != null)
+                {
+                    enemyHealth.Damage(shineAbility.damage);
+                }
+
                 releaseVFX.Play();
                 //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'
                 //GETTING THE DISTANCE FROM THE ENEMY TO THE PLAYER, AND ADDING FORCE IN THE OPPOSITE VECTOR DIRECTION. 
                 Vector2 difference = (enemy.transform.position - transform.position);
                 difference = (difference.normalized * shineAbility.shinePush);
                 enemyRB.AddForce(difference, ForceMode2D.Force);
+
                 playerScript.TakeDamage(0f, 15f);
                 StartCoroutine(KnockTime(enemyRB));
+
+                playerScript.currentCharge = 0f;
                 Debug.Log("Calling Shine AbilityPhysics");
             }
             

@@ -104,6 +104,12 @@ public class Player : MonoBehaviour
             currentHealth = maxHealth;
         }
 
+        if(absorbBar != null)
+        {
+            absorbBar.SetMaxValue(maxCharge);
+            currentCharge = 0f;
+        }
+
         //FacingDirection = 1;
 
         //So that when game starts the first state that our player goes into is Idle
@@ -267,7 +273,11 @@ public class Player : MonoBehaviour
         {
             healthBar.SetHealth(currentHealth);
         }
-        //healthBar.ShowHealthGone(currentHealth);
+
+        if (absorbBar != null)
+        {
+            absorbBar.SetValue(currentCharge);
+        }
 
         if (lives > 0 && currentHealth <= 0)
         {
