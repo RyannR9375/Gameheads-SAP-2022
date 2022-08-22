@@ -15,7 +15,9 @@ public class EnemyBossTest : MonoBehaviour
 		WaitingToStart,
 		stage1,
 		stage2,
-		stage3
+		stage3,
+		stage1Vulnerable,
+		stage2Vulnerable,
 	}
 
 	private Stage stage;
@@ -28,6 +30,8 @@ public class EnemyBossTest : MonoBehaviour
 	public float speed;
 	public float health;
 	public float stoppingDistance;
+	public float activeTime;
+	public float vulnerableTime;
 
 	[Header("Projectile Ability Stats")]
 	public GameObject prefabProjectile;
@@ -192,7 +196,7 @@ public class EnemyBossTest : MonoBehaviour
 
 	void DoWhatInThisPhase()
 	{
-		BossDamaged();
+		DetectStageTransition();
 
 		if (stage == Stage.stage1)
 		{
@@ -202,9 +206,11 @@ public class EnemyBossTest : MonoBehaviour
 
 		if (stage == Stage.stage2)
 		{
+
 			PullAttack();
 			ProjectileAttack();
 		}
+
 	}
 	#endregion
 
@@ -212,6 +218,8 @@ public class EnemyBossTest : MonoBehaviour
 
 	private void StartNextStage()
     {
+		vulnerableTime = 5f;
+
         switch (stage) 
 		{ 
 		default: 
@@ -228,23 +236,61 @@ public class EnemyBossTest : MonoBehaviour
 		}
     }
 
-	public void BossDamaged()
+	public void DetectStageTransition()
 	{
+		vulnerableTime -= Time.deltaTime;
 		switch (stage)
 		{
 		default:
+			case Stage.stage1Vulnerable:
+				if (health <= 70)
+                {
+					vulnerableTime = 5f;
+
+					gameObject.SetActive(true);
+					stage = Stage.stage2;
+					break;
+				}
+
+				if (vulnerableTime <= 0)
+                {
+					stage = Stage.stage1;
+					vulnerableTime = 5f;
+				}
+				break;
+
 			case Stage.stage1:
 				if (health <= 70)
 				{
+					vulnerableTime = 5f;
+					
 					gameObject.SetActive(true);
-					StartNextStage();
+					stage = Stage.stage2;
+				}
+				break;
+
+			case Stage.stage2Vulnerable:
+				if (health <= 45)
+				{
+					vulnerableTime = 5f;
+
+					stage = Stage.stage3;
+					break;
+				}
+
+				if (vulnerableTime <= 0)
+                {
+					stage = Stage.stage2;
+					vulnerableTime = 5f;
 				}
 				break;
 
 			case Stage.stage2:
 				if (health <= 45)
 				{
-					StartNextStage();
+					vulnerableTime = 5f;
+
+					stage = Stage.stage3;
 				}
 				break;
 
