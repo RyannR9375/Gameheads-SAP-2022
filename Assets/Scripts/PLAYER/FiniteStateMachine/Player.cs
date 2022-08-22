@@ -285,11 +285,11 @@ public class Player : MonoBehaviour
             currentHealth = maxHealth;
             lives -= 1;
         }
-        else if (lives < 0)
+        else if (lives <= 0)
         {
             //change with defeat/ try agian
             gameObject.SetActive(false);
-
+            GameManager.MyInstance.LoseScreen();
         }
     }
 

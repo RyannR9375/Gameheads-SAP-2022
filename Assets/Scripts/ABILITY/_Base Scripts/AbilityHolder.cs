@@ -20,6 +20,7 @@ public class AbilityHolder: MonoBehaviour
     float cooldownTime;
     private GameObject playerObject;
     private ParticleSystem releaseVFX;
+    private ParticleSystem enemyParticles;
     private Vector3 scaleChange;
     private Vector3 minScale;
     private float minScaleMag;
@@ -85,11 +86,15 @@ public class AbilityHolder: MonoBehaviour
     private void OnTriggerStay2D(Collider2D enemy)
     {
         #region Absorb Ability
-        ParticleSystem enemyParticles = enemy.gameObject.GetComponent<ParticleSystem>();
 
         if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Absorb"))
         {
             #region Enemy VFX
+            if (enemy.gameObject.GetComponent<ParticleSystem>() != null)
+            {
+                enemyParticles = enemy.gameObject.GetComponent<ParticleSystem>();
+            }
+
             if (enemyParticles != null)
             {
                 var main = enemyParticles.main;
@@ -102,7 +107,11 @@ public class AbilityHolder: MonoBehaviour
         }
         else
         {
-            enemyParticles.Stop();
+            if(enemyParticles != null)
+            {
+                enemyParticles.Stop();
+            }
+
         }
         #endregion
     }
