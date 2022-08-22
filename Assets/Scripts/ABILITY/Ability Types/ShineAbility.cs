@@ -11,16 +11,17 @@ public class ShineAbility : Ability
 
     //DECLARING VARIABLES
     [SerializeField] private float _knockbackTime;
-    //[SerializeField] private float _pullTime; POTENTIALLY MAKING THIS 
     [SerializeField] private float _shinePush;
     [SerializeField] private float _shineRadius;
     [SerializeField] private float _pullTime;
+    [SerializeField] private float _damage;
 
     public float knockbackTime{ get { return _knockbackTime; }}
     //public float pullTime{ get { return _pullTime; }}
     public float shinePush{ get { return _shinePush; }}
     public float shineRadius { get { return _shineRadius; } }
     public float pullTime { get { return _pullTime; } }
+    public float damage { get { return _damage; } }
 
     //ACTIVATING ABILITIES FUNCTION
     public override void Activate(GameObject parent)

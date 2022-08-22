@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2928596241690654076}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3605100622656714328}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1616341199867776675}
   - component: {fileID: 1981333985998786546}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Spawn (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7936585259002501929}
   - component: {fileID: 1613461369375589697}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Spawn (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7792697624954825711}
   - component: {fileID: 6325543228201581360}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 506969481694678141}
   - component: {fileID: 4202674219516772349}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2176631772875078015}
   - component: {fileID: 3625342526909581321}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Spawn (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -834,7 +834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 783133751935242674}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,7 +987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6476480091026185154}
   - component: {fileID: 259900248426839577}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Spawn (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1181,7 +1181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4852364817963195300}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1328,7 +1328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7194797296146446302}
   - component: {fileID: 8166112355938776991}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Spawn (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1635,7 +1635,7 @@ GameObject:
   - component: {fileID: 1430171277353217661}
   - component: {fileID: 1778782485003195602}
   - component: {fileID: 6562931580939842501}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ROOM 1 BossSpawnRoom
   m_TagString: Room
   m_Icon: {fileID: 0}
@@ -1676,6 +1676,9 @@ MonoBehaviour:
   EnemyTypes: []
   ItemsToSpawn: []
   spawnFolder: {fileID: 1718356213111853818}
+  Resilience1: {fileID: 0}
+  Resilience2: {fileID: 0}
+  itemToSpawn: 0
 --- !u!61 &6562931580939842501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1712,7 +1715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1474132191193528075}
   - component: {fileID: 1383553089358131599}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Spawn (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1904,13 +1907,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4852364817963195300}
     m_Modifications:
+    - target: {fileID: 1889947597839733758, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2948599903728878925, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: WhatDirection
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3360995194343314560, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5916686790830511351, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: m_Name
       value: Door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916686790830511351, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: m_RootOrder
@@ -1974,9 +1989,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4852364817963195300}
     m_Modifications:
+    - target: {fileID: 1889947597839733758, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360995194343314560, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5916686790830511351, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916686790830511351, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: m_RootOrder
@@ -2040,13 +2067,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4852364817963195300}
     m_Modifications:
+    - target: {fileID: 1889947597839733758, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2948599903728878925, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: WhatDirection
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3360995194343314560, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5916686790830511351, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: m_Name
       value: Door (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916686790830511351, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: m_RootOrder
@@ -2110,13 +2149,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4852364817963195300}
     m_Modifications:
+    - target: {fileID: 1889947597839733758, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2948599903728878925, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: WhatDirection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3360995194343314560, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5916686790830511351, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: m_Name
       value: Door (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916686790830511351, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8384671119230347649, guid: 12d006bd73013b8498c89029665f13c2, type: 3}
       propertyPath: m_RootOrder

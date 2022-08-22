@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     #region Declaring Variables
     [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject loseUI;
     private static GameManager instance;
     [SerializeField] public int CollectedItems, victoryCondition = 2;
 
@@ -39,11 +40,6 @@ public class GameManager : MonoBehaviour
         {
             SwitchPause();
         }
-
-        if (CollectedItems >= victoryCondition)
-        {
-            //SceneManager.LoadScene("BEAT GAME");
-        }
     }
     
 
@@ -71,6 +67,16 @@ public class GameManager : MonoBehaviour
         if (GameOverYesOrNo == false)
         {
             pauseUI.SetActive(!pauseUI.activeSelf);
+            Time.timeScale = Time.timeScale == 1 ? 0 : 1;
+            isPaused = isPaused = true ? false : true;
+        }
+    }
+
+    public void LoseScreen()
+    {
+        if(GameOverYesOrNo == false)
+        {
+            loseUI.SetActive(!loseUI.activeSelf);
             Time.timeScale = Time.timeScale == 1 ? 0 : 1;
             isPaused = isPaused = true ? false : true;
         }

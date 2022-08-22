@@ -11,15 +11,16 @@ public class AbilityHolder: MonoBehaviour
 {
     #region Calling Scripts
     public Ability ability;
-    private PlayerMovement player;
+    private Player playerScript;
     [HideInInspector] public ShineAbility shineAbility;
     #endregion
 
     #region Declaring Variables
     float activeTime;
     float cooldownTime;
-    private string objectName;
-    private GameObject abilityHolder;
+    private GameObject playerObject;
+    private ParticleSystem releaseVFX;
+    private ParticleSystem enemyParticles;
     private Vector3 scaleChange;
     private Vector3 minScale;
     private float minScaleMag;
@@ -43,8 +44,10 @@ public class AbilityHolder: MonoBehaviour
     private void Awake()
     {
         scaleChange = new Vector3(-1f, -1f, -0f);
-        abilityHolder = gameObject;
-        objectName = gameObject.name;
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        playerScript = playerObject.GetComponent<Player>();
+        releaseVFX = GameObject.Find("Releaseparticles").GetComponent<ParticleSystem>();
+
     }
 
     //GUI, UNCOMMENT WHEN DEBUGGING.
@@ -61,58 +64,68 @@ public class AbilityHolder: MonoBehaviour
     #endregion
 
     #region Collision Functions
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D enemy)
     {
-        Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
+        Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
 
         #region Shine Ability
-        //SHINE ABILITY TRIGGER COLLISION. CHECKS FOR BOTH 'ENEMY' TAG AND 'SHINE' TAG.
-        if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Shine"))
+        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Shine") && playerScript.currentCharge >= playerScript.maxCharge)
         {
-            //CHECKING IF ENEMY HAS Rigidbody2D 
-            if (enemy != null && shineAbility != null)
-            {
-                //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'
-                //GETTING THE DISTANCE FROM THE ENEMY TO THE PLAYER, AND ADDING FORCE IN THE OPPOSITE VECTOR DIRECTION. 
-                Vector2 difference = (enemy.transform.position - transform.position);
-                difference = (difference.normalized * shineAbility.shinePush);
-                enemy.AddForce(difference, ForceMode2D.Force);
-
-                StartCoroutine(KnockTime(enemy));
-                //Debug.Log("Calling Shine AbilityPhysics");
-            }
+            ShineTrigger(enemy);
         }
         #endregion
 
         #region Release Ability
-        //RELEASE ABILITY TRIGGER COLLISION. CHECKS FOR BOTH 'ENEMY' TAG AND 'RELEASE' TAG.
-        if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Release"))
+        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Release"))
         {
-            //CHECKING IF ENEMY HAS Rigidbody2D 
-            if (other != null)
-            {
-                //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'
-                //Vector2 difference = (enemy.transform.position - transform.position);
-                //difference = (difference.normalized * releaseAbility.releasePush);
-                //enemy.AddForce(difference, ForceMode2D.Force);
-                //StartCoroutine(KnockTime(enemy));
-                Debug.Log("Calling Release AbilityPhysics");
-                Destroy(other.gameObject);
-            }
+            Release(enemy);
         }
         #endregion
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D enemy)
     {
         #region Absorb Ability
-        if (other.gameObject.CompareTag("Enemy") && CompareTag("Absorb"))
+
+        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Absorb"))
         {
-            absorbRelease(other);
+            #region Enemy VFX
+            if (enemy.gameObject.GetComponent<ParticleSystem>() != null)
+            {
+                enemyParticles = enemy.gameObject.GetComponent<ParticleSystem>();
+            }
+
+            if (enemyParticles != null)
+            {
+                var main = enemyParticles.main;
+                main.duration = ability.activeTime;
+                enemyParticles.Play();
+            }
+            #endregion
+
+            Absorb(enemy);
+        }
+        else
+        {
+            if(enemyParticles != null)
+            {
+                enemyParticles.Stop();
+            }
+
         }
         #endregion
     }
 
+    private void OnCollisionEnter2D(Collision2D enemy)
+    {
+        #region Shine Ability
+        Rigidbody2D enemyRB = enemy.gameObject.GetComponent<Rigidbody2D>();
+        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Shine"))
+        {
+            ShineCollision(enemy);
+        }
+        #endregion
+    }
     #endregion
 
     #region ENUMS
@@ -181,15 +194,28 @@ public class AbilityHolder: MonoBehaviour
             enemy.velocity = Vector2.zero;
         }
     }
+
+    private IEnumerator ChargeDeplete()
+    {
+        yield return new WaitForSeconds(shineAbility.activeTime);
+        playerScript.currentCharge = 0f;
+    }
     #endregion
 
     #region Functions
-    void absorbRelease(Collider2D enemy)
+    void Absorb(Collider2D enemy)
     {
+
         tag = "Absorb";
         scaleChange = new Vector3(-0.003f, -0.003f, 0f);
         minScale = new Vector3(0.2f, 1.077f, 0f);
         minScaleMag = (minScale.magnitude);
+
+        //Makes sure the player isn't absorbing past the maximum
+        if (playerScript.currentCharge < playerScript.maxCharge)
+        {
+            playerScript.absorbAdd(playerScript.chargeAmount);
+        }
 
         //Checks if the enemy has hit the minimum scale, if not, keep decreasing their size
         if (enemy.transform.localScale.magnitude > minScaleMag)
@@ -202,12 +228,89 @@ public class AbilityHolder: MonoBehaviour
             //enemy.gameObject.tag = "Untagged";
             if (enemy != null)
             {
-                GameObject enemyBody = enemy.gameObject;
-                Destroy(enemyBody);
+                Destroy(enemy.gameObject);
                 //playing enemy death anim and disabling its movement? }
             }
         }
 
+    }
+
+    void Release(Collider2D enemy)
+    {
+        tag = "Release";
+        Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
+        if (enemyRB != null)
+        {
+            Debug.Log("Calling Release AbilityPhysics");
+            Destroy(enemy.gameObject);
+        }
+
+    }
+
+    //RENAME TO RELEASE
+    void ShineTrigger(Collider2D enemy)
+    {
+        Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
+        if (enemyRB != null && shineAbility != null)
+        {
+            #region Player VFX
+            var main = releaseVFX.main;
+            main.duration = shineAbility.activeTime;
+            releaseVFX.Play();
+            #endregion
+
+            //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'
+            //GETTING THE DISTANCE FROM THE ENEMY TO THE PLAYER, AND ADDING FORCE IN THE OPPOSITE VECTOR DIRECTION. 
+            Vector2 difference = (enemy.transform.position - transform.position);
+            difference = (difference.normalized * shineAbility.shinePush);
+            enemyRB.AddForce(difference, ForceMode2D.Force);
+
+            playerScript.TakeDamage(0f, 15f);
+            StartCoroutine(KnockTime(enemyRB));
+
+            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.Damage(shineAbility.damage);
+            }
+
+            StartCoroutine(ChargeDeplete());
+            Debug.Log("Calling Shine AbilityPhysics");
+        }
+    }
+
+    void ShineCollision(Collision2D enemy)
+    {
+        Rigidbody2D enemyRB = enemy.gameObject.GetComponent<Rigidbody2D>();
+        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Shine"))
+        {
+            if (enemyRB != null && shineAbility != null && playerScript.currentCharge >= playerScript.maxCharge)
+            {
+                #region Player VFX
+                var main = releaseVFX.main;
+                main.duration = shineAbility.activeTime;
+                releaseVFX.Play();
+                #endregion
+
+                //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'
+                //GETTING THE DISTANCE FROM THE ENEMY TO THE PLAYER, AND ADDING FORCE IN THE OPPOSITE VECTOR DIRECTION. 
+                Vector2 difference = (enemy.transform.position - transform.position);
+                difference = (difference.normalized * shineAbility.shinePush);
+                enemyRB.AddForce(difference, ForceMode2D.Force);
+
+                playerScript.TakeDamage(0f, 15f);
+                StartCoroutine(KnockTime(enemyRB));
+
+                EnemyHealth enemyHealth = enemyRB.GetComponent<EnemyHealth>();
+                if (enemyHealth != null)
+                {
+                enemyHealth.Damage(shineAbility.damage);
+                }
+
+                StartCoroutine(ChargeDeplete());
+                Debug.Log("Calling Shine AbilityPhysics");
+            }
+        }
     }
     #endregion
 }
