@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
         {
             DestroyImmediate(this);
         }
-        txtItems.text = "Resilience Collected: " + victoryCondition.GetComponent<GameManager>().CollectedItems + "/" + victoryCondition.GetComponent<GameManager>().victoryCondition;
+        txtItems.text = victoryCondition.GetComponent<GameManager>().CollectedItems + " of " + victoryCondition.GetComponent<GameManager>().victoryCondition;
         txtVictoryCondition.gameObject.SetActive(false);
         txtVictoryCondition.text = "YOU CAN NOW FIND AND ENTER THE BOSS ROOM.";
 
