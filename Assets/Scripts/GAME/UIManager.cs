@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     #region Declaring Variables
     Collectable collectable;
 
-    [SerializeField] TextMeshProUGUI txtItems, txtVictoryCondition;
+    [SerializeField] TextMeshProUGUI txtItems/*, txtVictoryCondition*/;
     [SerializeField] GameObject victoryCondition;
     private static UIManager instance;
     private int neededItems = 2;
@@ -27,9 +27,10 @@ public class UIManager : MonoBehaviour
             DestroyImmediate(this);
         }
         txtItems.text = victoryCondition.GetComponent<GameManager>().CollectedItems + " of " + victoryCondition.GetComponent<GameManager>().victoryCondition;
+        /*
         txtVictoryCondition.gameObject.SetActive(false);
         txtVictoryCondition.text = "YOU CAN NOW FIND AND ENTER THE BOSS ROOM.";
-
+        */
         //KEEPS THE UI THROUGHOUT SCENE TRANSFERS.
         //DontDestroyOnLoad(this);
     }
@@ -53,16 +54,20 @@ public class UIManager : MonoBehaviour
     public void UpdateItemUI(int _items, int _victoryCondition)
     {
         //collectable.itemValue += _items;
-        txtItems.text = "Resilience Collected: " + _items + "/" + _victoryCondition;
-        ShowVictoryCondition(_items, _victoryCondition);
+        txtItems.text = ": " + _items + "/" + _victoryCondition;
+        if (_items >= _victoryCondition)
+        {
+            txtItems.text = "YOU CAN NOW FIND AND ENTER THE BOSS ROOM.";
+        }
+        //ShowVictoryCondition(_items, _victoryCondition);
     }
 
-    public void ShowVictoryCondition(int _items, int _victoryCondition)
+   /* public void ShowVictoryCondition(int _items, int _victoryCondition)
     {
         neededItems = _victoryCondition - _items;
         //victoryCondition.SetActive(true);
         txtVictoryCondition.text = "YOU NEED " + neededItems + " MORE RESILIENCE IN ORDER TO ENTER THE BOSS ROOM.";
-    }
+    }*/
     public void HideVictoryCondition()
     {
         //victoryCondition.SetActive(false);
