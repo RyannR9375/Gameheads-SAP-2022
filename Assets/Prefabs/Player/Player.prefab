@@ -123,6 +123,7 @@ MonoBehaviour:
   shineAbility: {fileID: 0}
   state: 0
   key: 101
+  button: 332
 --- !u!114 &5689715813697346780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +139,8 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: 12ab4829b9546844f9933569b95464e6, type: 2}
   shineAbility: {fileID: 0}
   state: 0
-  key: 113
+  key: 120
+  button: 330
 --- !u!114 &5689715813697346755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +157,7 @@ MonoBehaviour:
   shineAbility: {fileID: 11400000, guid: 990c35197948a6348b582a2b07bd1314, type: 2}
   state: 0
   key: 32
+  button: 331
 --- !u!1 &5689715813888288537
 GameObject:
   m_ObjectHideFlags: 0

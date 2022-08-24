@@ -10,6 +10,7 @@ public class EnemyProjectileShooter : MonoBehaviour
 	public float startTimeBtwShots;
 	public float shootDistance;
 	public float stoppingDistance;
+	public float damage;
 	public Transform player;
 
     private void Awake()
@@ -25,7 +26,7 @@ public class EnemyProjectileShooter : MonoBehaviour
 			ProjectileAttack();
 		}
 
-		if(Vector2.Distance(transform.position, player.transform.position) > stoppingDistance)
+		if(Vector2.Distance(transform.position, player.transform.position) < stoppingDistance)
         {
 			transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
@@ -45,4 +46,13 @@ public class EnemyProjectileShooter : MonoBehaviour
 			timeBtwShots -= Time.deltaTime;
 		}
 	}
+
+	public void OnCollisionEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+			Player playerScript = player.GetComponent<Player>();
+			playerScript.playerGetHit(damage);
+        }
+    }
 }

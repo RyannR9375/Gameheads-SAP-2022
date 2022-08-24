@@ -4872,6 +4872,7 @@ MonoBehaviour:
   startTimeBtwShots: 2
   shootDistance: 9
   stoppingDistance: 8
+  damage: 10
   player: {fileID: 0}
 --- !u!114 &1526394208541096320
 MonoBehaviour:

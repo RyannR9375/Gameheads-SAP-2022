@@ -19245,6 +19245,7 @@ MonoBehaviour:
   startTimeBtwShots: 2
   shootDistance: 9
   stoppingDistance: 8
+  damage: 0
   player: {fileID: 0}
 --- !u!114 &6408993802191121458
 MonoBehaviour:
@@ -24875,6 +24876,7 @@ MonoBehaviour:
   startTimeBtwShots: 2
   shootDistance: 9
   stoppingDistance: 8
+  damage: 0
   player: {fileID: 0}
 --- !u!114 &6408993802248767207
 MonoBehaviour:
@@ -84894,6 +84896,7 @@ GameObject:
   - component: {fileID: 6408993803416534430}
   - component: {fileID: 6408993803416534424}
   - component: {fileID: 6408993803416534431}
+  - component: {fileID: 4608524103954813365}
   m_Layer: 0
   m_Name: Hexagon Pointed-Top
   m_TagString: Enemy
@@ -84984,6 +84987,32 @@ MonoBehaviour:
   flashDuration: 2
   numberOfFlashes: 3
   flashColor: {r: 1, g: 0, b: 0, a: 0}
+--- !u!61 &4608524103954813365
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408993803416534429}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8828125, y: 1}
+    newSize: {x: 0.8828125, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8828125, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &6408993803418561029
 GameObject:
   m_ObjectHideFlags: 0
@@ -86185,6 +86214,7 @@ MonoBehaviour:
   startTimeBtwShots: 2
   shootDistance: 9
   stoppingDistance: 8
+  damage: 0
   player: {fileID: 0}
 --- !u!114 &6408993803628746773
 MonoBehaviour:

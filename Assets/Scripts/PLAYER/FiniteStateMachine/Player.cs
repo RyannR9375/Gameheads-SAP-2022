@@ -98,13 +98,13 @@ public class Player : MonoBehaviour
 
 
         //refactor to scriptable objects
-        if(healthBar != null)
+        if (healthBar != null)
         {
             healthBar.SetMaxHealth(maxHealth);
             currentHealth = maxHealth;
         }
 
-        if(absorbBar != null)
+        if (absorbBar != null)
         {
             absorbBar.SetMaxValue(maxCharge);
             currentCharge = 0f;
@@ -124,12 +124,12 @@ public class Player : MonoBehaviour
 
         //will move into statemachine, change functionality to work with designated buttons for controller support
         #region will move into statemachines
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetAxis("Attack") >= 1)
         {
             Attack();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetAxis("Block") >= 1)
         {
             FastBlock();
         }
@@ -176,6 +176,7 @@ public class Player : MonoBehaviour
         #region Player & Enemy 
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player") && canTakeDamage)
         {
+            
             //Debug.Log("I is hit");
             //StartCoroutine(KnockCo(3f)); // REPLACE '3F' WITH SOMETHING. WILL ONLY BE USED WHEN THE PLAYER HAS A BASIC ATTACK FUNCTION THAT CAN KNOCK ENEMIES BACK.
             TakeDamage(knockTime, 10); //REPLACE WITH ENEMY DAMAGE NUMBERS
@@ -243,7 +244,7 @@ public class Player : MonoBehaviour
     }
 
     //SIMPLE DAMAGE SCRIPT
-    public void playerGetHit(int damage)
+    public void playerGetHit(float damage)
     {
         if(lives > 0 && currentHealth > 0 && canTakeDamage == true)
         {

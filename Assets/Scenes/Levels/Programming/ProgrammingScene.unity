@@ -756,7 +756,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtItems: {fileID: 1847552438}
-  txtVictoryCondition: {fileID: 0}
   victoryCondition: {fileID: 1578633352}
 --- !u!4 &1041294496
 Transform:
@@ -2261,11 +2260,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288529, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 118.89
+      value: 116.6
       objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288529, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.73
+      value: 30.9
       objectReference: {fileID: 0}
     - target: {fileID: 5689715813888288529, guid: 2720a48efac38b640a6f0e58581511d4, type: 3}
       propertyPath: m_LocalPosition.z

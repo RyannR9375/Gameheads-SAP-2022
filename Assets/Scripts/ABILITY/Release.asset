@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d1ca4bd6244944e913b3d917d91a04, type: 3}
   m_Name: Release
   m_EditorClassIdentifier: 
-  activeTime: 10
+  activeTime: 0.01
   cooldownTime: 1e+13
   _knockbackTime: 3
   _releasePush: 5000

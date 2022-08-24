@@ -55,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   playerTransform: {fileID: 0}
-  followDistance: 1
+  followDistance: 6
   moveSpots:
   - {fileID: 0}
 --- !u!114 &619019234505381054

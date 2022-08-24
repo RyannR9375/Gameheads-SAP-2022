@@ -6,7 +6,6 @@ public class EnemyHealth : MonoBehaviour
 {
     #region Components
     private SpriteRenderer Sprite;
-    private ParticleSystem AbsorbParticles;
     #endregion
 
     #region Enemy Health Stats

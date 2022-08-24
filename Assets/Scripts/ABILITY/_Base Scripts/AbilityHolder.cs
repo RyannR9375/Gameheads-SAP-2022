@@ -38,6 +38,7 @@ public class AbilityHolder: MonoBehaviour
     //private AbilityState debugState; //CHANGE TO PUBLIC WHEN TRYING TO DEBUG. ALLOWS YOU TO CYCLE BETWEEN 'READY', 'ACTIVE', AND 'COOLDOWN' THROUGH THE GUI.
     //ADDING INSPECTOR FRIENDLY KEY-BIND CHANGING, POTENTIALLY MAKING THIS PART OF THE ABILITYLIST SO YOU CAN DEFINE THE ABILITY TYPE AND THE KEY YOU WANT TO USE WITH IT IN ONE ELEMENT.
     public KeyCode key;
+    public KeyCode button;
     #endregion
 
     #region Unity Callback Functions & GUI Stuff
@@ -60,6 +61,8 @@ public class AbilityHolder: MonoBehaviour
     {
         //ClickForActivate();
         HoldForActivate();
+
+        
     }
     #endregion
 
@@ -69,14 +72,14 @@ public class AbilityHolder: MonoBehaviour
         Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
 
         #region Shine Ability
-        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Shine") && playerScript.currentCharge >= playerScript.maxCharge)
+        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Shine") && playerScript.currentCharge >= playerScript.maxCharge / 2)
         {
             ShineTrigger(enemy);
         }
         #endregion
 
         #region Release Ability
-        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Release"))
+        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Release") && playerScript.currentCharge >= playerScript.maxCharge)
         {
             Release(enemy);
         }
@@ -120,7 +123,7 @@ public class AbilityHolder: MonoBehaviour
     {
         #region Shine Ability
         Rigidbody2D enemyRB = enemy.gameObject.GetComponent<Rigidbody2D>();
-        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Shine"))
+        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Shine") && playerScript.currentCharge >= playerScript.maxCharge / 2)
         {
             ShineCollision(enemy);
         }
@@ -136,7 +139,7 @@ public class AbilityHolder: MonoBehaviour
         {
             //READY STATE
             case AbilityState.ready:
-                if ((Input.GetKeyDown(key) && activeTime >= 0))
+                if ((Input.GetKeyDown(key) || (Input.GetKeyDown(button)) && activeTime >= 0))
                 {
                     //Debug.Log("Ready");
                     //WHEN ABILITY IS CALLED, ENSURE THAT THE SWITCH STATE IS SET TO ACTIVE
@@ -150,7 +153,7 @@ public class AbilityHolder: MonoBehaviour
 
             //ACTIVE STATE
             case AbilityState.active:
-                if ((Input.GetKeyUp(key) || activeTime < 0))//FIX
+                if ((Input.GetKeyUp(key) || (Input.GetKeyDown(button)) || activeTime < 0))//FIX
                 {
                     //Debug.Log("Active");
                     //IF ACTIVE TIME IS LESS THAN 0, BEGIN AND CALL COOLDOWN
