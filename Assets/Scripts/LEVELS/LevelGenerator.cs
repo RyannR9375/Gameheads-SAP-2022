@@ -11,25 +11,25 @@ public class LevelGenerator : MonoBehaviour
     public LevelSettings LevelSettings;
 
     public GameObject gameManager;
-    private GameManager gameManagerScript;
+    //private GameManager gameManagerScript;
     public bool TutorialLevel;
     public GameObject TutorialRoom;
     private bool tutorialRoomSpawned = false;
     public float roomCount = 0f;
-    private int spawnedItem;
+    /*private int spawnedItem;
     public List<int> ResilienceChance = new List<int>();
     public int resilience1Count = 1;
     public int resilience2Count = 2;
     public int emptyCount = 0;
-
+    */
 
     #region Unity Callback Functions
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").gameObject;
-        gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        for(int i = 0; i < resilience1Count; i++)
+        /*for(int i = 0; i < resilience1Count; i++)
         {
             ResilienceChance.Add(1);
         }
@@ -40,7 +40,7 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 0; i < emptyCount; i++)
         {
             ResilienceChance.Add(0);
-        }
+        }*/
 
     }
     void Start()
@@ -96,7 +96,7 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        spawnedItem = Chance();
+        //spawnedItem = Chance();
         roomCount += 1;
 
         return newList;
@@ -135,7 +135,6 @@ public class LevelGenerator : MonoBehaviour
             //BoxCollider2D doorCollider = spawnedRoom.GetComponent<RoomSpawner>().gameObject.GetComponent<BoxCollider2D>();
             //doorCollider.isTrigger = false;
             
-
             return spawnedRoom;
         }
         else
@@ -156,12 +155,7 @@ public class LevelGenerator : MonoBehaviour
         tutorialRoomSpawned = true;
     }
 
-    public void SpawnBossDoorRoom()
-    {
-        
-    }
-
-    public int Chance()
+    /*public int Chance()
     {
 
         if (ResilienceChance.Count == 0)
@@ -177,5 +171,5 @@ public class LevelGenerator : MonoBehaviour
 
   
         return chanceValue;
-    }
+    }*/
 }
