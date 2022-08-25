@@ -50,9 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd96cc51070c0b448bf07efd56cd460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 4
   followDistance: 5
-  lifeTime: 2
+  lifeTime: 6
+  damage: 0
   player: {fileID: 0}
 --- !u!114 &-6412236640980983659
 MonoBehaviour:

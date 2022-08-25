@@ -19244,6 +19244,7 @@ MonoBehaviour:
   timeBtwShots: 1
   startTimeBtwShots: 2
   shootDistance: 9
+  retreatDistance: 0
   stoppingDistance: 8
   damage: 0
   player: {fileID: 0}
@@ -24875,6 +24876,7 @@ MonoBehaviour:
   timeBtwShots: 1
   startTimeBtwShots: 2
   shootDistance: 9
+  retreatDistance: 0
   stoppingDistance: 8
   damage: 0
   player: {fileID: 0}
@@ -24973,7 +24975,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -84983,7 +84985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9853293208aa4194aa007534bbdb1ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 10000
   flashDuration: 2
   numberOfFlashes: 3
   flashColor: {r: 1, g: 0, b: 0, a: 0}
@@ -86213,6 +86215,7 @@ MonoBehaviour:
   timeBtwShots: 1
   startTimeBtwShots: 2
   shootDistance: 9
+  retreatDistance: 0
   stoppingDistance: 8
   damage: 0
   player: {fileID: 0}

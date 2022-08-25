@@ -56,6 +56,7 @@ MonoBehaviour:
   speed: 3
   playerTransform: {fileID: 0}
   followDistance: 6
+  damage: 5
   moveSpots:
   - {fileID: 0}
 --- !u!114 &619019234505381054

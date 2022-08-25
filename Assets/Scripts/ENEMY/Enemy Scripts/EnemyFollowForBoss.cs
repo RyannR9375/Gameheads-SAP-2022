@@ -8,6 +8,7 @@ public class EnemyFollowForBoss : MonoBehaviour
     public float speed;
     public float followDistance;
     public float lifeTime;
+    public float damage;
     public Transform player;
     private Vector2 target;
     #endregion
@@ -41,7 +42,8 @@ public class EnemyFollowForBoss : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            DestroyProjectile();
+            Player playerScript = player.GetComponent<Player>();
+            playerScript.playerGetHit(damage);
         }
     }
     #endregion

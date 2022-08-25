@@ -176,11 +176,7 @@ public class Player : MonoBehaviour
         #region Player & Enemy 
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player") && canTakeDamage)
         {
-            
-            //Debug.Log("I is hit");
-            //StartCoroutine(KnockCo(3f)); // REPLACE '3F' WITH SOMETHING. WILL ONLY BE USED WHEN THE PLAYER HAS A BASIC ATTACK FUNCTION THAT CAN KNOCK ENEMIES BACK.
-            TakeDamage(knockTime, 10); //REPLACE WITH ENEMY DAMAGE NUMBERS
-            
+            playerGetHit(5f);
         }
         #endregion
     }

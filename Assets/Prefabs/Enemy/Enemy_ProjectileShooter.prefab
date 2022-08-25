@@ -4870,8 +4870,9 @@ MonoBehaviour:
   speed: 3
   timeBtwShots: 1
   startTimeBtwShots: 2
-  shootDistance: 9
-  stoppingDistance: 8
+  shootDistance: 12
+  retreatDistance: 8
+  stoppingDistance: 18
   damage: 10
   player: {fileID: 0}
 --- !u!114 &1526394208541096320
@@ -4969,7 +4970,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

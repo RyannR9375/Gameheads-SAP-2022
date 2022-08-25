@@ -8,6 +8,7 @@ public class EnemyFollow : MonoBehaviour
     public float speed;
     public GameObject playerTransform;
     public float followDistance;
+    public float damage;
     private float take;
 
     public Transform[] moveSpots;
@@ -36,9 +37,20 @@ public class EnemyFollow : MonoBehaviour
 
     //public void FollowMe()
     //{
-            //if (Vector2.Distance(transform.position, player.position) < talkingDistance)
-            //{
-               // transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
-           // }
+    //if (Vector2.Distance(transform.position, player.position) < talkingDistance)
+    //{
+    // transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
+    // }
     //}
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Player playerScript = playerTransform.GetComponent<Player>();
+            playerScript.playerGetHit(damage);
+        }
+
+    }
+
 }

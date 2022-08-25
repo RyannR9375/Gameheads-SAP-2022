@@ -297,7 +297,7 @@ public class AbilityHolder: MonoBehaviour
 
                 //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'
                 //GETTING THE DISTANCE FROM THE ENEMY TO THE PLAYER, AND ADDING FORCE IN THE OPPOSITE VECTOR DIRECTION. 
-                Vector2 difference = (enemy.transform.position - transform.position);
+                Vector2 difference = (enemy.gameObject.transform.position - transform.position);
                 difference = (difference.normalized * shineAbility.shinePush);
                 enemyRB.AddForce(difference, ForceMode2D.Force);
 
