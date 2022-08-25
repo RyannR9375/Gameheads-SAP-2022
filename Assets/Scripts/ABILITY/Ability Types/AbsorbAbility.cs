@@ -12,6 +12,13 @@ public class AbsorbAbility : Ability
     public int absorbValue;
     //public Slider slider;
 
+    private ParticleSystem playerParticles;
+
+    private void Awake()
+    {
+        playerParticles = GameObject.Find("AbsorbPlayerVfx").GetComponent<ParticleSystem>();
+    }
+
     //ACTIVATING ABILITIES FUNCTION
     public override void Activate(GameObject parent)
     {
@@ -29,6 +36,7 @@ public class AbsorbAbility : Ability
     {
         CircleCollider2D absorb = parent.GetComponent<CircleCollider2D>();
         absorb.tag = "Untagged";
+
         Destroy(absorb);
     }
 

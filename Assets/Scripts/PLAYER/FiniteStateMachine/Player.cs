@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    //FOG OF WAR ?
     #region State Variables
     public PlayerStateMachine StateMachine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
@@ -22,7 +21,8 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public HealthBar healthBar;
     public AbsorbBar absorbBar;
-    public Transform respawnPoint;
+    public Transform[] respawnPoint;
+    public Transform currentRespawnPoint;
     private Collider2D triggerCollider;
     private SpriteRenderer playerSprite;
     private GameObject abilityHolder;
@@ -96,6 +96,7 @@ public class Player : MonoBehaviour
         abilityHolder = transform.GetChild(0).gameObject;
         attackArea = transform.GetChild(1).gameObject;
 
+        currentRespawnPoint = respawnPoint[0];
 
         //refactor to scriptable objects
         if (healthBar != null)
@@ -176,19 +177,32 @@ public class Player : MonoBehaviour
         #region Player & Enemy 
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player") && canTakeDamage)
         {
-            TakeDamage(knockTime, 8f);
+            TakeDamage(knockTime, 4f);
         }
         #endregion
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        #region Player & Enemy
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player"))
         {
-            //Damage?
+            TakeDamage(knockTime, 4f);
+        }
+        #endregion
+
+        if(other.gameObject.CompareTag("Door") && gameObject.CompareTag("Player"))
+        {
+            respawnPoint[1] = currentRespawnPoint;
         }
 
+        if(other.gameObject.CompareTag("Resilience") && gameObject.CompareTag("Player"))
+        {
+            currentHealth += 10f;
+        }
     }
+
+
 
     #endregion
 
@@ -278,7 +292,7 @@ public class Player : MonoBehaviour
 
         if (lives > 0 && currentHealth <= 0)
         {
-            transform.position = respawnPoint.position;
+            transform.position = currentRespawnPoint.position;
             currentHealth = maxHealth;
             lives -= 1;
         }

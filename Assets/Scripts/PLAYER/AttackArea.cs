@@ -32,13 +32,22 @@ public class AttackArea : MonoBehaviour
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.Damage(damage);
+                enemyHealth.TakeDamage(damage);
             }
         }
 
         if (other.CompareTag("Boss"))
         {
             bossScript.TakeDamage(this.damage);
+        }
+
+        if (other.CompareTag("Rock"))
+        {
+            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(damage);
+            }
         }
     }
 }

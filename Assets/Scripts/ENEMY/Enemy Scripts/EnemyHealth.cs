@@ -41,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public void Damage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         StartCoroutine(FlashCo());

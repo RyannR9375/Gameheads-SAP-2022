@@ -9,6 +9,8 @@ public class EnemyBossTest : MonoBehaviour
 	Player playerScript;
 	private Rigidbody2D playerRB;
 	private Transform player;
+	public ParticleSystem absorbVFX;
+	public ParticleSystem pullVFX;
 
 	public enum Stage
 	{
@@ -131,6 +133,8 @@ public class EnemyBossTest : MonoBehaviour
 		{
 			Debug.Log("Pull Attack Called");
 
+			pullVFX.Play();
+
 			//Gets difference of distance, and pulls the player in.
 			Vector2 difference = (transform.position - player.transform.position);
 			difference = (difference.normalized * pullForce);
@@ -152,6 +156,7 @@ public class EnemyBossTest : MonoBehaviour
 	{
 		if (player != null && Vector2.Distance(transform.position, player.transform.position) < absorbDistance)
 		{
+			absorbVFX.Play();
 			Debug.Log("Absorb Ability Called");
 			scaleChange = new Vector3(resizeAmt * 0.0001f, resizeAmt * 0.0001f, 0f);
 			maxScale = transform.localScale * maxResize;

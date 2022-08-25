@@ -19,7 +19,8 @@ public class AbilityHolder: MonoBehaviour
     float activeTime;
     float cooldownTime;
     private GameObject playerObject;
-    private ParticleSystem releaseVFX;
+    public GameObject VFX;
+    private ParticleSystem particleSystem;
     private ParticleSystem enemyParticles;
     private Vector3 scaleChange;
     private Vector3 minScale;
@@ -47,7 +48,7 @@ public class AbilityHolder: MonoBehaviour
         scaleChange = new Vector3(-1f, -1f, -0f);
         playerObject = GameObject.FindGameObjectWithTag("Player");
         playerScript = playerObject.GetComponent<Player>();
-        releaseVFX = GameObject.Find("Releaseparticles").GetComponent<ParticleSystem>();
+        particleSystem = VFX.GetComponent<ParticleSystem>();
 
     }
 
@@ -100,8 +101,6 @@ public class AbilityHolder: MonoBehaviour
 
             if (enemyParticles != null)
             {
-                var main = enemyParticles.main;
-                main.duration = ability.activeTime;
                 enemyParticles.Play();
             }
             #endregion
@@ -148,6 +147,14 @@ public class AbilityHolder: MonoBehaviour
                     //SETTING THE ACTIVE TIME = TO A DECREASING TIME DEFINED IN THE 'ACTIVE' SWITCH STATE
                     activeTime = ability.activeTime;
                     activeTime -= Time.deltaTime;
+
+                    if (particleSystem != null)
+                    {
+                        //var main = particleSystem.main;
+                        //main.duration = ability.activeTime;
+                        particleSystem.Play();
+                    }
+
                 }
                 break;
 
@@ -184,6 +191,9 @@ public class AbilityHolder: MonoBehaviour
                     //WHEN THE COOLDOWN TIME IS 0, SET THE SWITCH STATE TO 'READY' AND RESET 'ACTIVE TIME' ABILITY.
                     state = AbilityState.ready;
                     activeTime = ability.activeTime;
+
+                    if (particleSystem != null)
+                        particleSystem.Stop();
                 }
                 break;
         }
@@ -257,12 +267,6 @@ public class AbilityHolder: MonoBehaviour
         Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
         if (enemyRB != null && shineAbility != null)
         {
-            #region Player VFX
-            var main = releaseVFX.main;
-            main.duration = shineAbility.activeTime;
-            releaseVFX.Play();
-            #endregion
-
             //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'
             //GETTING THE DISTANCE FROM THE ENEMY TO THE PLAYER, AND ADDING FORCE IN THE OPPOSITE VECTOR DIRECTION. 
             Vector2 difference = (enemy.transform.position - transform.position);
@@ -275,7 +279,7 @@ public class AbilityHolder: MonoBehaviour
             EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.Damage(shineAbility.damage);
+                enemyHealth.TakeDamage(shineAbility.damage);
             }
 
             StartCoroutine(ChargeDeplete(50));
@@ -290,12 +294,6 @@ public class AbilityHolder: MonoBehaviour
         {
             if (enemyRB != null && shineAbility != null && playerScript.currentCharge >= playerScript.maxCharge)
             {
-                #region Player VFX
-                var main = releaseVFX.main;
-                main.duration = shineAbility.activeTime;
-                releaseVFX.Play();
-                #endregion
-
                 //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'
                 //GETTING THE DISTANCE FROM THE ENEMY TO THE PLAYER, AND ADDING FORCE IN THE OPPOSITE VECTOR DIRECTION. 
                 Vector2 difference = (enemy.gameObject.transform.position - transform.position);
@@ -308,7 +306,7 @@ public class AbilityHolder: MonoBehaviour
                 EnemyHealth enemyHealth = enemyRB.GetComponent<EnemyHealth>();
                 if (enemyHealth != null)
                 {
-                enemyHealth.Damage(shineAbility.damage);
+                enemyHealth.TakeDamage(shineAbility.damage);
                 }
 
                 StartCoroutine(ChargeDeplete(50));
