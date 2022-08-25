@@ -2113,16 +2113,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2445709163812864041, guid: 315b765d363a4ad4ebfbffd822e080dc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2260440795517513276}
+    - target: {fileID: 2445709163812864041, guid: 315b765d363a4ad4ebfbffd822e080dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2445709163812864041, guid: 315b765d363a4ad4ebfbffd822e080dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Exit
+      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 2445709163812864041, guid: 315b765d363a4ad4ebfbffd822e080dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
+      value: SceneChanger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2445709163812864041, guid: 315b765d363a4ad4ebfbffd822e080dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

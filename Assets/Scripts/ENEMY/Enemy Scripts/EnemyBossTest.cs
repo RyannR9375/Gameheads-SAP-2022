@@ -216,6 +216,13 @@ public class EnemyBossTest : MonoBehaviour
 			ProjectileAttack();
 		}
 
+		if(stage == Stage.stage3)
+        {
+			PullAttack();
+			ProjectileAttack();
+			AbsorbAttack();
+		}
+
 	}
 	#endregion
 

@@ -1216,14 +1216,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   absorbVFX: {fileID: 6309677029395947504}
   pullVFX: {fileID: 8524255697662747089}
-  bossDamage: 1
+  bossDamage: 0.1
   attackRange: 2
   speed: 3
   health: 250
   stoppingDistance: 3
   activeTime: 10
   vulnerableTime: 5
-  prefabProjectile: {fileID: 7976323286906160640, guid: d4ef15c78b73f16438489521a6397cbe, type: 3}
+  prefabProjectile: {fileID: 7976323286906160640, guid: ed8243b2fdc2a1847810e610f3d6ed40, type: 3}
   timeBtwShots: 1
   startTimeBtwShots: 1
   pullAttackDistance: 6
