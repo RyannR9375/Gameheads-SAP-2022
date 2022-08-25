@@ -32,7 +32,7 @@ public class SpawnRoomItems : MonoBehaviour
             {
                 for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
                 {
-                    Instantiate(EnemyTypes[Random.Range(0, EnemyTypes.Length-1)], SpawnLocationsEnemies[Random.Range(0, SpawnLocationsEnemies.Length-1)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("ENEMIES").transform);
+                    Instantiate(EnemyTypes[Random.Range(0, EnemyTypes.Length)], SpawnLocationsEnemies[Random.Range(0, SpawnLocationsEnemies.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("ENEMIES").transform);
                 }
             }
 
@@ -41,7 +41,7 @@ public class SpawnRoomItems : MonoBehaviour
             {
                 for (int i = 0; i < Random.Range(LM.LevelSettings.minEnemies, LM.LevelSettings.maxEnemies); i++)
                 {
-                    Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocationsItems[Random.Range(0, SpawnLocationsItems.Length - 1)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
+                    Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], SpawnLocationsItems[Random.Range(0, SpawnLocationsItems.Length)].position, new Quaternion(0, 0, 0, 0), GameObject.Find("RESILIENCE").transform);
                 }
             }
             CameraManager.UpdateCamera(this);

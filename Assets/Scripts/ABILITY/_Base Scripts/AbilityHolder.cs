@@ -198,10 +198,10 @@ public class AbilityHolder: MonoBehaviour
         }
     }
 
-    private IEnumerator ChargeDeplete()
+    private IEnumerator ChargeDeplete(int percent)
     {
         yield return new WaitForSeconds(shineAbility.activeTime);
-        playerScript.currentCharge = 0f;
+        playerScript.currentCharge = playerScript.currentCharge * (percent * 0.01f);
     }
     #endregion
 
@@ -247,6 +247,7 @@ public class AbilityHolder: MonoBehaviour
             Debug.Log("Calling Release AbilityPhysics");
             Destroy(enemy.gameObject);
         }
+        StartCoroutine(ChargeDeplete(100));
 
     }
 
@@ -277,7 +278,7 @@ public class AbilityHolder: MonoBehaviour
                 enemyHealth.Damage(shineAbility.damage);
             }
 
-            StartCoroutine(ChargeDeplete());
+            StartCoroutine(ChargeDeplete(50));
             Debug.Log("Calling Shine AbilityPhysics");
         }
     }
@@ -310,7 +311,7 @@ public class AbilityHolder: MonoBehaviour
                 enemyHealth.Damage(shineAbility.damage);
                 }
 
-                StartCoroutine(ChargeDeplete());
+                StartCoroutine(ChargeDeplete(50));
                 Debug.Log("Calling Shine AbilityPhysics");
             }
         }

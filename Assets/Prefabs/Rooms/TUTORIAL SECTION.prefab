@@ -7955,6 +7955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993802160747339}
   - {fileID: 6408993803215417332}
@@ -13387,6 +13388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993803440245160}
   - {fileID: 6408993802163782557}
@@ -19218,7 +19220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6408993802191121449}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.4398193, y: -79.583496, z: 1.6221882}
+  m_LocalPosition: {x: 10.47, y: -78.62, z: 1.6221882}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19244,8 +19246,8 @@ MonoBehaviour:
   timeBtwShots: 1
   startTimeBtwShots: 2
   shootDistance: 9
-  retreatDistance: 0
-  stoppingDistance: 8
+  retreatDistance: 3
+  stoppingDistance: 4
   damage: 0
   player: {fileID: 0}
 --- !u!114 &6408993802191121458
@@ -24876,8 +24878,8 @@ MonoBehaviour:
   timeBtwShots: 1
   startTimeBtwShots: 2
   shootDistance: 9
-  retreatDistance: 0
-  stoppingDistance: 8
+  retreatDistance: 3
+  stoppingDistance: 4
   damage: 0
   player: {fileID: 0}
 --- !u!114 &6408993802248767207
@@ -40469,6 +40471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993802767287668}
   - {fileID: 6408993802904916017}
@@ -45791,6 +45794,7 @@ MonoBehaviour:
   speed: 3
   playerTransform: {fileID: 0}
   followDistance: 1
+  damage: 0
   moveSpots:
   - {fileID: 0}
 --- !u!114 &6408993802509357204
@@ -51174,6 +51178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993803513652065}
   - {fileID: 6408993803661451052}
@@ -56208,6 +56213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993801893835564}
   - {fileID: 6408993803711808761}
@@ -61204,7 +61210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6408993802603634960
 Transform:
   m_ObjectHideFlags: 0
@@ -62312,6 +62318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993802439531108}
   - {fileID: 6408993802322302482}
@@ -67627,6 +67634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993802905345525}
   - {fileID: 6408993802345296965}
@@ -74815,6 +74823,7 @@ MonoBehaviour:
   speed: 3
   playerTransform: {fileID: 0}
   followDistance: 1
+  damage: 0
   moveSpots:
   - {fileID: 0}
 --- !u!114 &6408993803338254259
@@ -79787,6 +79796,7 @@ MonoBehaviour:
   speed: 3
   playerTransform: {fileID: 0}
   followDistance: 1
+  damage: 0
   moveSpots:
   - {fileID: 0}
 --- !u!114 &6408993803338360069
@@ -86215,8 +86225,8 @@ MonoBehaviour:
   timeBtwShots: 1
   startTimeBtwShots: 2
   shootDistance: 9
-  retreatDistance: 0
-  stoppingDistance: 8
+  retreatDistance: 3
+  stoppingDistance: 4
   damage: 0
   player: {fileID: 0}
 --- !u!114 &6408993803628746773
@@ -91189,6 +91199,7 @@ MonoBehaviour:
   speed: 3
   playerTransform: {fileID: 0}
   followDistance: 1
+  damage: 0
   moveSpots:
   - {fileID: 0}
 --- !u!114 &6408993803632430252
@@ -96326,6 +96337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993801640982397}
   - {fileID: 6408993803448881265}
@@ -101475,6 +101487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993803162691138}
   - {fileID: 6408993802114128197}
@@ -106447,6 +106460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993803484786575}
   - {fileID: 6408993802135021904}
@@ -111531,6 +111545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 1
+  damage: 0
   moveSpots:
   - {fileID: 6408993802531396778}
   - {fileID: 6408993803073867535}
@@ -116463,7 +116478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6408993803733135796
 Transform:
   m_ObjectHideFlags: 0

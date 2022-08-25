@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
         if (absorbBar != null)
         {
             absorbBar.SetMaxValue(maxCharge);
-            currentCharge = 0f;
+            currentCharge = currentCharge;
         }
 
         //FacingDirection = 1;
@@ -176,7 +176,7 @@ public class Player : MonoBehaviour
         #region Player & Enemy 
         if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player") && canTakeDamage)
         {
-            playerGetHit(5f);
+            TakeDamage(knockTime, 8f);
         }
         #endregion
     }

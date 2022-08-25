@@ -4870,9 +4870,9 @@ MonoBehaviour:
   speed: 3
   timeBtwShots: 1
   startTimeBtwShots: 2
-  shootDistance: 12
-  retreatDistance: 8
-  stoppingDistance: 18
+  shootDistance: 9
+  retreatDistance: 3
+  stoppingDistance: 4
   damage: 10
   player: {fileID: 0}
 --- !u!114 &1526394208541096320
