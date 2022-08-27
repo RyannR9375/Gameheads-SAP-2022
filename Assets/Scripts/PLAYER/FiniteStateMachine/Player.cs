@@ -122,6 +122,14 @@ public class Player : MonoBehaviour
         rb.velocity = CurrentVelocity;
         StateMachine.CurrentState.LogicUpdate();
         CheckStatus();
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        if (currentCharge > maxCharge)
+        {
+            currentCharge = maxCharge;
+        }
 
         //will move into statemachine, change functionality to work with designated buttons for controller support
         #region will move into statemachines
@@ -199,6 +207,8 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("Resilience") && gameObject.CompareTag("Player"))
         {
             currentHealth += 10f;
+            other.GetComponent<Resilience>().CollectedResiliance();
+
         }
     }
 

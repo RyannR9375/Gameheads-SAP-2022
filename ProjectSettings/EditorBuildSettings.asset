@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/OFFICIAL BUILD SCENES/instructionsenterwlrdscene.unity
     guid: 298bbc08c221f4e488601af9dca6b973
   - enabled: 1
-    path: Assets/Scenes/Levels/OFFICIAL BUILD SCENES/ProgrammingScene.unity
+    path: Assets/Scenes/Levels/OFFICIAL BUILD SCENES/MainLevel.unity
     guid: 97e5596e1c5549845a268f85da9ffa29
   - enabled: 1
     path: Assets/Scenes/Levels/OFFICIAL BUILD SCENES/BossLevel.unity

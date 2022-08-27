@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnemyBossTest : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class EnemyBossTest : MonoBehaviour
 	private Transform player;
 	public ParticleSystem absorbVFX;
 	public ParticleSystem pullVFX;
+	public Slider HealthBar;
 
 	public enum Stage
 	{
@@ -68,6 +70,7 @@ public class EnemyBossTest : MonoBehaviour
 	private void Awake()
 	{
 		stage = Stage.WaitingToStart;
+		HealthBar.maxValue = health;
 	}
 
 	void Start()
@@ -86,6 +89,7 @@ public class EnemyBossTest : MonoBehaviour
 
 	private void Update()
 	{
+		HealthBar.value = health;
 		DoWhatInThisPhase();
 
 		if (health <= 0)

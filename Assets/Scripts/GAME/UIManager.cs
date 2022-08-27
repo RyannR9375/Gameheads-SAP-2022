@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
         txtItems.text = ": " + _items + "/" + _victoryCondition;
         if (_items >= _victoryCondition)
         {
-            txtItems.text = "YOU CAN NOW FIND AND ENTER THE BOSS ROOM.";
+            txtItems.text = "Find the portal";
         }
         //ShowVictoryCondition(_items, _victoryCondition);
     }
