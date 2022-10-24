@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     private Collider2D triggerCollider;
     private SpriteRenderer playerSprite;
     private GameObject abilityHolder;
-    private GameObject attackArea = default;
+    public GameObject attackArea;
 
     public Vector2 CurrentVelocity;
     private Vector2 workspace;
@@ -94,7 +94,6 @@ public class Player : MonoBehaviour
         triggerCollider = GetComponent<Collider2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         abilityHolder = transform.GetChild(0).gameObject;
-        attackArea = transform.GetChild(1).gameObject;
 
         currentRespawnPoint = respawnPoint[0];
 
@@ -183,7 +182,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) // POTENTIALLY MOVING THIS TO IF THE ENEMY COLLIDES WITH THE PLAYER INSTEAD OF PLAYER COLLIDING WITH ENEMY, JUST TO KEEP PLAYER SCRIPTS CLEAN.
     {
         #region Player & Enemy 
-        if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player") && canTakeDamage)
+        if (other.gameObject.CompareTag("Enemy") && gameObject.Equals("Player") && canTakeDamage)
         {
             TakeDamage(knockTime, 4f);
         }

@@ -120,7 +120,9 @@ public class EnemyBossTest : MonoBehaviour
 			Debug.Log("Simple Attack Called");
 
 			//Creates Prefab every timeBtwShots
+
 			Instantiate(prefabProjectile, transform.position, Quaternion.identity);
+			
 			prefabProjectile.SetActive(true);
 			timeBtwShots = startTimeBtwShots;
 		}
