@@ -28,17 +28,23 @@ public class ShineAbility : Ability
     {
         CircleCollider2D shine = parent.AddComponent<CircleCollider2D>(); 
 
-        shine.radius = shineRadius;
-        shine.isTrigger = true;
-        shine.tag = "Shine";
+        if(shine != null)
+        {
+            shine.radius = shineRadius;
+            shine.isTrigger = true;
+            shine.tag = "Shine";
+        }
     }
 
     //COOLDOWN FUNCTION
     public override void BeginCooldown(GameObject parent)
     {
         CircleCollider2D shine = parent.GetComponent<CircleCollider2D>();
-        shine.tag = "Untagged";
-        Destroy(shine);
+        if(shine != null)
+        {
+            shine.tag = "Untagged";
+            Destroy(shine);
+        }
     }
 
     private IEnumerator KnockTime(Rigidbody2D enemy)

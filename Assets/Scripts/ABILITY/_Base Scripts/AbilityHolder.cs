@@ -73,7 +73,7 @@ public class AbilityHolder: MonoBehaviour
         Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
 
         #region Shine Ability
-        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Shine") && playerScript.currentCharge >= playerScript.maxCharge / 2)
+        if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Shine") && (playerScript.currentCharge >= (playerScript.maxCharge / 2)))
         {
             ShineTrigger(enemy);
         }
@@ -292,7 +292,7 @@ public class AbilityHolder: MonoBehaviour
         Rigidbody2D enemyRB = enemy.gameObject.GetComponent<Rigidbody2D>();
         if (enemy.gameObject.CompareTag("Enemy") && CompareTag("Shine"))
         {
-            if (enemyRB != null && shineAbility != null && playerScript.currentCharge >= playerScript.maxCharge)
+            if (enemyRB != null && shineAbility != null)
             {
                 //PUSH FORCE MATH. '.FORCE' FELT BETTER THAN '.IMPULSE'
                 //GETTING THE DISTANCE FROM THE ENEMY TO THE PLAYER, AND ADDING FORCE IN THE OPPOSITE VECTOR DIRECTION. 

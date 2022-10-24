@@ -14,11 +14,6 @@ public class AbsorbAbility : Ability
 
     private ParticleSystem playerParticles;
 
-    private void Awake()
-    {
-        playerParticles = GameObject.Find("AbsorbPlayerVfx").GetComponent<ParticleSystem>();
-    }
-
     //ACTIVATING ABILITIES FUNCTION
     public override void Activate(GameObject parent)
     {

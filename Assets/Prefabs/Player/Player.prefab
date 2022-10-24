@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 12ab4829b9546844f9933569b95464e6, type: 2}
   shineAbility: {fileID: 0}
-  VFX: {fileID: 4927276455798389284}
+  VFX: {fileID: 6135650281410802669, guid: aa2e0c0d3dfc28444b26d6d9b778e981, type: 3}
   state: 0
   key: 120
   button: 330
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 990c35197948a6348b582a2b07bd1314, type: 2}
   shineAbility: {fileID: 11400000, guid: 990c35197948a6348b582a2b07bd1314, type: 2}
-  VFX: {fileID: 6135650281410802669, guid: aa2e0c0d3dfc28444b26d6d9b778e981, type: 3}
+  VFX: {fileID: 4927276455798389284}
   state: 0
   key: 32
   button: 331

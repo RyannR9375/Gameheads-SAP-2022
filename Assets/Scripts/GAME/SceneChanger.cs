@@ -31,6 +31,16 @@ public class SceneChanger : MonoBehaviour
             SceneManager.LoadScene("BossLevel");
         }
         #endregion
+
+        if(other.CompareTag("Player") && this.CompareTag("ChangerMain"))
+        {
+            SceneManager.LoadScene("MainLevel");
+        }
+
+        if (other.CompareTag("Player") && this.CompareTag("ChangerBoss"))
+        {
+            SceneManager.LoadScene("BossLevel");
+        }
     }
     #endregion
 
@@ -40,7 +50,7 @@ public class SceneChanger : MonoBehaviour
     { 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
+    
     //QUITS APPLICATION
     public void Quit()
     {
@@ -56,7 +66,17 @@ public class SceneChanger : MonoBehaviour
 
     public void RestartScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void LoadEmpty()
+    {
+        SceneManager.LoadScene("Empty");
+    }
+
+    public void LoadEmptyBoss()
+    {
+        SceneManager.LoadScene("Empty1");
     }
     #endregion
 
