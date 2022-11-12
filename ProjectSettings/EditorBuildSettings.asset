@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/OFFICIAL BUILD SCENES/WinningEndScene.unity
     guid: 3244e76fb6b7fbf4aa2531204a8ce8b1
+  - enabled: 1
+    path: Assets/Scenes/Levels/OFFICIAL BUILD SCENES/Creditsscene.unity
+    guid: 1e6da500eb4d12a4a884c2613ff0b0ce
   m_configObjects: {}

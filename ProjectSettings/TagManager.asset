@@ -19,6 +19,7 @@ TagManager:
   - Rock
   - ChangerMain
   - ChangerBoss
+  - Player Attack
   layers:
   - Default
   - TransparentFX
