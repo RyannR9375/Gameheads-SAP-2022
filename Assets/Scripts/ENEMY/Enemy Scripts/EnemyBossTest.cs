@@ -108,23 +108,54 @@ public class EnemyBossTest : MonoBehaviour
 		{
 			DoDamage();
 		}
+
+		//hardcoded for now
+		if (other.CompareTag("Release"))
+		{
+			TakeDamage(20f);
+		}
 	}
 
-	#endregion
+    private void OnTriggerStay2D(Collider2D other)
+    {
+		//hardcoded for now
+		if (other.CompareTag("Absorb"))
+		{
+			TakeDamage(0.3f);
+		}
+	}
 
-	#region Boss Abilities
-	public void ProjectileAttack()
+    #endregion
+
+    #region Boss Abilities
+    public void ProjectileAttack()
 	{
 		if (timeBtwShots < 0)
 		{
 			Debug.Log("Simple Attack Called");
 
 			//Creates Prefab every timeBtwShots
+			GameObject spawnMob = prefabProjectile;
+			List<GameObject> spawnedMobs = new List<GameObject>();
+			Instantiate(spawnMob, transform.position, Quaternion.identity);
+			/**spawnedMobs.Add(spawnMob);
 
-			Instantiate(prefabProjectile, transform.position, Quaternion.identity);
-			
-			prefabProjectile.SetActive(true);
+			for (int i = 0; i < spawnedMobs.Count; i++)
+			{
+				//spawnedMobs.Add(spawnMob);
+				Instantiate(spawnedMobs[i], transform.position, Quaternion.identity);
+			}
+
+			if (!spawnMob.activeSelf || spawnedMobs.Count >= 5)
+            {
+				spawnedMobs.RemoveAt(6);
+            }
+			**/
+
+			spawnMob.SetActive(true);
 			timeBtwShots = startTimeBtwShots;
+
+			print(spawnedMobs.Count);
 		}
 		else
 		{
